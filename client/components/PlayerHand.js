@@ -20,10 +20,13 @@ class PlayerHand extends React.Component {
       await this.props.updatePlayerInStore(updatedPlayer, 1)
     }
 
-    if (
-      this.props.playersUpdated === this.props.numPlayers &&
-      this.props.me.number === 1
-    ) {
+    let ready = true
+    this.props.playersUpdated.forEach(player => {
+      if (!player) {
+        ready = false
+      }
+    })
+    if (ready && this.props.playersUpdated.length > 0) {
       await this.props.resetUpdate()
       let playersToSwap = []
       this.props.players.forEach(player => {

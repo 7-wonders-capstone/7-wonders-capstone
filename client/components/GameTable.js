@@ -33,15 +33,16 @@ class GameTable extends React.Component {
     )
   }
 
-  playerUpdated = num => {
-    const updated = this.props.playersUpdated
+  playerUpdated = player => {
+    const updated = this.props.playersUpdated.slice()
+    updated[player.number - 1] = true
     this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
       },
       {
-        playersUpdated: updated + num
+        playersUpdated: updated
       }
     )
   }
@@ -65,7 +66,7 @@ class GameTable extends React.Component {
         doc: `${this.props.gameId}`
       },
       {
-        playersUpdated: 0
+        playersUpdated: Array(this.props.players.length).fill(false)
       }
     )
   }
@@ -81,7 +82,7 @@ class GameTable extends React.Component {
       )
       .then(() => {
         if (num !== 0) {
-          this.playerUpdated(num)
+          this.playerUpdated(player)
         }
       })
   }
