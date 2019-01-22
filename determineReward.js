@@ -22,3 +22,5 @@ function determineReward(playerList, from, direction, left, own, right) {
   })
   return total
 }
+
+module.exports = determineReward

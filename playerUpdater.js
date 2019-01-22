@@ -1,5 +1,7 @@
 /*eslint-disable complexity */
 
+const determineReward = require('./determineReward')
+
 const playerUpdater = (player, playerList, playedCard, tradeCost = 0) => {
   player.playedCards.push(playedCard)
   player.hand = player.hand.filter(
@@ -105,13 +107,6 @@ const playerUpdater = (player, playerList, playedCard, tradeCost = 0) => {
       break
   }
   return player
-}
-
-//FUNCTION TESTING
-
-//the following function still needs to be written, this returns a dummy value for now
-function determineReward(playerList, from, direction, left, own, right) {
-  return 3
 }
 
 module.exports = playerUpdater

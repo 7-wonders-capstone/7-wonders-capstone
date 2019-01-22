@@ -2,25 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {selectCard} from '../store/selectedCard'
 import {Button} from 'semantic-ui-react'
-const playerUpdater = require('../../playerUpdater')
 
 class Card extends React.Component {
-  componentDidUpdate() {
-    if (this.props.readyToPlay === this.props.numPlayers) {
-      this.props.resetPlay()
-      let playerCopy = JSON.parse(JSON.stringify(this.props.me))
-      let updatedPlayer = playerUpdater(
-        playerCopy,
-        this.props.players,
-        this.props.selectedCard
-      )
-      console.log(updatedPlayer)
-      this.props.updatePlayerInStore(updatedPlayer)
-    } else {
-      console.log('NOT READY TO PLAY YET')
-    }
-  }
-
   render() {
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
