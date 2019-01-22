@@ -7,6 +7,8 @@ import 'firebase/firestore'
 import {firebaseConfig} from '../../secrets'
 import user from './user'
 import selectedCard from './selectedCard'
+import me from './me'
+import boardPositions from './boardPositions'
 
 firebase.initializeApp(firebaseConfig)
 firebase.firestore().settings({timestampsInSnapshots: true})
@@ -33,7 +35,9 @@ const reducer = combineReducers({
   user,
   firebase: firebaseReducer,
   firestore: firestoreReducer,
-  selectedCard
+  selectedCard,
+  me,
+  boardPositions
 })
 
 const store = createStore(reducer, composedEnhancers)

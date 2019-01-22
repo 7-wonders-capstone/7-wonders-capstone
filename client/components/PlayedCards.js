@@ -4,8 +4,6 @@ import PlayedCardIcons from './PlayedCardIcons'
 
 class PlayedCards extends Component {
   render() {
-    const {playedCards} = this.props
-    console.log('playedCards: ', playedCards)
     return (
       <Segment>
         <Grid relaxed columns={7}>

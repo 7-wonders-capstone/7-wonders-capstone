@@ -1,34 +1,36 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 
 class LeaveGameButton extends React.Component {
   leaveGame = () => {
-    const gameId = this.props.match.params.gameId
+    const gameId = this.props.game.id
+    const {email} = this.props
 
     this.props.firestore.delete({
       collection: 'games',
-      doc: `${gameId}`,
-      subcollections: [{collection: `players`, doc: `${this.props.email}`}]
+      doc: gameId,
+      subcollections: [{collection: `players`, doc: email}]
     })
 
-    console.log('Leave button clicked')
+    this.props.firestore.update(
+      {
+        collection: 'users',
+        doc: email
+      },
+      {inGameRoom: ''}
+    )
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.leaveGame}>Leave Game</button>
+        <button type="button" onClick={this.leaveGame}>
+          Leave Game
+        </button>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  email: state.firebase.auth.email
-})
-
-export default compose(connect(mapStateToProps), firestoreConnect())(
-  LeaveGameButton
-)
+export default compose(firestoreConnect()(LeaveGameButton))

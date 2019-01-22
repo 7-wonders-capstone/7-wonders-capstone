@@ -2,6 +2,9 @@ import React from 'react'
 import * as firebase from 'firebase'
 import {firestoreConnect} from 'react-redux-firebase'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {gotMe} from '../store/me'
+import {compose} from 'redux'
 
 class SignUp extends React.Component {
   constructor() {
@@ -44,7 +47,9 @@ class SignUp extends React.Component {
           .doc(`${this.state.email}`)
           .set({
             email: this.state.email,
-            username: ''
+            username: '',
+            inGameRoom: '',
+            usersGameStarted: false
           })
       } else {
         alert('Email is already in use.')
@@ -79,4 +84,12 @@ class SignUp extends React.Component {
   }
 }
 
-export default withRouter(firestoreConnect()(SignUp))
+const mapDispatchToProps = dispatch => {
+  return {
+    gotMe: me => dispatch(gotMe(me))
+  }
+}
+
+export default withRouter(
+  compose(firestoreConnect(), connect(null, mapDispatchToProps)(SignUp))
+)

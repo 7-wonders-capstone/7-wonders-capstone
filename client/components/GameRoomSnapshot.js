@@ -3,19 +3,39 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {Card} from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import WaitingPlayers from './WaitingPlayers'
+import LeaveGameButton from './LeaveGameButton'
+import JoinGameButton from './JoinGameButton'
+import StartGameButton from './StartGameButton'
 
 class GameRoomSnapshot extends React.Component {
   render() {
-    console.log('GameRoomSnapshot props: ', this.props)
+    const {game, players} = this.props
     return (
       <div className="gameroom-snapshot">
-        <Link to={`/games/${this.props.game.id}`}>
-          <Card>
-            <Card.Header>{this.props.game.id}</Card.Header>
-            <Card.Content>{this.props.players.length} Players</Card.Content>
-          </Card>
-        </Link>
+        <Card>
+          <Card.Header>Room #{game.id}</Card.Header>
+          <Card.Content>
+            <WaitingPlayers {...this.props} />
+            <div>
+              {players.filter(
+                player => player.email === this.props.email
+              )[0] ? (
+                <LeaveGameButton {...this.props} />
+              ) : null}
+
+              {this.props.userInGameRoom ? null : (
+                <JoinGameButton {...this.props} />
+              )}
+
+              {players.filter(
+                player => player.email === this.props.email
+              )[0] ? (
+                <StartGameButton {...this.props} />
+              ) : null}
+            </div>
+          </Card.Content>
+        </Card>
       </div>
     )
   }
@@ -23,9 +43,13 @@ class GameRoomSnapshot extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
+    email: state.firebase.auth.email,
     players: state.firestore.ordered[`games/${props.game.id}/players`]
       ? state.firestore.ordered[`games/${props.game.id}/players`]
-      : []
+      : [],
+    userInGameRoom: state.firestore.ordered.users
+      ? state.firestore.ordered.users[0].inGameRoom
+      : ''
   }
 }
 
@@ -35,6 +59,10 @@ export default compose(
     return [
       {
         collection: `games/${props.game.id}/players`
+      },
+      {
+        collection: 'users',
+        doc: props.email
       }
     ]
   })
