@@ -104,6 +104,7 @@ class GameTable extends React.Component {
           <Chat />
         </Menu> */}
         <div className="game-table">
+          <h3>AGE: {this.props.age}</h3>
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
               <div className="other-container">
