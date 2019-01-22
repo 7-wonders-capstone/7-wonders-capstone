@@ -18,7 +18,7 @@ class GameRoom extends React.Component {
             <StartGameButton {...this.props} />
           </div>
         ) : (
-          <GameTable {...this.props} />
+          <GameTable {...this.props} gameId={this.props.match.params.gameId} />
         )}
       </div>
     )

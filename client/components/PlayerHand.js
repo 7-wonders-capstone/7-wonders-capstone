@@ -9,7 +9,15 @@ class PlayerHand extends React.Component {
         {this.props.me.hand.map(card => {
           return (
             <div key={card.imageURL}>
-              <Card card={card} />
+              <Card
+                card={card}
+                preparePlay={this.props.preparePlay}
+                resetPlay={this.props.resetPlay}
+                readyToPlay={this.props.readyToPlay}
+                numPlayers={this.props.numPlayers}
+                me={this.props.me}
+                players={this.props.players}
+              />
             </div>
           )
         })}

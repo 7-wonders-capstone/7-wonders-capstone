@@ -16,7 +16,10 @@ class Lobby extends React.Component {
           collection: 'games',
           doc: `${gameId}`
         },
-        {gameStarted: false}
+        {
+          gameStarted: false,
+          readyToPlay: 0
+        }
       )
       .then(() => {
         this.props.history.push(`/games/${gameId}`)
