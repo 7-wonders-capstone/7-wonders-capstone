@@ -27,7 +27,7 @@ class StartGameButton extends React.Component {
         collection: 'games',
         doc: `${gameId}`
       },
-      {updatedPlayers: Array(this.props.players.length).fill(false)}
+      {playersUpdated: Array(this.props.players.length).fill(false)}
     )
 
     // Change gameStarted field for the game to true.
