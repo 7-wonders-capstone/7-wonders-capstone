@@ -8,7 +8,8 @@ class Card extends React.Component {
   componentDidUpdate() {
     if (this.props.readyToPlay === this.props.numPlayers) {
       console.log(this.props.me)
-      let playerCopy = Object.assign({}, this.props.me)
+      //let playerCopy = Object.assign( {}, this.props.me)
+      let playerCopy = JSON.parse(JSON.stringify(this.props.me))
       console.log(playerCopy)
       console.log(playerCopy === this.props.me)
       let updatedPlayer = playerUpdater(
@@ -16,6 +17,8 @@ class Card extends React.Component {
         this.props.players,
         this.props.selectedCard
       )
+      console.log(updatedPlayer)
+      this.props.updatePlayerInStore(updatedPlayer)
       this.props.resetPlay()
     } else {
       console.log('NOT READY TO PLAY YET')

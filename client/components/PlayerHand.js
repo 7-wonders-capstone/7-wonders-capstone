@@ -17,6 +17,7 @@ class PlayerHand extends React.Component {
                 numPlayers={this.props.numPlayers}
                 me={this.props.me}
                 players={this.props.players}
+                updatePlayerInStore={this.props.updatePlayerInStore}
               />
             </div>
           )

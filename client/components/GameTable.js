@@ -33,6 +33,16 @@ class GameTable extends React.Component {
     )
   }
 
+  updatePlayerInStore = player => {
+    this.props.firestore.update(
+      {
+        collection: `games/${this.props.gameId}/players`,
+        doc: `${player.email}`
+      },
+      player
+    )
+  }
+
   componentDidMount() {
     const me = this.props.players.filter(
       player => player.email === this.props.email
@@ -174,6 +184,7 @@ class GameTable extends React.Component {
             readyToPlay={this.props.readyToPlay}
             numPlayers={this.props.players.length}
             players={this.props.players}
+            updatePlayerInStore={this.updatePlayerInStore}
           />
         </div>
       </div>
