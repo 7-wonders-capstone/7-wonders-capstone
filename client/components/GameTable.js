@@ -34,7 +34,7 @@ class GameTable extends React.Component {
   }
 
   updatePlayerInStore = player => {
-    this.props.firestore.update(
+    this.props.firestore.set(
       {
         collection: `games/${this.props.gameId}/players`,
         doc: `${player.email}`
