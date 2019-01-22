@@ -16,27 +16,28 @@ class PlayerHand extends React.Component {
         this.props.players,
         this.props.selectedCard
       )
-      console.log('UPDATED PLAYER HAND', updatedPlayer.hand)
       await this.props.updatePlayerInStore(updatedPlayer, 1)
     }
 
-    let ready = true
-    this.props.playersUpdated.forEach(player => {
-      if (!player) {
-        ready = false
-      }
-    })
-    if (ready && this.props.playersUpdated.length > 0) {
-      await this.props.resetUpdate()
+    const ready = this.props.playersUpdated.length === this.props.numPlayers
+    if (ready && this.props.me.number === 1) {
+      this.props.resetUpdate()
       let playersToSwap = []
-      this.props.players.forEach(player => {
-        let copiedPlayer = JSON.parse(JSON.stringify(player))
-        playersToSwap.push(copiedPlayer)
-      })
-      const swappedPlayers = handSwap(playersToSwap, 1)
-      swappedPlayers.forEach(
-        async player => await this.props.updatePlayerInStore(player, 0)
-      )
+
+      this.props.firestore
+        .collection(`/games/${this.props.gameId}/players`)
+        .get()
+        .then(querySnapshot =>
+          querySnapshot.forEach(player => {
+            playersToSwap.push(player.data())
+          })
+        )
+        .then(() => {
+          const swappedPlayers = handSwap(playersToSwap, 1)
+          swappedPlayers.forEach(player =>
+            this.props.updatePlayerInStore(player, 0)
+          )
+        })
     }
     if (this.props.me.hand.length === 1) {
       console.log('age switch')
@@ -75,15 +76,9 @@ const mapStateToProps = (state, props) => {
     me: state.firestore.ordered.playerForPlayerHand
       ? state.firestore.ordered.playerForPlayerHand[0]
       : {}
-    // me: state.firestore.ordered[`games/${props.gameId}/players`]
-    //   ? state.firestore.ordered[`games/${props.gameId}/players`].find(
-    //       player => player.email === props.email
-    //     )
-    //   : {}
   }
 }
 
-//export default connect(mapStateToProps)(PlayerHand)
 export default compose(
   connect(mapStateToProps),
   firestoreConnect(props => {

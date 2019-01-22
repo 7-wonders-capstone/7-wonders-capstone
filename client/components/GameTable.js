@@ -12,12 +12,6 @@ import Chat from './Chat'
 class GameTable extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      // me: {
-      //   hand: [],
-      //   coins: 0
-      // }
-    }
     this.orderPlayers(props)
   }
 
@@ -34,15 +28,13 @@ class GameTable extends React.Component {
   }
 
   playerUpdated = player => {
-    const updated = this.props.playersUpdated.slice()
-    updated[player.number - 1] = true
     this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
       },
       {
-        playersUpdated: updated
+        playersUpdated: this.props.firestore.FieldValue.arrayUnion(player.email)
       }
     )
   }
@@ -66,7 +58,7 @@ class GameTable extends React.Component {
         doc: `${this.props.gameId}`
       },
       {
-        playersUpdated: Array(this.props.players.length).fill(false)
+        playersUpdated: []
       }
     )
   }
@@ -82,22 +74,12 @@ class GameTable extends React.Component {
       )
       .then(() => {
         if (num !== 0) {
-          this.playerUpdated(player)
+          this.playerUpdated(player, num)
         }
       })
   }
 
   orderPlayers(props) {
-    // const me = this.props.players.filter(
-    //   player => player.email === this.props.email
-    // )
-
-    // this.setState({
-    //   me: me
-    // })
-
-    // this.me = this.props.me
-
     const orderedPlayers = [...props.players].sort(
       (a, b) => a.number < b.number
     )
@@ -113,10 +95,6 @@ class GameTable extends React.Component {
   }
 
   render() {
-    // const orderedPlayers = [...this.props.players].sort(
-    //   (a, b) => a.number < b.number
-    // )
-
     return (
       <div>
         <Menu vertical>

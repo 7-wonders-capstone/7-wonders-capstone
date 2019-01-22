@@ -19,7 +19,8 @@ class Lobby extends React.Component {
         {
           gameStarted: false,
           readyToPlay: 0,
-          age: 1
+          age: 1,
+          playersUpdated: []
         }
       )
       .catch(error => console.error(error))
