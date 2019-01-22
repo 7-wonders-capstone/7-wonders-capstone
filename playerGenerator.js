@@ -47,7 +47,7 @@ function shuffleArray(array) {
   return array
 }
 
-/*export */ function createPlayers(total) {
+export function createPlayers(total) {
   const startingDeck = filterAgeDecks(ageOneDeck, total)
   let sessionBoards = shuffleArray(gameBoards.slice())
   const players = []
