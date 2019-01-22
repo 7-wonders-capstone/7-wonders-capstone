@@ -4,13 +4,11 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
 import {Grid} from 'semantic-ui-react'
-import {compose} from 'redux'
-import {connect} from 'react-redux'
-import {firestoreConnect} from 'react-redux-firebase'
+
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
 
-class GameTable extends Component {
+class GameTable extends React.Component {
   preparePlay = () => {
     this.props.firestore.update(
       {

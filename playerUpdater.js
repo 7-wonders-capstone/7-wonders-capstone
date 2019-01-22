@@ -4,7 +4,7 @@ const playerUpdater = (player, playerList, playedCard, tradeCost = 0) => {
   player.playedCards.push(playedCard)
   player.hand = player.hand.filter(
     card =>
-      card.name !== playedCard.name && card.numPlayers !== playedCard.numPlayers
+      card.name !== playedCard.name || card.numPlayers !== playedCard.numPlayers
   )
   player.coins -= tradeCost
   if (playedCard.costs) {

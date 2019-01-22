@@ -7,7 +7,8 @@ const playerUpdater = require('../../playerUpdater')
 class Card extends React.Component {
   componentDidUpdate() {
     if (this.props.readyToPlay === this.props.numPlayers) {
-      console.log('PLAYING CARDS NOW')
+      console.log(this.props.me)
+      console.log(this.props.selectedCard)
       playerUpdater(this.props.me, this.props.players, this.props.selectedCard)
       this.props.resetPlay()
     } else {
