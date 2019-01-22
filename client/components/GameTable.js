@@ -38,7 +38,7 @@ class GameTable extends React.Component {
       player => player.email === this.props.email
     )[0]
 
-    const orderedPlayers = this.props.players.sort(
+    const orderedPlayers = [...this.props.players].sort(
       (a, b) => a.number < b.number
     )
 
@@ -100,7 +100,7 @@ class GameTable extends React.Component {
   }
 
   render() {
-    const orderedPlayers = this.props.players.sort(
+    const orderedPlayers = [...this.props.players].sort(
       (a, b) => a.number < b.number
     )
 
