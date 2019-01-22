@@ -22,6 +22,7 @@ class PlayerHand extends React.Component {
   }
 
   render() {
+    console.log(this.props.me.hand)
     return (
       <div className="player-hand">
         {this.props.me.hand.map(card => {
