@@ -1,14 +1,16 @@
 const playCard = (player, card) => {
   if (!card.costs) {
     return true
-  } else if (card.upgradesFrom) {
-    player.hand.forEach(handCard => {
-      if (handCard.name === card.upgradesFrom[0]) {
-        return true
-      }
+  } else if (
+    card.upgradesFrom &&
+    player.hand.some(handCard => {
+      return handCard.name === card.upgradesFrom[0]
     })
+  ) {
+    return true
   } else {
     let canPlay = true
+    //TODO refactor using some array method
     card.costs.forEach(cost => {
       if (typeof cost === 'number' && player.coins < cost) {
         canPlay = false
