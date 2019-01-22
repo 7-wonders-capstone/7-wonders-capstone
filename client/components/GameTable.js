@@ -176,6 +176,7 @@ class GameTable extends React.Component {
             players={this.props.players}
             updatePlayerInStore={this.updatePlayerInStore}
             playerUpdated={this.playerUpdated}
+            age={this.props.age}
           />
         </div>
       </div>
@@ -188,6 +189,9 @@ const mapStateToProps = (state, props) => {
     readyToPlay: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].readyToPlay
       : 0,
+    age: state.firestore.data.games
+      ? state.firestore.data.games[props.gameId].age
+      : 1,
     playersUpdated: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].playersUpdated
       : 0,

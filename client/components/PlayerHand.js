@@ -38,6 +38,9 @@ class PlayerHand extends React.Component {
         async player => await this.props.updatePlayerInStore(player, 0)
       )
     }
+    if (this.props.me.hand.length === 1) {
+      console.log('age switch')
+    }
   }
 
   render() {
