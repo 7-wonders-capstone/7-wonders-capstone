@@ -85,6 +85,11 @@ const playerUpdater = (
       break
     case 'wonder':
       player.latestWonder = player.latestWonder + 1
+      player.hand = player.hand.filter(
+        card =>
+          card.name !== playedCard.sacrificeName ||
+          card.numPlayers !== playedCard.sacrificeNumber
+      )
       if (playedCard.resources) {
         playedCard.resources.forEach(resource =>
           player.availableResources.push(resource)
