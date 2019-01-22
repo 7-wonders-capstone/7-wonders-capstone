@@ -7,22 +7,31 @@ const handSwap = require('../../handSwap')
 class PlayerHand extends React.Component {
   componentDidUpdate() {
     if (this.props.readyToPlay === this.props.numPlayers) {
-      this.props.resetPlay()
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
       let updatedPlayer = playerUpdater(
         playerCopy,
         this.props.players,
         this.props.selectedCard
       )
-      console.log(updatedPlayer)
-      this.props.updatePlayerInStore(updatedPlayer)
-    } else {
-      console.log('NOT READY TO PLAY YET')
+      console.log('UPDATED PLAYER HAND', updatedPlayer.hand)
+      this.props.updatePlayerInStore(updatedPlayer, 1)
+    }
+    if (this.props.playersUpdated === this.props.numPlayers) {
+      let playersToSwap = []
+      this.props.players.forEach(player => {
+        let copiedPlayer = JSON.parse(JSON.stringify(player))
+        playersToSwap.push(copiedPlayer)
+      })
+      const swappedPlayers = handSwap(playersToSwap, 1)
+      swappedPlayers.forEach(player =>
+        this.props.updatePlayerInStore(player, 0)
+      )
+      this.props.resetPlay()
     }
   }
 
   render() {
-    console.log(this.props.me.hand)
+    console.log('HAND', this.props.me.hand)
     return (
       <div className="player-hand">
         {this.props.me.hand.map(card => {

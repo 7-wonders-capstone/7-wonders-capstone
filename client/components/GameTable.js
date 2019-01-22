@@ -11,6 +11,15 @@ import {Menu} from 'semantic-ui-react'
 import Chat from './Chat'
 
 class GameTable extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      me: {
+        hand: [],
+        coins: 0
+      }
+    }
+  }
   preparePlay = () => {
     this.props.firestore.update(
       {
@@ -23,6 +32,18 @@ class GameTable extends React.Component {
     )
   }
 
+  playerUpdated = num => {
+    this.props.firestore.update(
+      {
+        collection: 'games',
+        doc: `${this.props.gameId}`
+      },
+      {
+        playersUpdated: this.props.playersUpdated + num
+      }
+    )
+  }
+
   resetPlay = () => {
     this.props.firestore.update(
       {
@@ -30,25 +51,34 @@ class GameTable extends React.Component {
         doc: `${this.props.gameId}`
       },
       {
-        readyToPlay: 0
+        readyToPlay: 0,
+        playersUpdated: 0
       }
     )
   }
 
-  updatePlayerInStore = player => {
-    this.props.firestore.set(
-      {
-        collection: `games/${this.props.gameId}/players`,
-        doc: `${player.email}`
-      },
-      player
-    )
+  updatePlayerInStore = (player, num) => {
+    this.props.firestore
+      .set(
+        {
+          collection: `games/${this.props.gameId}/players`,
+          doc: `${player.email}`
+        },
+        player
+      )
+      .then(() => {
+        this.playerUpdated(num)
+      })
   }
 
   componentDidMount() {
-    const me = this.props.players.filter(
+    const me = this.props.players.find(
       player => player.email === this.props.email
-    )[0]
+    )
+
+    this.setState({
+      me: me
+    })
 
     const orderedPlayers = [...this.props.players].sort(
       (a, b) => a.number < b.number
@@ -116,10 +146,6 @@ class GameTable extends React.Component {
       (a, b) => a.number < b.number
     )
 
-    const me = this.props.players.filter(
-      player => player.email === this.props.email
-    )[0]
-
     return (
       <div>
         <Menu vertical>
@@ -183,13 +209,15 @@ class GameTable extends React.Component {
         <div className="player-hand-navbar">
           <PlayerHand
             {...this.props}
-            me={me}
+            me={this.state.me}
             preparePlay={this.preparePlay}
             resetPlay={this.resetPlay}
             readyToPlay={this.props.readyToPlay}
+            playersUpdated={this.props.playersUpdated}
             numPlayers={this.props.players.length}
             players={this.props.players}
             updatePlayerInStore={this.updatePlayerInStore}
+            playerUpdated={this.playerUpdated}
           />
         </div>
       </div>
@@ -201,6 +229,9 @@ const mapStateToProps = (state, props) => {
   return {
     readyToPlay: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].readyToPlay
+      : 0,
+    playersUpdated: state.firestore.data.games
+      ? state.firestore.data.games[props.gameId].playersUpdated
       : 0,
     positions: state.boardPositions
   }
