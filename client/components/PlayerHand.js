@@ -5,9 +5,19 @@ import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 const playerUpdater = require('../../playerUpdater')
 const handSwap = require('../../handSwap')
+const militaryComparison = require('../../militaryComparison')
+const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
+const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
 
 class PlayerHand extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      updating: false
+    }
+  }
   async componentDidUpdate() {
+    //console.log(this.props.me)
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
@@ -18,9 +28,77 @@ class PlayerHand extends React.Component {
       )
       await this.props.updatePlayerInStore(updatedPlayer, 1)
     }
-
     const ready = this.props.playersUpdated.length === this.props.numPlayers
-    if (ready && this.props.me.number === 1) {
+
+    if (
+      this.props.me.hand.length <= 1 &&
+      this.props.me.number === 1 &&
+      this.props.age !== 3 &&
+      !this.state.updating
+    ) {
+      this.setState({
+        updating: true
+      })
+      console.log('age switch')
+      let playersToUpdate = []
+      let updatedMilitary = []
+      let updatedHands = []
+      let nextAge
+      await this.props.firestore
+        .collection(`/games/${this.props.gameId}/players`)
+        .get()
+        .then(querySnapshot =>
+          querySnapshot.forEach(player => {
+            playersToUpdate.push(player.data())
+          })
+        )
+        .then(() => {
+          playersToUpdate.forEach(player =>
+            updatedMilitary.push(
+              militaryComparison(player, this.props.players, this.props.age)
+            )
+          )
+        })
+        .then(() => {
+          let newDeck
+
+          if (this.props.age === 1) {
+            newDeck = filterAgeDecks(ageTwoDeck, this.props.numPlayers)
+            nextAge = 2
+          } else if (this.props.age === 2) {
+            newDeck = filterAgeDecks(ageThreeDeck, this.props.numPlayers)
+            nextAge = 3
+          }
+
+          updatedMilitary.forEach(player => {
+            let newHand = []
+            for (let i = 0; i < 7; i++) {
+              newHand.push(dealHand(newDeck))
+            }
+            player.hand = newHand
+            updatedHands.push(player)
+          })
+        })
+        .then(() => {
+          updatedHands.forEach(async player => {
+            await this.props.updatePlayerInStore(player, 0)
+          })
+        })
+        .then(async () => {
+          await this.props.firestore.update(
+            {
+              collection: 'games',
+              doc: `${this.props.gameId}`
+            },
+            {
+              age: nextAge
+            }
+          )
+        })
+      this.setState({
+        updating: false
+      })
+    } else if (ready && this.props.me.number === 1) {
       this.props.resetUpdate()
       let playersToSwap = []
 
@@ -33,14 +111,11 @@ class PlayerHand extends React.Component {
           })
         )
         .then(() => {
-          const swappedPlayers = handSwap(playersToSwap, 1)
+          const swappedPlayers = handSwap(playersToSwap, this.props.age)
           swappedPlayers.forEach(player =>
             this.props.updatePlayerInStore(player, 0)
           )
         })
-    }
-    if (this.props.me.hand.length === 1) {
-      console.log('age switch')
     }
   }
 
