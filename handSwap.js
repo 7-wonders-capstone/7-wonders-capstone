@@ -15,3 +15,5 @@ function handSwap(players, age) {
   })
   return players
 }
+
+module.exports = {handSwap}
