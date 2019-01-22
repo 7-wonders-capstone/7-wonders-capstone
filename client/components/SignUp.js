@@ -91,5 +91,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(
-  compose(firestoreConnect(), connect(null, mapDispatchToProps)(SignUp))
+  compose(firestoreConnect(), connect(null, mapDispatchToProps))(SignUp)
 )
