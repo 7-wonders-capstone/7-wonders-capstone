@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
+import PlayerHand from './PlayerHand'
 
 class GameTable extends Component {
   render() {
     return (
-      <div>Insert nested components here: PlayerArea GameBoard Hand Card</div>
+      <div>
+        Insert nested components here: PlayerArea GameBoard Hand Card
+        <PlayerHand />
+      </div>
     )
   }
 }
