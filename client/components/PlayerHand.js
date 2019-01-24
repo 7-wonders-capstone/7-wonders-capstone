@@ -4,7 +4,7 @@ import Card from './Card'
 class PlayerHand extends React.Component {
   render() {
     return (
-      <div>
+      <div className="player-hand">
         <Card />
         <Card />
         <Card />

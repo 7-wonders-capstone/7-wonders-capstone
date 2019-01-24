@@ -3,8 +3,8 @@ import React from 'react'
 class Card extends React.Component {
   render() {
     return (
-      <div>
-        <img src="/img/fortifications.jpg" style={{maxWidth: '100%'}} />
+      <div className="card">
+        <img src="/img/fortifications.jpg" className="card-image" />
       </div>
     )
   }
