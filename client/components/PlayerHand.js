@@ -11,7 +11,6 @@ class PlayerHand extends React.Component {
         <Card />
         <Card />
         <Card />
-        <Card />
       </div>
     )
   }
