@@ -6,7 +6,9 @@ class GameTable extends Component {
     return (
       <div>
         Insert nested components here: PlayerArea GameBoard Hand Card
-        <PlayerHand />
+        <div className="player-hand-navbar">
+          <PlayerHand />
+        </div>
       </div>
     )
   }
