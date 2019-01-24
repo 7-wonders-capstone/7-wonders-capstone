@@ -19,3 +19,28 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.player-hand {
+  display: flex;
+  /* justify-content: flex-end; */
+  background-color: mediumpurple;
+  justify-content: center;
+  max-height: 300px;
+}
+
+.card {
+  margin: 5px;
+}
+
+.card-image {
+  max-width: 100%;
+  max-height: 250px;
+}
+
+.player-hand-navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
