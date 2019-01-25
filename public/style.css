@@ -44,3 +44,7 @@ form div {
   bottom: 0;
   width: 100%;
 }
+
+.ui.container {
+  width: 550px !important;
+}
