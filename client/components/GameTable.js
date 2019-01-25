@@ -7,10 +7,7 @@ class GameTable extends Component {
   render() {
     return (
       <div>
-        Insert nested components here: <PlayerArea />
-        <p>
-          <Button content="THIS IS A TEST" />
-        </p>
+        <PlayerArea />
         <div className="player-hand-navbar">
           <PlayerHand />
         </div>
