@@ -21,6 +21,12 @@ function playerGenerator(board, number, total) {
     availableResources: [board.baseResource],
     hand: [],
     playedCards: [],
+    victoryPoints: 0,
+    might: 0,
+    science: [],
+    activeEffects: [],
+    endEffects: [],
+    militaryResults: [],
     leftPlayerNumber: leftPlayer,
     rightPlayerNumber: rightPlayer
   }
