@@ -175,4 +175,4 @@ const gameBoards = [
   }
 ]
 
-export default gameBoards
+module.exports = gameBoards

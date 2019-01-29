@@ -8,6 +8,7 @@ import Lobby from './components/Lobby'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Authentication from './components/Authentication'
+import StartGameButton from './components/StartGameButton'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <SignIn /> */}
       {/* <Lobby /> */}
       <Authentication />
+      <StartGameButton />
     </div>
   )
 }
