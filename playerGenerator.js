@@ -40,7 +40,7 @@ function shuffleArray(array) {
   return array
 }
 
-function createPlayers(total) {
+export function createPlayers(total) {
   let sessionBoards = shuffleArray(gameBoards.slice())
   const players = []
   for (let i = 1; i <= total; i++) {

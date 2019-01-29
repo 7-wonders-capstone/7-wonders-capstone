@@ -3,7 +3,7 @@ import React from 'react'
 import {Navbar} from './components'
 import Routes from './routes'
 import GameTable from './components/GameTable'
-import TestFirestore from './components/TestFirestore'
+import StartGameButton from './components/StartGameButton'
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       {/* <Routes /> */}
 
       {/* <GameTable /> */}
-      <TestFirestore />
+      <StartGameButton />
     </div>
   )
 }
