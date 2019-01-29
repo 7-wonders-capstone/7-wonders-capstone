@@ -1,4 +1,6 @@
-import {createStore, combineReducers, compose} from 'redux'
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
+import createLogger from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
 import {firebaseReducer, reactReduxFirebase} from 'react-redux-firebase'
 import {firestoreReducer, reduxFirestore} from 'redux-firestore'
 import firebase from 'firebase/app'
@@ -15,7 +17,8 @@ const enhancers = [
   reactReduxFirebase(firebase, {
     userProfile: 'users',
     useFirestoreForProfile: true
-  })
+  }),
+  applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 ]
 
 const reduxDevToolsExtension = window.devToolsExtension
