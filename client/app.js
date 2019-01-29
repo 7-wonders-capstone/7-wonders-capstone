@@ -5,25 +5,22 @@ import Routes from './routes'
 import GameTable from './components/GameTable'
 import TestFirestore from './components/TestFirestore'
 import Lobby from './components/Lobby'
-
-import * as firebase from 'firebase'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
+import Authentication from './components/Authentication'
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Routes /> */}
 
       {/* <GameTable /> */}
       {/* <TestFirestore /> */}
-      <button type="button" onClick={() => firebase.auth().signOut()}>
-        Log Out
-      </button>
-      <SignUp />
-      <SignIn />
-      <Lobby />
+      {/* <SignUp />
+      <SignIn /> */}
+      {/* <Lobby /> */}
+      <Authentication />
     </div>
   )
 }
