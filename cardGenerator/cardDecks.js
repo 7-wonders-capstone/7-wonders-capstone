@@ -855,6 +855,7 @@ const ageTwoDeck = [
     upgradesTo: ['Circus']
   }
 ]
+
 const ageThreeDeck = [
   {
     name: 'University',
@@ -1438,22 +1439,22 @@ const guildDeck = [
   }
 ]
 
-console.log(ageOneDeck.filter(card => card.numPlayers <= 3).length)
-console.log(ageOneDeck.filter(card => card.numPlayers <= 4).length)
-console.log(ageOneDeck.filter(card => card.numPlayers <= 5).length)
-console.log(ageOneDeck.filter(card => card.numPlayers <= 6).length)
-console.log(ageOneDeck.length)
+// console.log(ageOneDeck.filter(card => card.numPlayers <= 3).length)
+// console.log(ageOneDeck.filter(card => card.numPlayers <= 4).length)
+// console.log(ageOneDeck.filter(card => card.numPlayers <= 5).length)
+// console.log(ageOneDeck.filter(card => card.numPlayers <= 6).length)
+// console.log(ageOneDeck.length)
 
-console.log(ageTwoDeck.filter(card => card.numPlayers <= 3).length)
-console.log(ageTwoDeck.filter(card => card.numPlayers <= 4).length)
-console.log(ageTwoDeck.filter(card => card.numPlayers <= 5).length)
-console.log(ageTwoDeck.filter(card => card.numPlayers <= 6).length)
-console.log(ageTwoDeck.length)
+// console.log(ageTwoDeck.filter(card => card.numPlayers <= 3).length)
+// console.log(ageTwoDeck.filter(card => card.numPlayers <= 4).length)
+// console.log(ageTwoDeck.filter(card => card.numPlayers <= 5).length)
+// console.log(ageTwoDeck.filter(card => card.numPlayers <= 6).length)
+// console.log(ageTwoDeck.length)
 
-console.log(ageThreeDeck.filter(card => card.numPlayers <= 3).length + 5)
-console.log(ageThreeDeck.filter(card => card.numPlayers <= 4).length + 6)
-console.log(ageThreeDeck.filter(card => card.numPlayers <= 5).length + 7)
-console.log(ageThreeDeck.filter(card => card.numPlayers <= 6).length + 8)
-console.log(ageThreeDeck.length + 9)
+// console.log(ageThreeDeck.filter(card => card.numPlayers <= 3).length + 5)
+// console.log(ageThreeDeck.filter(card => card.numPlayers <= 4).length + 6)
+// console.log(ageThreeDeck.filter(card => card.numPlayers <= 5).length + 7)
+// console.log(ageThreeDeck.filter(card => card.numPlayers <= 6).length + 8)
+// console.log(ageThreeDeck.length + 9)
 
-console.log(guildDeck.length)
+module.exports = {ageOneDeck, ageTwoDeck, ageThreeDeck, guildDeck}
