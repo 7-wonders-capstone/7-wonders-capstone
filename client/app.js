@@ -8,6 +8,7 @@ import Lobby from './components/Lobby'
 
 import * as firebase from 'firebase'
 import SignUp from './components/SignUp'
+import SignIn from './components/SignIn'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         Log Out
       </button>
       <SignUp />
+      <SignIn />
       <Lobby />
     </div>
   )
