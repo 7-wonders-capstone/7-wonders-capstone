@@ -1,5 +1,6 @@
 import React from 'react'
 import * as firebase from 'firebase'
+import {withRouter} from 'react-router-dom'
 
 class SignIn extends React.Component {
   constructor() {
@@ -26,6 +27,7 @@ class SignIn extends React.Component {
         firebase
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password)
+          .then(authUser => this.props.history.push('/lobby'))
       )
       .catch(error => console.error(error))
   }
@@ -57,4 +59,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn
+export default withRouter(SignIn)
