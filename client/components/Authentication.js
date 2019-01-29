@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import firebase from 'firebase'
+import {Link} from 'react-router-dom'
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 
@@ -16,9 +17,11 @@ class Authentication extends React.Component {
     } else {
       return (
         <div>
-          <button type="button" onClick={() => firebase.auth().signOut()}>
-            Log Out
-          </button>
+          <Link to="/">
+            <button type="button" onClick={() => firebase.auth().signOut()}>
+              Log Out
+            </button>
+          </Link>
         </div>
       )
     }

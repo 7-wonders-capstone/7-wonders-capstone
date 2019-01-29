@@ -1,6 +1,7 @@
 import React from 'react'
 import * as firebase from 'firebase'
 import {firestoreConnect} from 'react-redux-firebase'
+import {withRouter} from 'react-router-dom'
 
 class SignUp extends React.Component {
   constructor() {
@@ -35,6 +36,7 @@ class SignUp extends React.Component {
                 this.state.email,
                 this.state.password
               )
+              .then(authUser => this.props.history.push('/lobby'))
           )
 
         this.props.firestore
@@ -77,4 +79,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default firestoreConnect()(SignUp)
+export default withRouter(firestoreConnect()(SignUp))

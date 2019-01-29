@@ -8,15 +8,16 @@ import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Authentication from './components/Authentication'
 import StartGameButton from './components/StartGameButton'
+import GameRoutes from './GameRoutes'
 
 const App = () => {
   return (
     <div>
       {/* <Navbar /> */}
       {/* <Routes /> */}
-
       <Authentication />
-      <StartGameButton />
+      <GameRoutes />
+      {/* <StartGameButton /> */}
       {/* <GameTable /> */}
       {/* <Lobby /> */}
     </div>
