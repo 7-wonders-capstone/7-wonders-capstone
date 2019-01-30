@@ -11,7 +11,6 @@ class Lobby extends React.Component {
   render() {
     return (
       <div>
-        Lobby
         <button type="button" onClick={this.handleClick}>
           Create Game Room
         </button>
