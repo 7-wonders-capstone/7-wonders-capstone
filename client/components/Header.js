@@ -17,9 +17,9 @@ class Header extends React.Component {
           ) : (
             <div>
               <Link to="/lobby">Lobby</Link>
-              <Link to="/">
-                <a onClick={() => firebase.auth().signOut()}>Log Out</a>
-              </Link>
+              <a href="/" onClick={() => firebase.auth().signOut()}>
+                Log Out
+              </a>
             </div>
           )}
         </nav>
