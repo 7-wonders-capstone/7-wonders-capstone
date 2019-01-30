@@ -1,25 +1,15 @@
 import React from 'react'
 
-import {Navbar} from './components'
-import Routes from './routes'
 import GameTable from './components/GameTable'
-import Lobby from './components/Lobby'
-import SignUp from './components/SignUp'
-import SignIn from './components/SignIn'
-import Authentication from './components/Authentication'
-import StartGameButton from './components/StartGameButton'
+import Header from './components/Header'
 import GameRoutes from './GameRoutes'
 
 const App = () => {
   return (
     <div>
-      {/* <Navbar /> */}
-      {/* <Routes /> */}
-      <Authentication />
+      <Header />
       <GameRoutes />
-      {/* <StartGameButton /> */}
       {/* <GameTable /> */}
-      {/* <Lobby /> */}
     </div>
   )
 }
