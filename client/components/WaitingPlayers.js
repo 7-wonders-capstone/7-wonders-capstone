@@ -31,20 +31,22 @@ class WaitingPlayers extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  email: state.firebase.auth.email,
-  players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    : []
-})
+// const mapStateToProps = (state, props) => ({
+//   email: state.firebase.auth.email,
+//   players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
+//     ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
+//     : []
+// })
 
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect(props => {
-    return [
-      {
-        collection: `games/${props.match.params.gameId}/players`
-      }
-    ]
-  })
-)(WaitingPlayers)
+// export default compose(
+//   connect(mapStateToProps),
+//   firestoreConnect(props => {
+//     return [
+//       {
+//         collection: `games/${props.match.params.gameId}/players`
+//       }
+//     ]
+//   })
+// )(WaitingPlayers)
+
+export default WaitingPlayers
