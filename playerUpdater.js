@@ -1,6 +1,6 @@
 /*eslint-disable complexity */
 
-function playerUpdater(player, playedCard, tradeCost = 0) {
+function playerUpdater(player, playerList, playedCard, tradeCost = 0) {
   player.playedCards.push(playedCard)
   player.coins -= tradeCost
   if (playedCard.costs) {
@@ -34,6 +34,8 @@ function playerUpdater(player, playedCard, tradeCost = 0) {
       if (playedCard.onPlay) {
         if (playedCard.onPlay.from) {
           const count = determineReward(
+            playerList,
+            player.number,
             playedCard.onPlay.from,
             playedCard.onPlay.direction,
             player.leftPlayerNumber,
@@ -63,6 +65,38 @@ function playerUpdater(player, playedCard, tradeCost = 0) {
         playedCard.resources.forEach(resource => player.science.push(resource))
       }
       break
+    case 'wonder':
+      if (playedCard.resources) {
+        playedCard.resources.forEach(resource =>
+          player.availableResources.push(resource)
+        )
+      }
+      if (playedCard.atEnd) {
+        player.victoryPoints += playedCard.atEnd.amount
+      }
+      if (playedCard.onPlay) {
+        if (playedCard.onPlay.from) {
+          const count = determineReward(
+            playerList,
+            player.number,
+            playedCard.onPlay.from,
+            playedCard.onPlay.direction,
+            player.leftPlayerNumber,
+            player.rightPlayerNumber
+          )
+          player.coins += playedCard.onPlay.amount * count
+        } else {
+          player.coins += playedCard.onPlay.amount
+        }
+      }
+      if (playedCard.effect) {
+        if (playedCard.effect.type === 'might') {
+          player.might += playedCard.effect.amount
+        } else {
+          player.activeEffects.push(playedCard.effect)
+        }
+      }
+      break
     default:
       break
   }
@@ -72,7 +106,7 @@ function playerUpdater(player, playedCard, tradeCost = 0) {
 //FUNCTION TESTING
 
 //the following function still needs to be written, this returns a dummy value for now
-function determineReward(from, direction, left, right) {
+function determineReward(playerList, from, direction, left, own, right) {
   return 3
 }
 
