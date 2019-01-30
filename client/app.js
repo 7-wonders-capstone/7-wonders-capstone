@@ -6,7 +6,7 @@ import GameRoutes from './GameRoutes'
 
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <Header />
       <GameRoutes />
       {/* <GameTable /> */}

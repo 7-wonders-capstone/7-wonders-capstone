@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import PlayerHand from './PlayerHand'
-import {Button} from 'semantic-ui-react'
 import PlayerArea from './PlayerArea'
 
 class GameTable extends Component {

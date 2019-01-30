@@ -36,7 +36,7 @@ class SignUp extends React.Component {
                 this.state.email,
                 this.state.password
               )
-              .then(authUser => this.props.history.push('/lobby'))
+              .then(() => this.props.history.push('/lobby'))
           )
 
         this.props.firestore

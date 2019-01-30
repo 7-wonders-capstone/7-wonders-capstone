@@ -59,7 +59,6 @@ form div {
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 10px;
-  /* padding-bottom: 10px; */
 }
 
 .navbar nav {
@@ -78,4 +77,11 @@ form div {
 .logo {
   color: lightblue;
   font-size: 2em;
+}
+
+/*/////  APP CONTAINER ////////*/
+
+.app-container {
+  text-align: center;
+  margin: auto;
 }
