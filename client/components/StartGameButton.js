@@ -23,6 +23,7 @@ class StartGameButton extends React.Component {
       )
     })
 
+    this.props.toggleStarted()
     // TODO: Add logic here to remove WaitingPlayers component and join/leave/start buttons from view after clicking start game.
     console.log('Start button clicked')
   }
