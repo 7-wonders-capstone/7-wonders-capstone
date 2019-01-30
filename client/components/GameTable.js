@@ -5,6 +5,10 @@ import {Grid} from 'semantic-ui-react'
 
 class GameTable extends Component {
   render() {
+    const me = this.props.players.filter(
+      player => player.email === this.props.email
+    )[0]
+
     return (
       <div>
         <Grid verticalAlign="middle" columns={3} centered>
@@ -12,7 +16,7 @@ class GameTable extends Component {
             {this.props.players &&
               this.props.players.map(player => {
                 return (
-                  <Grid.Column>
+                  <Grid.Column key={player.id}>
                     <PlayerArea player={player} />
                   </Grid.Column>
                 )
@@ -20,7 +24,7 @@ class GameTable extends Component {
           </Grid.Row>
         </Grid>
         <div className="player-hand-navbar">
-          <PlayerHand />
+          <PlayerHand {...this.props} me={me} />
         </div>
       </div>
     )

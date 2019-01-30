@@ -4,7 +4,7 @@ class Card extends React.Component {
   render() {
     return (
       <div className="card">
-        <img src="/img/fortifications.jpg" className="card-image" />
+        <img src={this.props.card.imageURL} className="card-image" />
       </div>
     )
   }
