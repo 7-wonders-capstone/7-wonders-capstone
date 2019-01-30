@@ -7,28 +7,15 @@ import WaitingPlayers from './WaitingPlayers'
 import GameTable from './GameTable'
 
 class GameRoom extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      started: false
-    }
-  }
-
-  toggleStarted = () => {
-    this.setState({started: !this.state.started})
-  }
-
   render() {
+    console.log('Game started: ', this.props.gameStarted)
     return (
       <div>
-        {!this.state.started ? (
+        {!this.props.gameStarted ? (
           <div>
             <h1>Welcome to game room #{this.props.match.params.gameId}</h1>
             <WaitingPlayers {...this.props} />
-            <StartGameButton
-              {...this.props}
-              toggleStarted={this.toggleStarted}
-            />
+            <StartGameButton {...this.props} />
           </div>
         ) : (
           <GameTable {...this.props} />
@@ -42,7 +29,10 @@ const mapStateToProps = (state, props) => ({
   email: state.firebase.auth.email,
   players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
     ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    : []
+    : [],
+  gameStarted: state.firestore.data.games
+    ? state.firestore.data.games[props.match.params.gameId].gameStarted
+    : null
 })
 
 export default compose(
@@ -51,9 +41,11 @@ export default compose(
     return [
       {
         collection: `games/${props.match.params.gameId}/players`
+      },
+      {
+        collection: 'games',
+        doc: props.match.params.gameId
       }
     ]
   })
 )(GameRoom)
-
-// export default GameRoom

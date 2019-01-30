@@ -5,7 +5,19 @@ import {withRouter} from 'react-router-dom'
 class Lobby extends React.Component {
   handleClick = () => {
     const gameId = Math.floor(100000 + Math.random() * 900000)
-    this.props.history.push(`/games/${gameId}`)
+
+    this.props.firestore
+      .set(
+        {
+          collection: 'games',
+          doc: `${gameId}`
+        },
+        {gameStarted: false}
+      )
+      .then(() => {
+        this.props.history.push(`/games/${gameId}`)
+      })
+      .catch(error => console.error(error))
   }
 
   render() {
