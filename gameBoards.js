@@ -23,7 +23,8 @@ const gameBoards = [
         amount: 7,
         type: 'wonder'
       }
-    }
+    },
+    imageURL: '/img/babylon-a.jpg'
   },
   {
     name: 'Ephesos',
@@ -52,7 +53,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/ephesos-a.jpg'
   },
   {
     name: 'Halikarnassos',
@@ -80,7 +82,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/halikarnassos-a.jpg'
   },
   {
     name: 'Rhodos',
@@ -109,7 +112,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/rhodos-a.jpg'
   },
   {
     name: 'Alexandria',
@@ -135,7 +139,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/alexandria-a.jpg'
   },
   {
     name: 'Gizah',
@@ -164,7 +169,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/gizah-a.jpg'
   },
   {
     name: 'Olympia',
@@ -192,7 +198,8 @@ const gameBoards = [
         amount: 7
       },
       type: 'wonder'
-    }
+    },
+    imageURL: '/img/olympia-a.jpg'
   }
 ]
 

@@ -10,9 +10,11 @@ const shuffleCards = array => {
 
 const filterAgeDecks = (ageDeck, amountOfPlayers) => {
   if (ageDeck === ageThreeDeck) {
-    let filteredAge3Deck = shuffleCards(guildDeck).concat(
-      shuffleCards(ageDeck.filter(card => card.numPlayers <= amountOfPlayers))
-    )
+    let filteredAge3Deck = shuffleCards(guildDeck)
+      .slice(0, amountOfPlayers + 2)
+      .concat(
+        shuffleCards(ageDeck.filter(card => card.numPlayers <= amountOfPlayers))
+      )
 
     return filteredAge3Deck
   } else {

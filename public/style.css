@@ -46,7 +46,7 @@ form div {
 }
 
 .ui.container {
-  width: 550px !important;
+  width: 450px !important;
 }
 
 /*/////// NAVBAR ////////////*/
@@ -86,6 +86,10 @@ form div {
   margin: auto;
 }
 
+
+span.coin {
+  text-align: right !important;
+}
 /*////  LOBBY ////////*/
 
 .gameroom-snapshot {
