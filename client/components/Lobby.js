@@ -1,6 +1,10 @@
 import React from 'react'
+import {compose} from 'redux'
+import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {withRouter} from 'react-router-dom'
+import GameRoomSnapshot from './GameRoomSnapshot'
+import {Button} from 'semantic-ui-react'
 
 class Lobby extends React.Component {
   handleClick = () => {
@@ -21,14 +25,47 @@ class Lobby extends React.Component {
   }
 
   render() {
+    console.log('Lobby game props: ', this.props.games)
     return (
-      <div>
-        <button type="button" onClick={this.handleClick}>
+      <div className="lobby">
+        <Button
+          color="blue"
+          style={{margin: '20px'}}
+          onClick={this.handleClick}
+        >
           Create Game Room
-        </button>
+        </Button>
+
+        <div className="gameroom-list">
+          {this.props.games.map(game => {
+            return (
+              <div key={game.id}>
+                <GameRoomSnapshot game={game} />
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
 }
 
-export default withRouter(firestoreConnect()(Lobby))
+const mapStateToProps = state => {
+  return {
+    games: state.firestore.ordered.games ? state.firestore.ordered.games : []
+  }
+}
+
+export default withRouter(
+  compose(
+    connect(mapStateToProps),
+    firestoreConnect(() => {
+      return [
+        {
+          collection: 'games',
+          where: ['gameStarted', '==', false]
+        }
+      ]
+    })
+  )(Lobby)
+)

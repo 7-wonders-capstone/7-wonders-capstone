@@ -85,3 +85,16 @@ form div {
   text-align: center;
   margin: auto;
 }
+
+/*////  LOBBY ////////*/
+
+.gameroom-snapshot {
+  margin: 20px;
+}
+
+.gameroom-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 60px;
+}
