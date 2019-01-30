@@ -1,31 +1,43 @@
 import React, {Component} from 'react'
-import {Grid, Image, Segment} from 'semantic-ui-react'
+import {Grid, Image, Segment, Card} from 'semantic-ui-react'
+import PlayedCardIcons from './PlayedCardIcons'
 
 class PlayedCards extends Component {
   render() {
+    const {playedCards} = this.props
+    console.log('playedCards: ', playedCards)
     return (
       <Segment>
         <Grid relaxed columns={7}>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            <div>
+              Basic Resources
+              <PlayedCardIcons iconType="basicResource" {...this.props} />
+            </div>
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Advanced Resources
+            <PlayedCardIcons iconType="advancedResource" {...this.props} />
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Science
+            <PlayedCardIcons iconType="science" {...this.props} />
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Civilian
+            <PlayedCardIcons iconType="civilian" {...this.props} />
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Economic
+            <PlayedCardIcons iconType="economic" {...this.props} />
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Military
+            <PlayedCardIcons iconType="military" {...this.props} />
           </Grid.Column>
           <Grid.Column>
-            <Image src="/img/stone.png" />
+            Guild
+            <PlayedCardIcons iconType="guild" {...this.props} />
           </Grid.Column>
         </Grid>
       </Segment>
