@@ -19,9 +19,9 @@ class GameTable extends Component {
               })}
           </Grid.Row>
         </Grid>
-        {/* <div className="player-hand-navbar">
+        <div className="player-hand-navbar">
           <PlayerHand />
-        </div> */}
+        </div>
       </div>
     )
   }

@@ -40,8 +40,8 @@ form div {
 .player-hand-navbar {
   display: flex;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
   width: 100%;
 }
 
@@ -85,7 +85,6 @@ form div {
   text-align: center;
   margin: auto;
 }
-
 
 span.coin {
   text-align: right !important;
