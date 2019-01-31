@@ -1,4 +1,11 @@
 const gameBoards = require('./gameBoards')
+const {
+  ageOneDeck,
+  ageTwoDeck,
+  ageThreeDeck,
+  guildDeck
+} = require('./cardGenerator/cardDecks')
+const {dealHand, filterAgeDecks} = require('./cardGenerator/cardGenerator')
 
 function playerGenerator(board, number, total) {
   let leftPlayer
@@ -41,12 +48,20 @@ function shuffleArray(array) {
 }
 
 export function createPlayers(total) {
+  const startingDeck = filterAgeDecks(ageOneDeck, total)
   let sessionBoards = shuffleArray(gameBoards.slice())
   const players = []
   for (let i = 1; i <= total; i++) {
     const playerBoard = sessionBoards.shift()
-    players.push(playerGenerator(playerBoard, i, total))
+    let newPlayer = playerGenerator(playerBoard, i, total)
+    let j = 0
+    while (j < 7) {
+      newPlayer.hand = newPlayer.hand.concat(dealHand(startingDeck))
+      j++
+    }
+    players.push(newPlayer)
   }
+  console.log(startingDeck.length)
   return players
 }
 
