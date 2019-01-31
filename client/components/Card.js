@@ -20,13 +20,13 @@ class Card extends React.Component {
         {selected && (
           <div className="card-buttons">
             <Button
-              disabled={playCard(this.props.player, this.props.card)}
+              // disabled={playCard(this.props.player, this.props.card)}
               content="Play"
               size="small"
             />
             <Button content="Discard" size="small" />
             <Button
-              disabled={playWonderCard(this.props.player, this.props.gameBoard)}
+              // disabled={playWonderCard(this.props.player, this.props.gameBoard)}
               content="Build Wonder"
               size="small"
             />
