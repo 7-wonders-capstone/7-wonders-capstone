@@ -2,8 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {selectCard} from '../store/selectedCard'
 import {Button} from 'semantic-ui-react'
-import {playCard} from '../../cardGenerator/checkCardPlay'
-import playWonderCard from '../../cardGenerator/checkWonderCardPlay'
 
 class Card extends React.Component {
   render() {
@@ -19,17 +17,9 @@ class Card extends React.Component {
         />
         {selected && (
           <div className="card-buttons">
-            <Button
-              // disabled={playCard(this.props.player, this.props.card)}
-              content="Play"
-              size="small"
-            />
+            <Button content="Play" size="small" />
             <Button content="Discard" size="small" />
-            <Button
-              // disabled={playWonderCard(this.props.player, this.props.gameBoard)}
-              content="Build Wonder"
-              size="small"
-            />
+            <Button content="Build Wonder" size="small" />
           </div>
         )}
       </div>
