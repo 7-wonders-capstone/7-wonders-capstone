@@ -6,6 +6,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import {firebaseConfig} from '../../secrets'
 import user from './user'
+import selectedCard from './selectedCard'
 
 firebase.initializeApp(firebaseConfig)
 firebase.firestore().settings({timestampsInSnapshots: true})
@@ -15,7 +16,7 @@ const enhancers = [
   reactReduxFirebase(firebase, {
     userProfile: 'users',
     useFirestoreForProfile: true
-  }),
+  })
 ]
 
 const reduxDevToolsExtension = window.devToolsExtension
@@ -31,7 +32,8 @@ const composedEnhancers = compose(...enhancers)
 const reducer = combineReducers({
   user,
   firebase: firebaseReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  selectedCard
 })
 
 const store = createStore(reducer, composedEnhancers)

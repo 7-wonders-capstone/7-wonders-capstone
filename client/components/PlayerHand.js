@@ -13,12 +13,6 @@ class PlayerHand extends React.Component {
             </div>
           )
         })}
-        {/* <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card /> */}
       </div>
     )
   }
