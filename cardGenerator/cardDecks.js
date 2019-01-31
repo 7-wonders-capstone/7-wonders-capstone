@@ -507,7 +507,9 @@ const ageTwoDeck = [
     costs: ['wood', 'papyrus'],
     resources: ['tablet'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/school-3.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'School',
@@ -515,19 +517,25 @@ const ageTwoDeck = [
     costs: ['wood', 'papyrus'],
     resources: ['tablet'],
     type: 'science',
-    numPlayers: 7
+    numPlayers: 7,
+    imageURL: '/img/age2/school-7.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'Press',
     resources: ['papyrus'],
     type: 'advancedResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/press-3.jpg',
+    snapshotURL: '/img/snapshot/press.jpg'
   },
   {
     name: 'Press',
     resources: ['papyrus'],
     type: 'advancedResource',
-    numPlayers: 5
+    numPlayers: 5,
+    imageURL: '/img/age2/press-5.jpg',
+    snapshotURL: '/img/snapshot/press.jpg'
   },
   {
     name: 'Statue',
@@ -539,7 +547,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 4
-    }
+    },
+    imageURL: '/img/age2/statue-3.jpg',
+    snapshotURL: '/img/snapshot/4victory.jpg'
   },
   {
     name: 'Statue',
@@ -551,7 +561,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 4
-    }
+    },
+    imageURL: '/img/age2/statue-7.jpg',
+    snapshotURL: '/img/snapshot/4victory.jpg'
   },
   {
     name: 'Archery Range',
@@ -562,7 +574,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesFrom: ['Workshop']
+    upgradesFrom: ['Workshop'],
+    imageURL: '/img/age2/archery-range-3.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Archery Range',
@@ -573,7 +587,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesFrom: ['Workshop']
+    upgradesFrom: ['Workshop'],
+    imageURL: '/img/age2/archery-range-3.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Temple',
@@ -585,7 +601,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 3
-    }
+    },
+    imageURL: '/img/age2/temple-3.jpg',
+    snapshotURL: '/img/snapshot/3victory.jpg'
   },
   {
     name: 'Temple',
@@ -597,7 +615,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 3
-    }
+    },
+    imageURL: '/img/age2/temple-6.jpg',
+    snapshotURL: '/img/snapshot/3victory.jpg'
   },
   {
     name: 'Aqueduct',
@@ -608,7 +628,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 5
-    }
+    },
+    imageURL: '/img/age2/aqueduct-3.jpg',
+    snapshotURL: '/img/snapshot/5victory.jpg'
   },
   {
     name: 'Aqueduct',
@@ -619,7 +641,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 5
-    }
+    },
+    imageURL: '/img/age2/aqueduct-5.jpg',
+    snapshotURL: '/img/snapshot/5victory.jpg'
   },
   {
     name: 'Caravansery',
@@ -628,7 +652,9 @@ const ageTwoDeck = [
     costs: ['wood', 'wood'],
     upgradesFrom: ['Marketplace'],
     upgradesTo: ['Lighthouse'],
-    resources: ['wood/stone/metal/brick']
+    resources: ['wood/stone/metal/brick'],
+    imageURL: '/img/age2/caravansery-3.jpg',
+    snapshotURL: '/img/snapshot/caravansery.jpg'
   },
   {
     name: 'Caravansery',
@@ -637,7 +663,9 @@ const ageTwoDeck = [
     costs: ['wood', 'wood'],
     upgradesFrom: ['Marketplace'],
     upgradesTo: ['Lighthouse'],
-    resources: ['wood/stone/metal/brick']
+    resources: ['wood/stone/metal/brick'],
+    imageURL: '/img/age2/caravansery-6.jpg',
+    snapshotURL: '/img/snapshot/caravansery.jpg'
   },
   {
     name: 'Caravansery',
@@ -646,21 +674,27 @@ const ageTwoDeck = [
     costs: ['wood', 'wood'],
     upgradesFrom: ['Marketplace'],
     upgradesTo: ['Lighthouse'],
-    resources: ['wood/stone/metal/brick']
+    resources: ['wood/stone/metal/brick'],
+    imageURL: '/img/age2/caravansery-5.jpg',
+    snapshotURL: '/img/snapshot/caravansery.jpg'
   },
   {
     name: 'Foundry',
     costs: [1],
     resources: ['metal', 'metal'],
     type: 'basicResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/foundry-3.jpg',
+    snapshotURL: '/img/snapshot/foundry.jpg'
   },
   {
     name: 'Foundry',
     costs: [1],
     resources: ['metal', 'metal'],
     type: 'basicResource',
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age2/foundry-4.jpg',
+    snapshotURL: '/img/snapshot/foundry.jpg'
   },
   {
     name: 'Vineyard',
@@ -671,7 +705,9 @@ const ageTwoDeck = [
       amount: 1,
       from: 'basicResources',
       direction: 'omni'
-    }
+    },
+    imageURL: '/img/age2/vineyard-3.jpg',
+    snapshotURL: '/img/snapshot/vineyard.jpg'
   },
   {
     name: 'Vineyard',
@@ -682,7 +718,9 @@ const ageTwoDeck = [
       amount: 1,
       from: 'basicResources',
       direction: 'omni'
-    }
+    },
+    imageURL: '/img/age2/vineyard-3.jpg',
+    snapshotURL: '/img/snapshot/vineyard.jpg'
   },
   {
     name: 'Laboratory',
@@ -691,7 +729,9 @@ const ageTwoDeck = [
     resources: ['wheel'],
     type: 'science',
     upgradesFrom: ['Workshop'],
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/laboratory-3.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Laboratory',
@@ -700,21 +740,27 @@ const ageTwoDeck = [
     resources: ['wheel'],
     type: 'science',
     upgradesFrom: ['Workshop'],
-    numPlayers: 5
+    numPlayers: 5,
+    imageURL: '/img/age2/laboratory-3.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Sawmill',
     costs: [1],
     resources: ['wood', 'wood'],
     type: 'basicResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/sawmill-3.jpg',
+    snapshotURL: '/img/snapshot/sawmill.jpg'
   },
   {
     name: 'Sawmill',
     costs: [1],
     resources: ['wood', 'wood'],
     type: 'basicResource',
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age2/sawmill-4.jpg',
+    snapshotURL: '/img/snapshot/sawmill.jpg'
   },
   {
     name: 'Dispensary',
@@ -723,7 +769,9 @@ const ageTwoDeck = [
     resources: ['compass'],
     type: 'science',
     upgradesFrom: ['Apothecary'],
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/dispensary-3.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Dispensary',
@@ -732,7 +780,9 @@ const ageTwoDeck = [
     resources: ['compass'],
     type: 'science',
     upgradesFrom: ['Apothecary'],
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age2/dispensary-4.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Library',
@@ -741,7 +791,9 @@ const ageTwoDeck = [
     resources: ['tablet'],
     type: 'science',
     upgradesFrom: ['Scriptorium'],
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/library-3.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'Library',
@@ -750,19 +802,25 @@ const ageTwoDeck = [
     resources: ['tablet'],
     type: 'science',
     upgradesFrom: ['Scriptorium'],
-    numPlayers: 6
+    numPlayers: 6,
+    imageURL: '/img/age2/library-6.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'Glassworks',
     resources: ['glass'],
     type: 'advancedResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/glassworks-3.jpg',
+    snapshotURL: '/img/snapshot/glassworks.jpg'
   },
   {
     name: 'Glassworks',
     resources: ['glass'],
     type: 'advancedResource',
-    numPlayers: 5
+    numPlayers: 5,
+    imageURL: '/img/age2/glassworks-5.jpg',
+    snapshotURL: '/img/snapshot/glassworks.jpg'
   },
   {
     name: 'Stables',
@@ -773,7 +831,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesFrom: ['Apothecary']
+    upgradesFrom: ['Apothecary'],
+    imageURL: '/img/age2/stables-3.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Stables',
@@ -784,7 +844,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesFrom: ['Apothecary']
+    upgradesFrom: ['Apothecary'],
+    imageURL: '/img/age2/stables-5.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Walls',
@@ -795,47 +857,61 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesTo: ['Fortifications']
+    upgradesTo: ['Fortifications'],
+    imageURL: '/img/age2/walls-3.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Quarry',
     costs: [1],
     resources: ['stone', 'stone'],
     type: 'basicResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/quarry-3.jpg',
+    snapshotURL: '/img/snapshot/quarry.jpg'
   },
   {
     name: 'Quarry',
     costs: [1],
     resources: ['stone', 'stone'],
     type: 'basicResource',
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age2/quarry-4.jpg',
+    snapshotURL: '/img/snapshot/quarry.jpg'
   },
   {
     name: 'Loom',
     resources: ['silk'],
     type: 'advancedResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/loom-3.jpg',
+    snapshotURL: '/img/snapshot/loom.jpg'
   },
   {
     name: 'Loom',
     resources: ['silk'],
     type: 'advancedResource',
-    numPlayers: 5
+    numPlayers: 5,
+    imageURL: '/img/age2/loom-3.jpg',
+    snapshotURL: '/img/snapshot/loom.jpg'
   },
   {
     name: 'Brickyard',
     costs: [1],
     resources: ['brick', 'brick'],
     type: 'basicResource',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age2/brickyard-3.jpg',
+    snapshotURL: '/img/snapshot/brickyard.jpg'
   },
   {
     name: 'Brickyard',
     costs: [1],
     resources: ['brick', 'brick'],
     type: 'basicResource',
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age2/brickyard-3.jpg',
+    snapshotURL: '/img/snapshot/brickyard.jpg'
   },
   {
     name: 'Forum',
@@ -844,7 +920,9 @@ const ageTwoDeck = [
     costs: ['brick', 'brick'],
     upgradesFrom: ['Trading Post'],
     upgradesTo: ['Haven'],
-    resources: ['glass/silk/papyrus']
+    resources: ['glass/silk/papyrus'],
+    imageURL: '/img/age2/forum-3.jpg',
+    snapshotURL: '/img/snapshot/forum.jpg'
   },
   {
     name: 'Forum',
@@ -853,7 +931,9 @@ const ageTwoDeck = [
     costs: ['brick', 'brick'],
     upgradesFrom: ['Trading Post'],
     upgradesTo: ['Haven'],
-    resources: ['glass/silk/papyrus']
+    resources: ['glass/silk/papyrus'],
+    imageURL: '/img/age2/forum-7.jpg',
+    snapshotURL: '/img/snapshot/forum.jpg'
   },
   {
     name: 'Forum',
@@ -862,7 +942,9 @@ const ageTwoDeck = [
     costs: ['brick', 'brick'],
     upgradesFrom: ['Trading Post'],
     upgradesTo: ['Haven'],
-    resources: ['glass/silk/papyrus']
+    resources: ['glass/silk/papyrus'],
+    imageURL: '/img/age2/forum-6.jpg',
+    snapshotURL: '/img/snapshot/forum.jpg'
   },
   {
     name: 'Courthouse',
@@ -873,7 +955,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 4
-    }
+    },
+    imageURL: '/img/age2/courthouse-3.jpg',
+    snapshotURL: '/img/snapshot/4victory.jpg'
   },
   {
     name: 'Courthouse',
@@ -884,7 +968,9 @@ const ageTwoDeck = [
     atEnd: {
       gives: 'VP',
       amount: 4
-    }
+    },
+    imageURL: '/img/age2/courthouse-5.jpg',
+    snapshotURL: '/img/snapshot/4victory.jpg'
   },
   {
     name: 'Walls',
@@ -895,7 +981,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesTo: ['Fortifications']
+    upgradesTo: ['Fortifications'],
+    imageURL: '/img/age2/walls-7.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Bazaar',
@@ -906,7 +994,9 @@ const ageTwoDeck = [
       amount: 2,
       from: 'advancedResources',
       direction: 'omni'
-    }
+    },
+    imageURL: '/img/age2/bazar-3.jpg',
+    snapshotURL: '/img/snapshot/bazar.jpg'
   },
   {
     name: 'Bazaar',
@@ -917,7 +1007,9 @@ const ageTwoDeck = [
       amount: 2,
       from: 'advancedResources',
       direction: 'omni'
-    }
+    },
+    imageURL: '/img/age2/bazar-4.jpg',
+    snapshotURL: '/img/snapshot/bazar.jpg'
   },
   {
     name: 'Training Ground',
@@ -928,7 +1020,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesTo: ['Circus']
+    upgradesTo: ['Circus'],
+    imageURL: '/img/age2/training-ground-7.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Training Ground',
@@ -939,7 +1033,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesTo: ['Circus']
+    upgradesTo: ['Circus'],
+    imageURL: '/img/age2/training-ground-4.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   },
   {
     name: 'Training Ground',
@@ -950,7 +1046,9 @@ const ageTwoDeck = [
       kind: 'might',
       amount: 2
     },
-    upgradesTo: ['Circus']
+    upgradesTo: ['Circus'],
+    imageURL: '/img/age2/training-ground-6.jpg',
+    snapshotURL: '/img/snapshot/military_double.jpg'
   }
 ]
 
@@ -961,7 +1059,9 @@ const ageThreeDeck = [
     costs: ['wood', 'wood', 'papyrus', 'glass'],
     resources: ['tablet'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age3/university-3.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'University',
@@ -969,7 +1069,9 @@ const ageThreeDeck = [
     costs: ['wood', 'wood', 'papyrus', 'glass'],
     resources: ['tablet'],
     type: 'science',
-    numPlayers: 4
+    numPlayers: 4,
+    imageURL: '/img/age3/university-4.jpg',
+    snapshotURL: '/img/snapshot/science_tablet.jpg'
   },
   {
     name: 'Observatory',
@@ -977,7 +1079,9 @@ const ageThreeDeck = [
     costs: ['metal', 'metal', 'silk', 'glass'],
     resources: ['wheel'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age3/observatory-3.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Observatory',
@@ -985,7 +1089,9 @@ const ageThreeDeck = [
     costs: ['metal', 'metal', 'silk', 'glass'],
     resources: ['wheel'],
     type: 'science',
-    numPlayers: 7
+    numPlayers: 7,
+    imageURL: '/img/age3/observatory-7.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Pantheon',
@@ -996,7 +1102,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 7
-    }
+    },
+    imageURL: '/img/age3/pantheon-3.jpg',
+    snapshotURL: '/img/snapshot/7victory.jpg'
   },
   {
     name: 'Pantheon',
@@ -1007,7 +1115,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 7
-    }
+    },
+    imageURL: '/img/age3/pantheon-6.jpg',
+    snapshotURL: '/img/snapshot/7victory.jpg'
   },
   {
     name: 'Town Hall',
@@ -1017,7 +1127,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 6
-    }
+    },
+    imageURL: '/img/age3/town-hall-3.jpg',
+    snapshotURL: '/img/snapshot/6victory.jpg'
   },
   {
     name: 'Town Hall',
@@ -1027,7 +1139,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 6
-    }
+    },
+    imageURL: '/img/age3/town-hall-6.jpg',
+    snapshotURL: '/img/snapshot/6victory.jpg'
   },
   {
     name: 'Town Hall',
@@ -1037,7 +1151,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 6
-    }
+    },
+    imageURL: '/img/age3/town-hall-5.jpg',
+    snapshotURL: '/img/snapshot/6victory.jpg'
   },
   {
     name: 'Arsenal',
@@ -1047,7 +1163,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/arsenal-3.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Arsenal',
@@ -1057,7 +1175,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/arsenal-4.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Arsenal',
@@ -1067,7 +1187,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/arsenal-7.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Siege Workshop',
@@ -1078,7 +1200,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/siege-workshop-3.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Siege Workshop',
@@ -1089,7 +1213,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/siege-workshop-5.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Arena',
@@ -1108,7 +1234,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'wonder',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/arena-3.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Arena',
@@ -1127,7 +1255,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'wonder',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/arena-5.jpg',
+    snapshotURL: '/img/snapshot/arena.jpg'
   },
   {
     name: 'Arena',
@@ -1146,7 +1276,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'wonder',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/arena-7.jpg',
+    snapshotURL: '/img/snapshot/arena.jpg'
   },
   {
     name: 'Fortifications',
@@ -1157,7 +1289,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/fortifications-3.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Fortifications',
@@ -1168,7 +1302,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/fortifications-7.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Lodge',
@@ -1176,7 +1312,9 @@ const ageThreeDeck = [
     costs: ['brick', 'brick', 'silk', 'papyrus'],
     resources: ['compass'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age3/lodge-3.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Lodge',
@@ -1184,7 +1322,9 @@ const ageThreeDeck = [
     costs: ['brick', 'brick', 'silk', 'papyrus'],
     resources: ['compass'],
     type: 'science',
-    numPlayers: 6
+    numPlayers: 6,
+    imageURL: '/img/age3/lodge-6.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Palace',
@@ -1194,7 +1334,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 8
-    }
+    },
+    imageURL: '/img/age3/palace-3.jpg',
+    snapshotURL: '/img/snapshot/8victory.jpg'
   },
   {
     name: 'Palace',
@@ -1204,7 +1346,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 8
-    }
+    },
+    imageURL: '/img/age3/palace-7.jpg',
+    snapshotURL: '/img/snapshot/8victory.jpg'
   },
   {
     name: 'Academy',
@@ -1212,7 +1356,9 @@ const ageThreeDeck = [
     costs: ['stone', 'stone', 'stone', 'glass'],
     resources: ['compass'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age3/academy-3.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Academy',
@@ -1220,7 +1366,9 @@ const ageThreeDeck = [
     costs: ['stone', 'stone', 'stone', 'glass'],
     resources: ['compass'],
     type: 'science',
-    numPlayers: 7
+    numPlayers: 7,
+    imageURL: '/img/age3/academy-7.jpg',
+    snapshotURL: '/img/snapshot/science_compass.jpg'
   },
   {
     name: 'Gardens',
@@ -1231,7 +1379,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 5
-    }
+    },
+    imageURL: '/img/age3/gardens-3.jpg',
+    snapshotURL: '/img/snapshot/5victory.jpg'
   },
   {
     name: 'Gardens',
@@ -1242,7 +1392,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 5
-    }
+    },
+    imageURL: '/img/age3/gardens-4.jpg',
+    snapshotURL: '/img/snapshot/5victory.jpg'
   },
   {
     name: 'Study',
@@ -1250,7 +1402,9 @@ const ageThreeDeck = [
     costs: ['wood', 'papyrus', 'silk'],
     resources: ['wheel'],
     type: 'science',
-    numPlayers: 3
+    numPlayers: 3,
+    imageURL: '/img/age3/study-3.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Study',
@@ -1258,7 +1412,9 @@ const ageThreeDeck = [
     costs: ['wood', 'papyrus', 'silk'],
     resources: ['wheel'],
     type: 'science',
-    numPlayers: 5
+    numPlayers: 5,
+    imageURL: '/img/age3/study-5.jpg',
+    snapshotURL: '/img/snapshot/science_wheel.jpg'
   },
   {
     name: 'Lighthouse',
@@ -1277,7 +1433,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'economic',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/lighthouse-3.jpg',
+    snapshotURL: '/img/snapshot/lighthouse.jpg'
   },
   {
     name: 'Lighthouse',
@@ -1296,7 +1454,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'economic',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/lighthouse-6.jpg',
+    snapshotURL: '/img/snapshot/lighthouse.jpg'
   },
   {
     name: 'Haven',
@@ -1315,7 +1475,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'basicResource',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/haven-3.jpg',
+    snapshotURL: '/img/snapshot/haven.jpg'
   },
   {
     name: 'Haven',
@@ -1334,7 +1496,9 @@ const ageThreeDeck = [
       amount: 1,
       from: 'basicResource',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/haven-4.jpg',
+    snapshotURL: '/img/snapshot/haven.jpg'
   },
   {
     name: 'Senate',
@@ -1345,7 +1509,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 6
-    }
+    },
+    imageURL: '/img/age3/senate-3.jpg',
+    snapshotURL: '/img/snapshot/6victory.jpg'
   },
   {
     name: 'Senate',
@@ -1356,7 +1522,9 @@ const ageThreeDeck = [
     atEnd: {
       gives: 'VP',
       amount: 6
-    }
+    },
+    imageURL: '/img/age3/senate-5.jpg',
+    snapshotURL: '/img/snapshot/6victory.jpg'
   },
   {
     name: 'Circus',
@@ -1367,7 +1535,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/circus-4.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Circus',
@@ -1377,8 +1547,10 @@ const ageThreeDeck = [
     numPlayers: 5,
     effect: {
       kind: 'might',
-      amount: 6
-    }
+      amount: 3
+    },
+    imageURL: '/img/age3/circus-5.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Circus',
@@ -1389,7 +1561,9 @@ const ageThreeDeck = [
     effect: {
       kind: 'might',
       amount: 3
-    }
+    },
+    imageURL: '/img/age3/circus-6.jpg',
+    snapshotURL: '/img/snapshot/military_triple.jpg'
   },
   {
     name: 'Chamber of Commerce',
@@ -1407,7 +1581,9 @@ const ageThreeDeck = [
       amount: 2,
       from: 'advancedResource',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/chamber-of-commerce-6.jpg',
+    snapshotURL: '/img/snapshot/chamber_of_commerce.jpg'
   },
   {
     name: 'Chamber of Commerce',
@@ -1425,7 +1601,9 @@ const ageThreeDeck = [
       amount: 2,
       from: 'advancedResource',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/chamber-of-commerce-6.jpg',
+    snapshotURL: '/img/snapshot/chamber_of_commerce.jpg'
   }
 ]
 
@@ -1439,7 +1617,9 @@ const guildDeck = [
       amount: 1,
       from: 'wonder',
       direction: 'omni'
-    }
+    },
+    imageURL: '/img/age3/builders-guild.jpg',
+    snapshotURL: '/img/snapshot/builders_guild.jpg'
   },
   {
     name: 'Craftsmens Guild',
@@ -1450,7 +1630,9 @@ const guildDeck = [
       amount: 2,
       from: 'advancedResource',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/craftsmens-guild.jpg',
+    snapshotURL: '/img/snapshot/craftsmens_guild.jpg'
   },
   {
     name: 'Spies Guild',
@@ -1461,7 +1643,9 @@ const guildDeck = [
       amount: 1,
       from: 'military',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/spies-guild.jpg',
+    snapshotURL: '/img/snapshot/spy_guild.jpg'
   },
   {
     name: 'Traders Guild',
@@ -1472,7 +1656,9 @@ const guildDeck = [
       amount: 1,
       from: 'economic',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/traders-guild.jpg',
+    snapshotURL: '/img/snapshot/traders_guild.jpg'
   },
   {
     name: 'Philosophers Guild',
@@ -1483,7 +1669,9 @@ const guildDeck = [
       amount: 1,
       from: 'science',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/philosophers-guild.jpg',
+    snapshotURL: '/img/snapshot/philosophers_guild.jpg'
   },
   {
     name: 'Magistrates Guild',
@@ -1494,7 +1682,9 @@ const guildDeck = [
       amount: 1,
       from: 'civilian',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/magistrates-guild.jpg',
+    snapshotURL: '/img/snapshot/magistrates_guild.jpg'
   },
   {
     name: 'Strategists Guild',
@@ -1505,7 +1695,9 @@ const guildDeck = [
       amount: 1,
       from: 'defeat',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/strategists-guild.jpg',
+    snapshotURL: '/img/snapshot/strategy_guild.jpg'
   },
   {
     name: 'Shipowners Guild',
@@ -1516,7 +1708,9 @@ const guildDeck = [
       amount: 1,
       from: 'combo',
       direction: 'own'
-    }
+    },
+    imageURL: '/img/age3/shipowners-guild.jpg',
+    snapshotURL: '/img/snapshot/shipowners_guild.jpg'
   },
   {
     name: 'Workers Guild',
@@ -1527,13 +1721,17 @@ const guildDeck = [
       amount: 1,
       from: 'basicResource',
       direction: 'both'
-    }
+    },
+    imageURL: '/img/age3/workers-guild.jpg',
+    snapshotURL: '/img/snapshot/workers_guild.jpg'
   },
   {
     name: 'Scientists Guild',
     costs: ['wood', 'wood', 'metal', 'metal', 'papyrus'],
     type: 'guild',
-    resources: ['wheel/tablet/compass']
+    resources: ['wheel/tablet/compass'],
+    imageURL: '/img/age3/scientists-guild.jpg',
+    snapshotURL: '/img/snapshot/scientists_guild.jpg'
   }
 ]
 
