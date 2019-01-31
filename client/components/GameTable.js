@@ -11,18 +11,21 @@ class GameTable extends Component {
 
     return (
       <div>
-        <Grid verticalAlign="middle" columns={3} centered>
-          <Grid.Row>
-            {this.props.players &&
-              this.props.players.map(player => {
-                return (
-                  <Grid.Column key={player.id}>
-                    <PlayerArea player={player} />
-                  </Grid.Column>
-                )
-              })}
-          </Grid.Row>
-        </Grid>
+        <div className="game-table">
+          TEST
+          <Grid verticalAlign="middle" columns={3} centered>
+            <Grid.Row>
+              {this.props.players &&
+                this.props.players.map(player => {
+                  return (
+                    <Grid.Column key={player.id}>
+                      <PlayerArea player={player} />
+                    </Grid.Column>
+                  )
+                })}
+            </Grid.Row>
+          </Grid>
+        </div>
         <div className="player-hand-navbar">
           <PlayerHand {...this.props} me={me} />
         </div>
