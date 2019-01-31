@@ -13,7 +13,7 @@ class PlayerArea extends Component {
             <Segment>
               <Container>
                 <Coins coins={this.props.player.coins} />
-                <PlayedCards cards={this.props.player.PlayedCards} />
+                <PlayedCards playedCards={this.props.player.playedCards} />
                 <GameBoard
                   board={this.props.player.board}
                   coins={this.props.player.coins}
