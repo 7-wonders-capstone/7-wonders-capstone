@@ -30,9 +30,8 @@ const mapStateToProps = (state, props) => ({
   players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
     ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
     : [],
-  gameStarted: state.firestore.data.games
-    ? state.firestore.data.games[props.match.params.gameId].gameStarted
-    : null
+  gameStarted:
+    state.firestore.data.games?.[props.match.params.gameId]?.gameStarted
 })
 
 export default compose(
