@@ -3,7 +3,6 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {Card} from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
 import WaitingPlayers from './WaitingPlayers'
 import LeaveGameButton from './LeaveGameButton'
 import JoinGameButton from './JoinGameButton'
@@ -11,7 +10,6 @@ import StartGameButton from './StartGameButton'
 
 class GameRoomSnapshot extends React.Component {
   render() {
-    // console.log('GameRoomSnapshot props: ', this.props)
     const {game, players} = this.props
     return (
       <div className="gameroom-snapshot">
@@ -35,7 +33,6 @@ class GameRoomSnapshot extends React.Component {
               )[0] ? (
                 <StartGameButton {...this.props} />
               ) : null}
-              {/* </Link> */}
             </div>
           </Card.Content>
         </Card>

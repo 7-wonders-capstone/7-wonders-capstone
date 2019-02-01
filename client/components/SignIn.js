@@ -1,6 +1,8 @@
 import React from 'react'
 import * as firebase from 'firebase'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {gotMe} from '../store/me'
 
 class SignIn extends React.Component {
   constructor() {
@@ -27,7 +29,10 @@ class SignIn extends React.Component {
         firebase
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password)
-          .then(() => this.props.history.push('/lobby'))
+          .then(() => {
+            this.props.gotMe({email: this.state.email})
+            this.props.history.push('/lobby')
+          })
       )
       .catch(error => console.error(error))
   }
@@ -59,4 +64,10 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(SignIn)
+const mapDispatchToProps = dispatch => {
+  return {
+    gotMe: me => dispatch(gotMe(me))
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(SignIn))

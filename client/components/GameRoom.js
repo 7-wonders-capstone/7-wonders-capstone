@@ -6,7 +6,6 @@ import GameTable from './GameTable'
 
 class GameRoom extends React.Component {
   render() {
-    console.log('Game started: ', this.props.gameStarted)
     return (
       <div>
         {!this.props.gameStarted ? (
