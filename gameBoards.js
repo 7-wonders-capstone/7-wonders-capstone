@@ -4,6 +4,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'brick',
     levelone: {
+      name: 'levelone',
       cost: ['brick', 'brick'],
       atEnd: {
         gives: 'VP',
@@ -12,11 +13,13 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['wood', 'wood', 'wood'],
       resources: ['wheel/tablet/compass'],
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['brick', 'brick', 'brick', 'brick'],
       atEnd: {
         gives: 'VP',
@@ -31,6 +34,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'papyrus',
     levelone: {
+      name: 'levelone',
       cost: ['stone', 'stone'],
       atEnd: {
         gives: 'VP',
@@ -39,6 +43,7 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['wood', 'wood'],
       onPlay: {
         type: 'gold',
@@ -47,6 +52,7 @@ const gameBoards = [
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['papyrus', 'papyrus'],
       atEnd: {
         gives: 'VP',
@@ -61,6 +67,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'silk',
     levelone: {
+      name: 'levelone',
       cost: ['brick', 'brick'],
       atEnd: {
         gives: 'VP',
@@ -69,6 +76,7 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['metal', 'metal', 'metal'],
       effect: {
         kind: 'discardPlay'
@@ -76,6 +84,7 @@ const gameBoards = [
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['silk', 'silk'],
       atEnd: {
         gives: 'VP',
@@ -90,6 +99,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'metal',
     levelone: {
+      name: 'levelone',
       cost: ['wood', 'wood'],
       atEnd: {
         gives: 'VP',
@@ -98,6 +108,7 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['brick', 'brick', 'brick'],
       effect: {
         kind: 'might',
@@ -106,6 +117,7 @@ const gameBoards = [
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['metal', 'metal', 'metal', 'metal'],
       atEnd: {
         gives: 'VP',
@@ -120,6 +132,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'glass',
     levelone: {
+      name: 'levelone',
       cost: ['stone', 'stone'],
       atEnd: {
         gives: 'VP',
@@ -128,11 +141,13 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['metal', 'metal'],
       resources: ['metal/stone/brick/wood'],
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['glass', 'glass'],
       atEnd: {
         gives: 'VP',
@@ -147,6 +162,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'stone',
     levelone: {
+      name: 'levelone',
       cost: ['stone', 'stone'],
       atEnd: {
         gives: 'VP',
@@ -155,6 +171,7 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['wood', 'wood', 'wood'],
       atEnd: {
         gives: 'VP',
@@ -163,6 +180,7 @@ const gameBoards = [
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['stone', 'stone', 'stone', 'stone'],
       atEnd: {
         gives: 'VP',
@@ -177,6 +195,7 @@ const gameBoards = [
     side: 'A',
     baseResource: 'wood',
     levelone: {
+      name: 'levelone',
       cost: ['wood', 'wood'],
       atEnd: {
         gives: 'VP',
@@ -185,6 +204,7 @@ const gameBoards = [
       type: 'wonder'
     },
     leveltwo: {
+      name: 'leveltwo',
       cost: ['stone', 'stone'],
       effect: {
         kind: 'freeplay'
@@ -192,6 +212,7 @@ const gameBoards = [
       type: 'wonder'
     },
     levelthree: {
+      name: 'levelthree',
       cost: ['metal', 'metal'],
       atEnd: {
         gives: 'VP',

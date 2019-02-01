@@ -1,12 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {createPlayers} from '../../playerGenerator'
 
 class StartGameButton extends React.Component {
-  startGame = playersArr => {
-    const gameId = this.props.match.params.gameId
+  startGame = players => {
+    const gameId = this.props.game.id
     const numOfPlayers = this.props.players.length
 
     // createPlayers returns an array of player objects (depending on number of players) containing things like hand, board, availableResources, etc.
@@ -16,14 +15,14 @@ class StartGameButton extends React.Component {
           collection: 'games',
           doc: `${gameId}`,
           subcollections: [
-            {collection: `players`, doc: `${playersArr[idx].id || idx + 1}`}
+            {collection: `players`, doc: `${players[idx].id || idx + 1}`}
           ]
         },
         player
       )
     })
 
-    // Toggle gameStarted field in firestore.
+    // Change gameStarted field for the game to true.
     this.props.firestore.update(
       {
         collection: 'games',
@@ -31,7 +30,17 @@ class StartGameButton extends React.Component {
       },
       {gameStarted: true}
     )
-    console.log('Start button clicked')
+
+    // Change usersGameStarted to true for each player in the game.
+    players.forEach(player => {
+      this.props.firestore.update(
+        {
+          collection: 'users',
+          doc: player.email
+        },
+        {usersGameStarted: true}
+      )
+    })
   }
 
   render() {
@@ -51,20 +60,4 @@ class StartGameButton extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    : []
-})
-
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect(props => {
-    return [
-      {
-        collection: `games/${props.match.params.gameId}/players`
-        // doc: `${playerId}` // Could access only specific players doc.
-      }
-    ]
-  })
-)(StartGameButton)
+export default compose(firestoreConnect()(StartGameButton))
