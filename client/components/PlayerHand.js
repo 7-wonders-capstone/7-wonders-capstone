@@ -9,7 +9,7 @@ class PlayerHand extends React.Component {
         {this.props.me.hand.map(card => {
           return (
             <div key={card.imageURL}>
-              <Card card={card} />
+              <Card card={card} me={this.props.me} />
             </div>
           )
         })}
