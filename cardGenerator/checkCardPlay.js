@@ -1,23 +1,26 @@
 const playCard = (player, card) => {
   if (!card.costs) {
-    player.playedCards.push(card)
-  } else {
-    card.costs.forEach(cost => {
-      if (typeof cost === 'number' && player.coins >= cost) {
-        player.coins -= cost
-        player.playedCards.push(card)
-      } else if (
-        typeof cost === 'string' &&
-        player.availableResources.includes(cost)
-      ) {
-        player.playedCards.push(card)
-      } else {
-        console.log('insufficient funds')
+    return true
+  } else if (card.upgradesFrom) {
+    player.hand.forEach(handCard => {
+      if (handCard.name === card.upgradesFrom[0]) {
+        return true
       }
     })
+  } else {
+    let canPlay = true
+    card.costs.forEach(cost => {
+      if (typeof cost === 'number' && player.coins < cost) {
+        canPlay = false
+      } else if (
+        typeof cost === 'string' &&
+        !player.availableResources.includes(cost)
+      ) {
+        canPlay = false
+      }
+    })
+    return canPlay
   }
-
-  return player
 }
 
 const board = {
@@ -49,7 +52,7 @@ const testplayer = {
   board: board,
   coins: 3,
   availableResources: [board.baseResource],
-  hand: [],
+  hand: ['Apothecary'],
   playedCards: [],
   victoryPoints: 0,
   might: 0,
@@ -63,9 +66,13 @@ const testplayer = {
 
 const testcard = {
   name: 'Scientists Guild',
-  costs: ['wood', 'brick'],
+  costs: [2],
   type: 'guild',
-  resources: ['wheel/tablet/compass']
+  resources: ['wheel/tablet/compass'],
+  upGradesFrom: ['no']
 }
 
 console.log(playCard(testplayer, testcard))
+console.log(testplayer)
+
+export default playCard
