@@ -6,13 +6,13 @@ import PlayerArea from './PlayerArea'
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
 
-class GameTableTesting extends React.Component {
+class GameTable extends React.Component {
   componentDidMount() {
     const me = this.props.players.filter(
       player => player.email === this.props.email
     )[0]
 
-    const orderedPlayers = this.props.players.sort(
+    const orderedPlayers = [...this.props.players].sort(
       (a, b) => a.number < b.number
     )
 
@@ -74,7 +74,7 @@ class GameTableTesting extends React.Component {
   }
 
   render() {
-    const orderedPlayers = this.props.players.sort(
+    const orderedPlayers = [...this.props.players].sort(
       (a, b) => a.number < b.number
     )
 
@@ -162,4 +162,4 @@ const mapDispatchToProps = dispatch => {
 export default compose(
   firestoreConnect(),
   connect(mapStateToProps, mapDispatchToProps)
-)(GameTableTesting)
+)(GameTable)
