@@ -3,7 +3,6 @@ import {firestoreConnect} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
-import {Grid} from 'semantic-ui-react'
 
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
@@ -66,68 +65,12 @@ class GameTable extends React.Component {
       return orderedPlayers[offset % orderedPlayers.length]
     })
 
-    // orderedPlayers.forEach(player => {
-    //   if (player.email === me.email) {
-    //     meIndex = player.number - 1
-    //   }
-    // })
-
-    // const leftNeighborIndex =
-    //   meIndex > 0 ? meIndex - 1 : orderedPlayers.length - 1
-    // const rightNeighborIndex =
-    //   meIndex < orderedPlayers.length - 1 ? meIndex + 1 : 0
-
-    // // keys represent positions on table, values represent postiions in orderedPlayers array (off by 1 due to 0 based array)
-    // const positionMap = {
-    //   1: me.number,
-    //   2: orderedPlayers[leftNeighborIndex].number,
-    //   3: orderedPlayers[rightNeighborIndex].number,
-    //   4: null,
-    //   5: null,
-    //   6: null,
-    //   7: null
-    // }
-
-    // if (orderedPlayers.length >= 4) {
-    //   positionMap[4] =
-    //     orderedPlayers[
-    //       orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
-    //     ].number
-    // }
-
-    // if (orderedPlayers.length >= 5) {
-    //   positionMap[5] =
-    //     orderedPlayers[
-    //       orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-    //     ].number
-    // }
-
-    // if (orderedPlayers.length >= 6) {
-    //   positionMap[6] =
-    //     orderedPlayers[
-    //       orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
-    //         .leftPlayerNumber - 1
-    //     ].number
-    // }
-
-    // if (orderedPlayers.length >= 7) {
-    //   positionMap[7] =
-    //     orderedPlayers[
-    //       orderedPlayers[
-    //         orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-    //       ].rightPlayerNumber - 1
-    //     ].number
-    // }
     this.playersRotatedAroundMe = playersRotatedAroundMe
-    // this.props.setPositions(playersRotatedAroundMe)
   }
 
   render() {
-    console.log('rotatedPlayers: ', this.playersRotatedAroundMe)
-
     return (
       <div>
-        (
         <div className="game-table">
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
@@ -167,7 +110,7 @@ class GameTable extends React.Component {
             </div>
           </div>
         </div>
-        )
+
         <div className="player-hand-navbar">
           <PlayerHand
             {...this.props}
