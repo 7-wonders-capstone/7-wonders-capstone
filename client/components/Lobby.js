@@ -7,7 +7,7 @@ import GameRoomSnapshot from './GameRoomSnapshot'
 import {Button} from 'semantic-ui-react'
 
 class Lobby extends React.Component {
-  handleClick = () => {
+  createGameRoom = () => {
     const gameId = Math.floor(100000 + Math.random() * 900000)
 
     this.props.firestore
@@ -18,29 +18,30 @@ class Lobby extends React.Component {
         },
         {gameStarted: false}
       )
-      .then(() => {
-        this.props.history.push(`/games/${gameId}`)
-      })
       .catch(error => console.error(error))
   }
 
   render() {
-    console.log('Lobby game props: ', this.props.games)
+    // TODO: Add redirect from react-router-dom to send specific users to appropriate live game room.
+    console.log('Lobby game props: ', this.props.pendingGames)
     return (
       <div className="lobby">
         <Button
           color="blue"
           style={{margin: '20px'}}
-          onClick={this.handleClick}
+          onClick={this.createGameRoom}
         >
           Create Game Room
         </Button>
 
         <div className="gameroom-list">
-          {this.props.games.map(game => {
+          {this.props.pendingGames.map(game => {
             return (
               <div key={game.id}>
-                <GameRoomSnapshot game={game} />
+                <GameRoomSnapshot
+                  game={game}
+                  pendingGames={this.props.pendingGames}
+                />
               </div>
             )
           })}
@@ -52,7 +53,9 @@ class Lobby extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    games: state.firestore.ordered.games ? state.firestore.ordered.games : []
+    pendingGames: state.firestore.ordered.games
+      ? state.firestore.ordered.games
+      : []
   }
 }
 

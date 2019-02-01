@@ -2,8 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import StartGameButton from './StartGameButton'
-import WaitingPlayers from './WaitingPlayers'
 import GameTable from './GameTable'
 
 class GameRoom extends React.Component {
@@ -13,9 +11,7 @@ class GameRoom extends React.Component {
       <div>
         {!this.props.gameStarted ? (
           <div>
-            <h1>Welcome to game room #{this.props.match.params.gameId}</h1>
-            <WaitingPlayers {...this.props} />
-            <StartGameButton {...this.props} />
+            <h1>Waiting for game to begin.</h1>
           </div>
         ) : (
           <GameTable {...this.props} />

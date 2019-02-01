@@ -1,12 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {createPlayers} from '../../playerGenerator'
 
 class StartGameButton extends React.Component {
   startGame = playersArr => {
-    const gameId = this.props.match.params.gameId
+    const gameId = this.props.game.id
     const numOfPlayers = this.props.players.length
 
     // createPlayers returns an array of player objects (depending on number of players) containing things like hand, board, availableResources, etc.
@@ -51,20 +50,4 @@ class StartGameButton extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  players: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
-    : []
-})
-
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect(props => {
-    return [
-      {
-        collection: `games/${props.match.params.gameId}/players`
-        // doc: `${playerId}` // Could access only specific players doc.
-      }
-    ]
-  })
-)(StartGameButton)
+export default compose(firestoreConnect()(StartGameButton))
