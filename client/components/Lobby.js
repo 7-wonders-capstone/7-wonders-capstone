@@ -2,7 +2,7 @@ import React from 'react'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 import GameRoomSnapshot from './GameRoomSnapshot'
 import {Button} from 'semantic-ui-react'
 
@@ -22,6 +22,10 @@ class Lobby extends React.Component {
   }
 
   render() {
+    if (this.props.user.usersGameStarted) {
+      return <Redirect push to={`/games/${this.props.user.inGameRoom}`} />
+    }
+
     return (
       <div className="lobby">
         <Button
@@ -53,18 +57,24 @@ const mapStateToProps = state => {
   return {
     pendingGames: state.firestore.ordered.games
       ? state.firestore.ordered.games
-      : []
+      : [],
+    user: state.firestore.ordered.users ? state.firestore.ordered.users[0] : {},
+    email: state.firebase.auth.email
   }
 }
 
 export default withRouter(
   compose(
     connect(mapStateToProps),
-    firestoreConnect(() => {
+    firestoreConnect(props => {
       return [
         {
           collection: 'games',
           where: ['gameStarted', '==', false]
+        },
+        {
+          collection: 'users',
+          doc: props.email
         }
       ]
     })

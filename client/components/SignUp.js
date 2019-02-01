@@ -47,7 +47,9 @@ class SignUp extends React.Component {
           .doc(`${this.state.email}`)
           .set({
             email: this.state.email,
-            username: ''
+            username: '',
+            inGameRoom: '',
+            usersGameStarted: false
           })
       } else {
         alert('Email is already in use.')

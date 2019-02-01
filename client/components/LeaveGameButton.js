@@ -20,14 +20,14 @@ class LeaveGameButton extends React.Component {
       },
       {inGameRoom: ''}
     )
-
-    console.log('Leave button clicked')
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.leaveGame}>Leave Game</button>
+        <button type="button" onClick={this.leaveGame}>
+          Leave Game
+        </button>
       </div>
     )
   }

@@ -4,7 +4,7 @@ import {firestoreConnect} from 'react-redux-firebase'
 import {createPlayers} from '../../playerGenerator'
 
 class StartGameButton extends React.Component {
-  startGame = playersArr => {
+  startGame = players => {
     const gameId = this.props.game.id
     const numOfPlayers = this.props.players.length
 
@@ -15,14 +15,14 @@ class StartGameButton extends React.Component {
           collection: 'games',
           doc: `${gameId}`,
           subcollections: [
-            {collection: `players`, doc: `${playersArr[idx].id || idx + 1}`}
+            {collection: `players`, doc: `${players[idx].id || idx + 1}`}
           ]
         },
         player
       )
     })
 
-    // Toggle gameStarted field in firestore.
+    // Change gameStarted field for the game to true.
     this.props.firestore.update(
       {
         collection: 'games',
@@ -30,7 +30,17 @@ class StartGameButton extends React.Component {
       },
       {gameStarted: true}
     )
-    console.log('Start button clicked')
+
+    // Change usersGameStarted to true for each player in the game.
+    players.forEach(player => {
+      this.props.firestore.update(
+        {
+          collection: 'users',
+          doc: player.email
+        },
+        {usersGameStarted: true}
+      )
+    })
   }
 
   render() {

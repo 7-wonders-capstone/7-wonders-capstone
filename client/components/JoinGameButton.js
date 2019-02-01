@@ -23,8 +23,6 @@ class JoinGameButton extends React.Component {
       },
       {inGameRoom: gameId}
     )
-
-    console.log('Join button clicked')
   }
 
   render() {
