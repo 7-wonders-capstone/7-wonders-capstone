@@ -138,3 +138,17 @@ span.coin {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.my-row {
+  display: flex;
+  justify-content: center;
+}
+
+.neighbors-row {
+  display: flex;
+  justify-content: center;
+}
+
+.neighbor-container {
+  margin: 25px 150px;
+}
