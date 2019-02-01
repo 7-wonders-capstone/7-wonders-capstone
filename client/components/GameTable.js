@@ -26,7 +26,7 @@ class GameTableTesting extends React.Component {
     const leftNeighborIndex =
       meIndex > 0 ? meIndex - 1 : orderedPlayers.length - 1
     const rightNeighborIndex =
-      meIndex < orderedPlayers.length - 1 ? meIndex + 1 : 1
+      meIndex < orderedPlayers.length - 1 ? meIndex + 1 : 0
 
     // keys represent positions on table, values represent postiions in orderedPlayers array (off by 1 due to 0 based array)
     const positionMap = {
