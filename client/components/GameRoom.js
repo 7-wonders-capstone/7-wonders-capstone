@@ -3,13 +3,9 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import GameTable from './GameTable'
-import GameTableTesting from './GameTableTesting'
 
 class GameRoom extends React.Component {
   render() {
-    // console.log('Game started: ', this.props.gameStarted)
-    // console.log('GameRoom players: ', this.props.players)
-
     return (
       <div>
         {!this.props.gameStarted ? (
@@ -17,8 +13,7 @@ class GameRoom extends React.Component {
             <h1>Waiting for game to begin.</h1>
           </div>
         ) : (
-          // <GameTable {...this.props} />
-          <GameTableTesting {...this.props} />
+          <GameTable {...this.props} />
         )}
       </div>
     )

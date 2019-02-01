@@ -3,6 +3,7 @@ import {firestoreConnect} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
+import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
 
 class GameTableTesting extends React.Component {
@@ -38,33 +39,21 @@ class GameTableTesting extends React.Component {
       7: null
     }
 
-    if (orderedPlayers.length === 4) {
+    if (orderedPlayers.length >= 4) {
       positionMap[4] =
         orderedPlayers[
           orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
         ].number
     }
 
-    if (orderedPlayers.length === 5) {
-      positionMap[4] =
-        orderedPlayers[
-          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
-        ].number
+    if (orderedPlayers.length >= 5) {
       positionMap[5] =
         orderedPlayers[
           orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
         ].number
     }
 
-    if (orderedPlayers.length === 6) {
-      positionMap[4] =
-        orderedPlayers[
-          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
-        ].number
-      positionMap[5] =
-        orderedPlayers[
-          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-        ].number
+    if (orderedPlayers.length >= 6) {
       positionMap[6] =
         orderedPlayers[
           orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
@@ -72,20 +61,7 @@ class GameTableTesting extends React.Component {
         ].number
     }
 
-    if (orderedPlayers.length === 7) {
-      positionMap[4] =
-        orderedPlayers[
-          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
-        ].number
-      positionMap[5] =
-        orderedPlayers[
-          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-        ].number
-      positionMap[6] =
-        orderedPlayers[
-          orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
-            .leftPlayerNumber - 1
-        ].number
+    if (orderedPlayers.length >= 7) {
       positionMap[7] =
         orderedPlayers[
           orderedPlayers[
@@ -102,10 +78,14 @@ class GameTableTesting extends React.Component {
       (a, b) => a.number < b.number
     )
 
+    const me = this.props.players.filter(
+      player => player.email === this.props.email
+    )[0]
+
     return (
       <div>
         {this.props.positions[1] && (
-          <div className="game-table-testing">
+          <div className="game-table">
             <div className="others-row">
               {orderedPlayers.length > 5 && (
                 <div className="other-container">
@@ -159,6 +139,9 @@ class GameTableTesting extends React.Component {
             </div>
           </div>
         )}
+        <div className="player-hand-navbar">
+          <PlayerHand {...this.props} me={me} />
+        </div>
       </div>
     )
   }
