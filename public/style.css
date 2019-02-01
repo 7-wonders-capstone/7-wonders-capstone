@@ -152,3 +152,12 @@ span.coin {
 .neighbor-container {
   margin: 25px 150px;
 }
+
+.others-row {
+  display: flex;
+  justify-content: center;
+}
+
+.other-container {
+  margin: 25px 150px;
+}

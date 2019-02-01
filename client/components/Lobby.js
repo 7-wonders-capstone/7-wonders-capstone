@@ -22,8 +22,6 @@ class Lobby extends React.Component {
   }
 
   render() {
-    // TODO: Add redirect from react-router-dom to send specific users to appropriate live game room.
-    console.log('Lobby game props: ', this.props.pendingGames)
     return (
       <div className="lobby">
         <Button

@@ -7,8 +7,8 @@ import GameTableTesting from './GameTableTesting'
 
 class GameRoom extends React.Component {
   render() {
-    console.log('Game started: ', this.props.gameStarted)
-    console.log('GameRoom players: ', this.props.players)
+    // console.log('Game started: ', this.props.gameStarted)
+    // console.log('GameRoom players: ', this.props.players)
 
     return (
       <div>
@@ -17,8 +17,8 @@ class GameRoom extends React.Component {
             <h1>Waiting for game to begin.</h1>
           </div>
         ) : (
-          <GameTable {...this.props} />
-          // <GameTableTesting {...this.props} />
+          // <GameTable {...this.props} />
+          <GameTableTesting {...this.props} />
         )}
       </div>
     )

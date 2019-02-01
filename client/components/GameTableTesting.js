@@ -1,15 +1,12 @@
 import React from 'react'
 import {firestoreConnect} from 'react-redux-firebase'
+import {connect} from 'react-redux'
+import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
+import {setPositions} from '../store/boardPositions'
 
 class GameTableTesting extends React.Component {
-  render() {
-    // let players = []
-    // this.props.firestore.collection(`/games/${this.props.match.params.gameId}/players`).get().then(result => {
-    //   result.forEach(player => players.push(player.id))
-    // })
-    // console.log('players: ', players)
-
+  componentDidMount() {
     const me = this.props.players.filter(
       player => player.email === this.props.email
     )[0]
@@ -17,7 +14,6 @@ class GameTableTesting extends React.Component {
     const orderedPlayers = this.props.players.sort(
       (a, b) => a.number < b.number
     )
-    console.log(orderedPlayers)
 
     let meIndex
     orderedPlayers.forEach(player => {
@@ -27,61 +23,160 @@ class GameTableTesting extends React.Component {
     })
 
     const leftNeighborIndex =
-      meIndex > 1 ? meIndex - 1 : orderedPlayers.length - 1
+      meIndex > 0 ? meIndex - 1 : orderedPlayers.length - 1
     const rightNeighborIndex =
       meIndex < orderedPlayers.length - 1 ? meIndex + 1 : 1
 
-    const others = orderedPlayers.filter(
-      player => Math.abs(player.number - me.number) >= 2
-    )
-    console.log('others: ', others)
-
-    // keys represent positions on table, values represent indices in orderedPlayers array
+    // keys represent positions on table, values represent postiions in orderedPlayers array (off by 1 due to 0 based array)
     const positionMap = {
-      1: meIndex,
-      2: null,
-      3: null,
+      1: me.number,
+      2: orderedPlayers[leftNeighborIndex].number,
+      3: orderedPlayers[rightNeighborIndex].number,
       4: null,
       5: null,
       6: null,
       7: null
     }
 
+    if (orderedPlayers.length === 4) {
+      positionMap[4] =
+        orderedPlayers[
+          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
+        ].number
+    }
+
+    if (orderedPlayers.length === 5) {
+      positionMap[4] =
+        orderedPlayers[
+          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
+        ].number
+      positionMap[5] =
+        orderedPlayers[
+          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
+        ].number
+    }
+
+    if (orderedPlayers.length === 6) {
+      positionMap[4] =
+        orderedPlayers[
+          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
+        ].number
+      positionMap[5] =
+        orderedPlayers[
+          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
+        ].number
+      positionMap[6] =
+        orderedPlayers[
+          orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
+            .leftPlayerNumber - 1
+        ].number
+    }
+
+    if (orderedPlayers.length === 7) {
+      positionMap[4] =
+        orderedPlayers[
+          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
+        ].number
+      positionMap[5] =
+        orderedPlayers[
+          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
+        ].number
+      positionMap[6] =
+        orderedPlayers[
+          orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
+            .leftPlayerNumber - 1
+        ].number
+      positionMap[7] =
+        orderedPlayers[
+          orderedPlayers[
+            orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
+          ].rightPlayerNumber - 1
+        ].number
+    }
+
+    this.props.setPositions(positionMap)
+  }
+
+  render() {
+    const orderedPlayers = this.props.players.sort(
+      (a, b) => a.number < b.number
+    )
+
     return (
-      <div className="game-table-testing">
-        <div className="others-row-2">
-          <div className="other-container" />
-          <div className="other-container" />
-        </div>
-        <div className="others-row-1">
-          {/* {
-            (others.length > 1) &&
-            <div className="other-container">
-              <PlayerArea player={orderedPlayers[leftNeighborIndex]. - ]}
+      <div>
+        {this.props.positions[1] && (
+          <div className="game-table-testing">
+            <div className="others-row">
+              {orderedPlayers.length > 5 && (
+                <div className="other-container">
+                  <PlayerArea
+                    player={orderedPlayers[this.props.positions[6] - 1]}
+                  />
+                </div>
+              )}
+              {orderedPlayers.length > 6 && (
+                <div className="other-container">
+                  <PlayerArea
+                    player={orderedPlayers[this.props.positions[7] - 1]}
+                  />
+                </div>
+              )}
             </div>
-          } */}
-          <div className="other-container" />
-          {/* {
-              (orderedPlayers[leftNeighborIndex - 1])
-            } */}
-          <div className="other-container" />
-        </div>
-        <div className="neighbors-row">
-          <div className="neighbor-container">
-            <PlayerArea player={orderedPlayers[leftNeighborIndex]} />
+            <div className="others-row">
+              {orderedPlayers.length > 3 && (
+                <div className="other-container">
+                  <PlayerArea
+                    player={orderedPlayers[this.props.positions[4] - 1]}
+                  />
+                </div>
+              )}
+              {orderedPlayers.length > 4 && (
+                <div className="other-container">
+                  <PlayerArea
+                    player={orderedPlayers[this.props.positions[5] - 1]}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="neighbors-row">
+              <div className="neighbor-container">
+                <PlayerArea
+                  player={orderedPlayers[this.props.positions[2] - 1]}
+                />
+              </div>
+              <div className="neighbor-container">
+                <PlayerArea
+                  player={orderedPlayers[this.props.positions[3] - 1]}
+                />
+              </div>
+            </div>
+            <div className="my-row">
+              <div className="my-container">
+                <PlayerArea
+                  player={orderedPlayers[this.props.positions[1] - 1]}
+                />
+              </div>
+            </div>
           </div>
-          <div className="neighbor-container">
-            <PlayerArea player={orderedPlayers[rightNeighborIndex]} />
-          </div>
-        </div>
-        <div className="my-row">
-          <div className="my-container">
-            <PlayerArea player={orderedPlayers[meIndex]} />
-          </div>
-        </div>
+        )}
       </div>
     )
   }
 }
 
-export default firestoreConnect()(GameTableTesting)
+const mapStateToProps = state => {
+  return {
+    positions: state.boardPositions
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setPositions: map => dispatch(setPositions(map))
+  }
+}
+
+export default compose(
+  firestoreConnect(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(GameTableTesting)
