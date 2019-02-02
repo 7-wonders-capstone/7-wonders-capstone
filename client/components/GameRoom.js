@@ -3,12 +3,12 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import GameTable from './GameTable'
-import ExitMessage from './ExitMessage'
+import QuitMessage from './QuitMessage'
 
 class GameRoom extends React.Component {
   render() {
     if (this.props.user.activeGameAbandonded === true) {
-      return <ExitMessage user={this.props.user} />
+      return <QuitMessage user={this.props.user} />
     }
 
     return (

@@ -3,7 +3,7 @@ import {Message, Button} from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom'
 import {firestoreConnect} from 'react-redux-firebase'
 
-class ExitMessage extends Component {
+class QuitMessage extends Component {
   handleClick = () => {
     this.props.firestore.update(
       {
@@ -35,4 +35,4 @@ class ExitMessage extends Component {
   }
 }
 
-export default withRouter(firestoreConnect()(ExitMessage))
+export default withRouter(firestoreConnect()(QuitMessage))

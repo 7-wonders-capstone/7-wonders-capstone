@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import {Link} from 'react-router-dom'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import ExitActiveGame from './ExitActiveGame'
+import QuitGame from './QuitGame'
 
 class Header extends React.Component {
   // logOut = () => {
@@ -43,7 +43,7 @@ class Header extends React.Component {
           ) : (
             <div>
               {user.usersGameStarted ? (
-                <ExitActiveGame {...this.props} />
+                <QuitGame className="exit-game-btn" {...this.props} />
               ) : (
                 <div>
                   <a href="/" onClick={() => firebase.auth().signOut()}>

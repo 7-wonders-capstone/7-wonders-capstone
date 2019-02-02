@@ -3,8 +3,8 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 
-class ExitActiveGame extends Component {
-  exitActiveGame = async players => {
+class QuitGame extends Component {
+  quitGame = async players => {
     await players.forEach(player => {
       this.props.firestore.update(
         {
@@ -30,10 +30,11 @@ class ExitActiveGame extends Component {
 
     return (
       <div
-        style={{backgroundColor: 'white'}}
-        onClick={() => this.exitActiveGame(players)}
+        // style={{backgroundColor: 'white'}}
+        className="exit-game-btn"
+        onClick={() => this.quitGame(players)}
       >
-        Leave Game
+        Quit Game
       </div>
     )
   }
@@ -45,6 +46,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default compose(connect(mapStateToProps), firestoreConnect())(
-  ExitActiveGame
-)
+export default compose(connect(mapStateToProps), firestoreConnect())(QuitGame)
