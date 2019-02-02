@@ -83,5 +83,3 @@ export default compose(
     ]
   })
 )(Header)
-
-// export default connect(mapStateToProps)(Header)
