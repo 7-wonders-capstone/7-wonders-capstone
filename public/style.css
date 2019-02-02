@@ -86,6 +86,7 @@ form div {
   display: flex;
 }
 
+.exit-game-btn,
 .navbar nav a {
   color: lightblue;
   display: inline-block;
@@ -93,6 +94,7 @@ form div {
   font-size: 20px;
   margin: 0.25em;
   transition: all 0.35s ease;
+  cursor: pointer;
 }
 
 .logo {
