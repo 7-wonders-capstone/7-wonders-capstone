@@ -3,15 +3,18 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import GameTable from './GameTable'
+import ExitMessage from './ExitMessage'
 
 class GameRoom extends React.Component {
   render() {
+    if (this.props.user.activeGameAbandonded === true) {
+      return <ExitMessage user={this.props.user} />
+    }
+
     return (
       <div>
         {!this.props.gameStarted ? (
-          <div>
-            <h1>Waiting for game to begin.</h1>
-          </div>
+          <h1>404: Sorry, there's no game at this webpage.</h1>
         ) : (
           <GameTable {...this.props} />
         )}
@@ -26,7 +29,8 @@ const mapStateToProps = (state, props) => ({
     ? state.firestore.ordered[`games/${props.match.params.gameId}/players`]
     : [],
   gameStarted:
-    state.firestore.data.games?.[props.match.params.gameId]?.gameStarted
+    state.firestore.data.games?.[props.match.params.gameId]?.gameStarted,
+  user: state.firestore.ordered.users ? state.firestore.ordered.users[0] : {}
 })
 
 export default compose(

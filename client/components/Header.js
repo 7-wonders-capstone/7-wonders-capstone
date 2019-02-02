@@ -4,6 +4,7 @@ import firebase from 'firebase'
 import {Link} from 'react-router-dom'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import ExitActiveGame from './ExitActiveGame'
 
 class Header extends React.Component {
   // logOut = () => {
@@ -28,7 +29,6 @@ class Header extends React.Component {
   // }
 
   render() {
-    console.log('Header props: ', this.props)
     const {user} = this.props
 
     return (
@@ -43,11 +43,8 @@ class Header extends React.Component {
           ) : (
             <div>
               {user.usersGameStarted ? (
-                <Link to="/lobby">Lobby</Link>
+                <ExitActiveGame {...this.props} />
               ) : (
-                // <a href="/" onClick={() => firebase.auth().signOut()}>
-                //   Leave Game
-                // </a>
                 <div>
                   <a href="/" onClick={() => firebase.auth().signOut()}>
                     Log Out
@@ -68,8 +65,10 @@ class Header extends React.Component {
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    user: state.firestore.ordered.users?.[0] || {}
-    // gameId: state.firestore.ordered.users ? state.firestore.ordered.users[0].inGameRoom : null
+    user: state.firestore.ordered.users?.[0] || {},
+    gameId: state.firestore.ordered.users
+      ? state.firestore.ordered.users[0].inGameRoom
+      : null
   }
 }
 
