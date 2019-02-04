@@ -42,6 +42,7 @@ class PlayerHand extends React.Component {
     return (
       <div className="player-hand">
         {this.props.me &&
+          this.props.me.hand &&
           this.props.me.hand.map(card => {
             return (
               <div key={card.imageURL}>
@@ -66,11 +67,14 @@ class PlayerHand extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     selectedCard: state.selectedCard,
-    me: state.firestore.ordered[`games/${props.gameId}/players`]
-      ? state.firestore.ordered[`games/${props.gameId}/players`].find(
-          player => player.email === props.email
-        )
+    me: state.firestore.ordered.playerForPlayerHand
+      ? state.firestore.ordered.playerForPlayerHand[0]
       : {}
+    // me: state.firestore.ordered[`games/${props.gameId}/players`]
+    //   ? state.firestore.ordered[`games/${props.gameId}/players`].find(
+    //       player => player.email === props.email
+    //     )
+    //   : {}
   }
 }
 
