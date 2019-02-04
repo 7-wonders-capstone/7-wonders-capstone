@@ -1,6 +1,7 @@
-const neighborsBasicAndAdvancedResources = player => {
+// Helper function for checkTrading function below
+const neighborsAvailableResources = player => {
   // Creates an array of player's basic, advanced, and board's base resources.
-  const arrOfBAResources = [
+  const arrOfBasicAndAdvancedResources = [
     ...player.playedCards
       .filter(
         card =>
@@ -11,8 +12,8 @@ const neighborsBasicAndAdvancedResources = player => {
     player.board.baseResource
   ]
 
-  // Creates an object of resources and their quantity.
-  return arrOfBAResources.reduce((obj, resource) => {
+  // Creates an object of players avaialable resources and their quantity.
+  return arrOfBasicAndAdvancedResources.reduce((obj, resource) => {
     if (!obj[resource]) obj[resource] = 1
     else obj[resource] = obj[resource] + 1
     return obj
@@ -20,40 +21,16 @@ const neighborsBasicAndAdvancedResources = player => {
 }
 
 const checkTrading = (player, selectedCard, players) => {
-  /*
-  see how many coins I have.
-    if 0, return false.
-    if 1, and no marketplace or E/W trading post card, return false.
-
-  Determine which resources I need from neighbors.
-
-  check neighbors played cards, and only look at basic resources and advanced resources, or board baseResource.
-    if neither neighbor has the resource, return false.
-
-    Maybe use reduce to create an array of only the neighbors basic and advanced and board resources.
-
-    if neighbors have enough resources, checkout coins and do some math...
-  */
   const [playerLeft] = players.filter(p => player.leftPlayerNumber === p.number)
   const [playerRight] = players.filter(
     p => player.rightPlayerNumber === p.number
   )
 
-  if (player.coins === 0) return false
-  // If one coin and no special trading card return false.
-  if (
-    player.coins === 1 &&
-    !player.playedCards.some(c => {
-      return (
-        c.name === 'Marketplace' ||
-        c.name === 'West Trading Post' ||
-        c.name === 'East Trading Post'
-      )
-    })
-  )
-    return false
+  if (player.coins < 2) return false
 
-  // Determines my available resources.
+  // TODO: Will need to add more logic if we implement special trading cards.
+
+  // Determines own available resources.
   const availableResourcesObj = player.availableResources.reduce(
     (obj, resource) => {
       if (!obj[resource]) obj[resource] = 1
@@ -62,6 +39,8 @@ const checkTrading = (player, selectedCard, players) => {
     },
     {}
   )
+  console.log('building cost: ', selectedCard.costs)
+  console.log('personal avaialable resources: ', availableResourcesObj)
 
   // Create an array of resources needed from neighbors.
   const resourcesNeeded = selectedCard.costs.filter(resource => {
@@ -71,15 +50,15 @@ const checkTrading = (player, selectedCard, players) => {
   })
   console.log('resources needed: ', resourcesNeeded)
 
-  const leftNeighborAvailableResources = neighborsBasicAndAdvancedResources(
-    playerLeft
-  )
+  // Creates an object of left neighbor's resources and quantity.
+  const leftNeighborAvailableResources = neighborsAvailableResources(playerLeft)
   console.log(
     'left players available resources: ',
     leftNeighborAvailableResources
   )
 
-  const rightNeighborAvailableResources = neighborsBasicAndAdvancedResources(
+  // Creates an object of right neighbor's resources and quantity.
+  const rightNeighborAvailableResources = neighborsAvailableResources(
     playerRight
   )
   console.log(
@@ -87,22 +66,26 @@ const checkTrading = (player, selectedCard, players) => {
     rightNeighborAvailableResources
   )
 
-  // Looks at resources available to buy from neighbors, and returns an array of remaining resources needed to build the card that the neighbors don't have either.
-  const resourcesNeighborsDontHave = resourcesNeeded
-    .filter(resource => {
-      if (leftNeighborAvailableResources[resource] > 0) {
-        leftNeighborAvailableResources[resource]--
-      } else return resource
-    })
-    .filter(resource => {
-      if (rightNeighborAvailableResources[resource] > 0) {
-        rightNeighborAvailableResources[resource]--
-      } else return resource
-    })
+  // Array of resources needed that neighbors have.
+  const resourcesNeededThatNeighborsHave = resourcesNeeded.filter(resource => {
+    if (leftNeighborAvailableResources[resource] > 0) {
+      leftNeighborAvailableResources[resource]--
+      return resource
+    } else if (rightNeighborAvailableResources[resource] > 0) {
+      rightNeighborAvailableResources[resource]--
+      return resource
+    }
+  })
+  console.log(
+    'resources needed that neighbors have: ',
+    resourcesNeededThatNeighborsHave
+  )
 
-  console.log('resources neighbors dont have: ', resourcesNeighborsDontHave)
-
-  return resourcesNeighborsDontHave.length === 0
+  // Returns true if neighbors have resources needed and player has enough coins.
+  return (
+    resourcesNeededThatNeighborsHave.length === resourcesNeeded.length &&
+    player.coins >= resourcesNeededThatNeighborsHave.length * 2
+  )
 }
 
 const testplayers = [
@@ -369,7 +352,7 @@ const testplayer = {
     },
     imageURL: '/img/olympia-a.jpg'
   },
-  coins: 3,
+  coins: 8,
   availableResources: ['metal', 'wood', 'wood'],
   hand: ['Apothecary'],
   playedCards: [
@@ -414,7 +397,7 @@ const testplayer = {
 
 const testcard = {
   name: 'Scientists Guild',
-  costs: ['stone', 'wood'],
+  costs: ['stone', 'wood', 'wood', 'glass'],
   type: 'guild',
   resources: ['wheel/tablet/compass'],
   upGradesFrom: ['no']
