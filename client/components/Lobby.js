@@ -18,7 +18,8 @@ class Lobby extends React.Component {
         },
         {
           gameStarted: false,
-          readyToPlay: 0
+          readyToPlay: 0,
+          playersUpdated: 0
         }
       )
       .catch(error => console.error(error))
