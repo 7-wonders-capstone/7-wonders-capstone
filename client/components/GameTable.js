@@ -10,15 +10,15 @@ import {Menu} from 'semantic-ui-react'
 import Chat from './Chat'
 
 class GameTable extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      me: {
-        hand: [],
-        coins: 0
-      }
+      // me: {
+      //   hand: [],
+      //   coins: 0
+      // }
     }
-    this.orderPlayers()
+    this.orderPlayers(props)
   }
 
   preparePlay = () => {
@@ -45,8 +45,8 @@ class GameTable extends React.Component {
     )
   }
 
-  resetPlay = () => {
-    this.props.firestore.update(
+  resetPlay = async () => {
+    await this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
@@ -72,22 +72,22 @@ class GameTable extends React.Component {
       })
   }
 
-  orderPlayers() {
-    const me = this.props.players.filter(
-      player => player.email === this.props.email
-    )
+  orderPlayers(props) {
+    // const me = this.props.players.filter(
+    //   player => player.email === this.props.email
+    // )
 
-    this.setState({
-      me: me
-    })
+    // this.setState({
+    //   me: me
+    // })
 
-    this.me = me
+    // this.me = this.props.me
 
-    const orderedPlayers = [...this.props.players].sort(
+    const orderedPlayers = [...props.players].sort(
       (a, b) => a.number < b.number
     )
 
-    const meIndex = me.number - 1
+    const meIndex = props.me.number - 1
 
     const playersRotatedAroundMe = orderedPlayers.map((player, index) => {
       const offset = meIndex + index
@@ -98,9 +98,9 @@ class GameTable extends React.Component {
   }
 
   render() {
-    const orderedPlayers = [...this.props.players].sort(
-      (a, b) => a.number < b.number
-    )
+    // const orderedPlayers = [...this.props.players].sort(
+    //   (a, b) => a.number < b.number
+    // )
 
     return (
       <div>
@@ -150,7 +150,7 @@ class GameTable extends React.Component {
         <div className="player-hand-navbar">
           <PlayerHand
             {...this.props}
-            me={this.me}
+            me={this.props.me}
             preparePlay={this.preparePlay}
             resetPlay={this.resetPlay}
             readyToPlay={this.props.readyToPlay}
@@ -174,7 +174,12 @@ const mapStateToProps = (state, props) => {
     playersUpdated: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].playersUpdated
       : 0,
-    positions: state.boardPositions
+    positions: state.boardPositions,
+    me: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
+      ? state.firestore.ordered[
+          `games/${props.match.params.gameId}/players`
+        ].find(player => player.email === props.email)
+      : {}
   }
 }
 

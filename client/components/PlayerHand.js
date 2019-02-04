@@ -16,7 +16,12 @@ class PlayerHand extends React.Component {
       console.log('UPDATED PLAYER HAND', updatedPlayer.hand)
       this.props.updatePlayerInStore(updatedPlayer, 1)
     }
-    if (this.props.playersUpdated === this.props.numPlayers) {
+
+    if (
+      this.props.playersUpdated === this.props.numPlayers &&
+      this.props.me.number === 1
+    ) {
+      this.props.resetPlay()
       let playersToSwap = []
       this.props.players.forEach(player => {
         let copiedPlayer = JSON.parse(JSON.stringify(player))
@@ -26,7 +31,6 @@ class PlayerHand extends React.Component {
       swappedPlayers.forEach(player =>
         this.props.updatePlayerInStore(player, 0)
       )
-      this.props.resetPlay()
     }
   }
 
