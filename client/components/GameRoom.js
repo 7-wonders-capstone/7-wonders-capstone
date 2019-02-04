@@ -16,7 +16,7 @@ class GameRoom extends React.Component {
         {!this.props.gameStarted ? (
           <h1>404: Sorry, there's no game at this webpage.</h1>
         ) : (
-          <GameTable {...this.props} />
+          <GameTable {...this.props} gameId={this.props.match.params.gameId} />
         )}
       </div>
     )

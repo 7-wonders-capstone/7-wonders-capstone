@@ -3,12 +3,48 @@ import {firestoreConnect} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
+import {Grid} from 'semantic-ui-react'
+
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
 import {Menu} from 'semantic-ui-react'
 import Chat from './Chat'
 
 class GameTable extends React.Component {
+  preparePlay = () => {
+    this.props.firestore.update(
+      {
+        collection: 'games',
+        doc: `${this.props.gameId}`
+      },
+      {
+        readyToPlay: this.props.readyToPlay + 1
+      }
+    )
+  }
+
+  resetPlay = () => {
+    this.props.firestore.update(
+      {
+        collection: 'games',
+        doc: `${this.props.gameId}`
+      },
+      {
+        readyToPlay: 0
+      }
+    )
+  }
+
+  updatePlayerInStore = player => {
+    this.props.firestore.set(
+      {
+        collection: `games/${this.props.gameId}/players`,
+        doc: `${player.email}`
+      },
+      player
+    )
+  }
+
   componentDidMount() {
     const me = this.props.players.filter(
       player => player.email === this.props.email
@@ -145,15 +181,27 @@ class GameTable extends React.Component {
           </div>
         )}
         <div className="player-hand-navbar">
-          <PlayerHand {...this.props} me={me} />
+          <PlayerHand
+            {...this.props}
+            me={me}
+            preparePlay={this.preparePlay}
+            resetPlay={this.resetPlay}
+            readyToPlay={this.props.readyToPlay}
+            numPlayers={this.props.players.length}
+            players={this.props.players}
+            updatePlayerInStore={this.updatePlayerInStore}
+          />
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
+    readyToPlay: state.firestore.data.games
+      ? state.firestore.data.games[props.gameId].readyToPlay
+      : 0,
     positions: state.boardPositions
   }
 }
@@ -165,6 +213,13 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default compose(
-  firestoreConnect(),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect(props => {
+    return [
+      {
+        collection: 'games',
+        doc: props.gameId
+      }
+    ]
+  })
 )(GameTable)

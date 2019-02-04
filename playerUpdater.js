@@ -1,7 +1,13 @@
 /*eslint-disable complexity */
 
-function playerUpdater(player, playerList, playedCard, tradeCost = 0) {
+const determineReward = require('./determineReward')
+
+const playerUpdater = (player, playerList, playedCard, tradeCost = 0) => {
   player.playedCards.push(playedCard)
+  player.hand = player.hand.filter(
+    card =>
+      card.name !== playedCard.name || card.numPlayers !== playedCard.numPlayers
+  )
   player.coins -= tradeCost
   if (playedCard.costs) {
     playedCard.costs.forEach(cost => {
@@ -103,58 +109,4 @@ function playerUpdater(player, playerList, playedCard, tradeCost = 0) {
   return player
 }
 
-//FUNCTION TESTING
-
-//the following function still needs to be written, this returns a dummy value for now
-function determineReward(playerList, from, direction, left, own, right) {
-  return 3
-}
-
-const board = {
-  name: 'Babylon',
-  side: 'A',
-  baseResource: 'brick',
-  levelone: {
-    cost: ['brick', 'brick'],
-    atEnd: {
-      gives: 'VP',
-      amount: 3
-    }
-  },
-  leveltwo: {
-    cost: ['wood', 'wood', 'wood'],
-    resources: ['wheel/tablet/compass']
-  },
-  levelthree: {
-    cost: ['brick', 'brick', 'brick', 'brick'],
-    atEnd: {
-      gives: 'VP',
-      amount: 7
-    }
-  }
-}
-
-const testplayer = {
-  number: 1,
-  board: board,
-  coins: 3,
-  availableResources: [board.baseResource],
-  hand: [],
-  playedCards: [],
-  victoryPoints: 0,
-  might: 0,
-  science: [],
-  activeEffects: [],
-  endEffects: [],
-  militaryResults: [],
-  leftPlayerNumber: 7,
-  rightPlayerNumber: 2
-}
-
-const testcard = {
-  name: 'Scientists Guild',
-  costs: ['wood', 'wood', 'metal', 'metal', 'papyrus'],
-  type: 'guild',
-  resources: ['wheel/tablet/compass']
-}
-console.log(playerUpdater(testplayer, testcard))
+module.exports = playerUpdater
