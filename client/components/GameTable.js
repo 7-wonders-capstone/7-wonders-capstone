@@ -3,7 +3,6 @@ import {firestoreConnect} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
-import {Grid} from 'semantic-ui-react'
 
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
@@ -11,6 +10,17 @@ import {Menu} from 'semantic-ui-react'
 import Chat from './Chat'
 
 class GameTable extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      // me: {
+      //   hand: [],
+      //   coins: 0
+      // }
+    }
+    this.orderPlayers(props)
+  }
+
   preparePlay = () => {
     this.props.firestore.update(
       {
@@ -23,173 +33,132 @@ class GameTable extends React.Component {
     )
   }
 
-  resetPlay = () => {
+  playerUpdated = num => {
     this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
       },
       {
-        readyToPlay: 0
+        playersUpdated: this.props.playersUpdated + num
       }
     )
   }
 
-  updatePlayerInStore = player => {
-    this.props.firestore.set(
+  resetPlay = async () => {
+    await this.props.firestore.update(
       {
-        collection: `games/${this.props.gameId}/players`,
-        doc: `${player.email}`
+        collection: 'games',
+        doc: `${this.props.gameId}`
       },
-      player
+      {
+        readyToPlay: 0,
+        playersUpdated: 0
+      }
     )
   }
 
-  componentDidMount() {
-    const me = this.props.players.filter(
-      player => player.email === this.props.email
-    )[0]
+  updatePlayerInStore = (player, num) => {
+    this.props.firestore
+      .set(
+        {
+          collection: `games/${this.props.gameId}/players`,
+          doc: `${player.email}`
+        },
+        player
+      )
+      .then(() => {
+        this.playerUpdated(num)
+      })
+  }
 
-    const orderedPlayers = [...this.props.players].sort(
+  orderPlayers(props) {
+    // const me = this.props.players.filter(
+    //   player => player.email === this.props.email
+    // )
+
+    // this.setState({
+    //   me: me
+    // })
+
+    // this.me = this.props.me
+
+    const orderedPlayers = [...props.players].sort(
       (a, b) => a.number < b.number
     )
 
-    let meIndex
-    orderedPlayers.forEach(player => {
-      if (player.email === me.email) {
-        meIndex = player.number - 1
-      }
+    const meIndex = props.me.number - 1
+
+    const playersRotatedAroundMe = orderedPlayers.map((player, index) => {
+      const offset = meIndex + index
+      return orderedPlayers[offset % orderedPlayers.length]
     })
 
-    const leftNeighborIndex =
-      meIndex > 0 ? meIndex - 1 : orderedPlayers.length - 1
-    const rightNeighborIndex =
-      meIndex < orderedPlayers.length - 1 ? meIndex + 1 : 0
-
-    // keys represent positions on table, values represent postiions in orderedPlayers array (off by 1 due to 0 based array)
-    const positionMap = {
-      1: me.number,
-      2: orderedPlayers[leftNeighborIndex].number,
-      3: orderedPlayers[rightNeighborIndex].number,
-      4: null,
-      5: null,
-      6: null,
-      7: null
-    }
-
-    if (orderedPlayers.length >= 4) {
-      positionMap[4] =
-        orderedPlayers[
-          orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1
-        ].number
-    }
-
-    if (orderedPlayers.length >= 5) {
-      positionMap[5] =
-        orderedPlayers[
-          orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-        ].number
-    }
-
-    if (orderedPlayers.length >= 6) {
-      positionMap[6] =
-        orderedPlayers[
-          orderedPlayers[orderedPlayers[leftNeighborIndex].leftPlayerNumber - 1]
-            .leftPlayerNumber - 1
-        ].number
-    }
-
-    if (orderedPlayers.length >= 7) {
-      positionMap[7] =
-        orderedPlayers[
-          orderedPlayers[
-            orderedPlayers[rightNeighborIndex].rightPlayerNumber - 1
-          ].rightPlayerNumber - 1
-        ].number
-    }
-
-    this.props.setPositions(positionMap)
+    this.playersRotatedAroundMe = playersRotatedAroundMe
   }
 
   render() {
-    const orderedPlayers = [...this.props.players].sort(
-      (a, b) => a.number < b.number
-    )
-
-    const me = this.props.players.filter(
-      player => player.email === this.props.email
-    )[0]
+    // const orderedPlayers = [...this.props.players].sort(
+    //   (a, b) => a.number < b.number
+    // )
 
     return (
       <div>
         <Menu vertical>
           <Chat />
         </Menu>
-        {this.props.positions[1] && (
-          <div className="game-table">
-            <div className="others-row">
-              {orderedPlayers.length > 5 && (
-                <div className="other-container">
-                  <PlayerArea
-                    player={orderedPlayers[this.props.positions[6] - 1]}
-                  />
-                </div>
-              )}
-              {orderedPlayers.length > 6 && (
-                <div className="other-container">
-                  <PlayerArea
-                    player={orderedPlayers[this.props.positions[7] - 1]}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="others-row">
-              {orderedPlayers.length > 3 && (
-                <div className="other-container">
-                  <PlayerArea
-                    player={orderedPlayers[this.props.positions[4] - 1]}
-                  />
-                </div>
-              )}
-              {orderedPlayers.length > 4 && (
-                <div className="other-container">
-                  <PlayerArea
-                    player={orderedPlayers[this.props.positions[5] - 1]}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="neighbors-row">
-              <div className="neighbor-container">
-                <PlayerArea
-                  player={orderedPlayers[this.props.positions[2] - 1]}
-                />
+        <div className="game-table">
+          <div className="others-row">
+            {this.playersRotatedAroundMe.length > 5 && (
+              <div className="other-container">
+                <PlayerArea player={this.playersRotatedAroundMe[5]} />
               </div>
-              <div className="neighbor-container">
-                <PlayerArea
-                  player={orderedPlayers[this.props.positions[3] - 1]}
-                />
+            )}
+            {this.playersRotatedAroundMe.length > 6 && (
+              <div className="other-container">
+                <PlayerArea player={this.playersRotatedAroundMe[6]} />
               </div>
+            )}
+          </div>
+          <div className="others-row">
+            {this.playersRotatedAroundMe.length > 3 && (
+              <div className="other-container">
+                <PlayerArea player={this.playersRotatedAroundMe[3]} />
+              </div>
+            )}
+            {this.playersRotatedAroundMe.length > 4 && (
+              <div className="other-container">
+                <PlayerArea player={this.playersRotatedAroundMe[4]} />
+              </div>
+            )}
+          </div>
+          <div className="neighbors-row">
+            <div className="neighbor-container">
+              <PlayerArea player={this.playersRotatedAroundMe[2]} />
             </div>
-            <div className="my-row">
-              <div className="my-container">
-                <PlayerArea
-                  player={orderedPlayers[this.props.positions[1] - 1]}
-                />
-              </div>
+            <div className="neighbor-container">
+              <PlayerArea player={this.playersRotatedAroundMe[1]} />
             </div>
           </div>
-        )}
+          <div className="my-row">
+            <div className="my-container">
+              <PlayerArea player={this.playersRotatedAroundMe[0]} />
+            </div>
+          </div>
+        </div>
+
         <div className="player-hand-navbar">
           <PlayerHand
             {...this.props}
-            me={me}
+            me={this.props.me}
             preparePlay={this.preparePlay}
             resetPlay={this.resetPlay}
             readyToPlay={this.props.readyToPlay}
+            playersUpdated={this.props.playersUpdated}
             numPlayers={this.props.players.length}
             players={this.props.players}
             updatePlayerInStore={this.updatePlayerInStore}
+            playerUpdated={this.playerUpdated}
           />
         </div>
       </div>
@@ -202,7 +171,15 @@ const mapStateToProps = (state, props) => {
     readyToPlay: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].readyToPlay
       : 0,
-    positions: state.boardPositions
+    playersUpdated: state.firestore.data.games
+      ? state.firestore.data.games[props.gameId].playersUpdated
+      : 0,
+    positions: state.boardPositions,
+    me: state.firestore.ordered[`games/${props.match.params.gameId}/players`]
+      ? state.firestore.ordered[
+          `games/${props.match.params.gameId}/players`
+        ].find(player => player.email === props.email)
+      : {}
   }
 }
 

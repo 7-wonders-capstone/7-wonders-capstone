@@ -61,8 +61,5 @@ export function createPlayers(total) {
     }
     players.push(newPlayer)
   }
-  console.log(startingDeck.length)
   return players
 }
-
-console.log(createPlayers(4))
