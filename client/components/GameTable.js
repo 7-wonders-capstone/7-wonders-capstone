@@ -5,6 +5,8 @@ import {compose} from 'redux'
 import PlayerArea from './PlayerArea'
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
+import {Menu} from 'semantic-ui-react'
+import Chat from './Chat'
 
 class GameTable extends React.Component {
   componentDidMount() {
@@ -84,6 +86,9 @@ class GameTable extends React.Component {
 
     return (
       <div>
+        <Menu vertical>
+          <Chat />
+        </Menu>
         {this.props.positions[1] && (
           <div className="game-table">
             <div className="others-row">
