@@ -6,6 +6,8 @@ import PlayerArea from './PlayerArea'
 
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
+import {Menu} from 'semantic-ui-react'
+import Chat from './Chat'
 
 class GameTable extends React.Component {
   constructor(props) {
@@ -71,6 +73,9 @@ class GameTable extends React.Component {
   render() {
     return (
       <div>
+        <Menu vertical>
+          <Chat />
+        </Menu>
         <div className="game-table">
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (

@@ -9,8 +9,7 @@ class Card extends React.Component {
   render() {
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
-    console.log('card props', this.props)
-    console.log('playCard method ', playCard(this.props.me, this.props.card))
+
     return (
       <div className={style}>
         <img

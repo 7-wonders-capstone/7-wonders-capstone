@@ -38,7 +38,10 @@ class StartGameButton extends React.Component {
           collection: 'users',
           doc: player.email
         },
-        {usersGameStarted: true}
+        {
+          usersGameStarted: true,
+          activeGameAbandonded: false
+        }
       )
     })
   }
