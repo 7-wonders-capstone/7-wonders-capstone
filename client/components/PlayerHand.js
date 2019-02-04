@@ -81,7 +81,8 @@ export default compose(
     return [
       {
         collection: `games/${props.gameId}/players`,
-        doc: props.email
+        doc: props.email,
+        storeAs: 'playerForPlayerHand'
       }
     ]
   })
