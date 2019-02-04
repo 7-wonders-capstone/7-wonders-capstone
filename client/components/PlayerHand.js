@@ -41,7 +41,6 @@ class PlayerHand extends React.Component {
   }
 
   render() {
-    console.log('HAND', this.props.me)
     return (
       <div className="player-hand">
         {this.props.me &&
