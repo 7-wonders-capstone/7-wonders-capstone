@@ -367,7 +367,7 @@ const ageOneDeck = [
     resources: ['stone/wood'],
     type: 'basicResource',
     numPlayers: 3,
-    imageURL: '/img/age1/clay-pit-3.jpg',
+    imageURL: '/img/age1/timber-yard-3.jpg',
     snapshotURL: '/img/snapshot/timber_yard.jpg'
   },
   {
