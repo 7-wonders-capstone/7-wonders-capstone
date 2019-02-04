@@ -33,14 +33,16 @@ class GameTable extends React.Component {
     )
   }
 
-  playerUpdated = num => {
+  playerUpdated = player => {
+    const updated = this.props.playersUpdated.slice()
+    updated[player.number - 1] = true
     this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
       },
       {
-        playersUpdated: this.props.playersUpdated + num
+        playersUpdated: updated
       }
     )
   }
@@ -52,8 +54,19 @@ class GameTable extends React.Component {
         doc: `${this.props.gameId}`
       },
       {
-        readyToPlay: 0,
-        playersUpdated: 0
+        readyToPlay: 0
+      }
+    )
+  }
+
+  resetUpdate = async () => {
+    await this.props.firestore.update(
+      {
+        collection: 'games',
+        doc: `${this.props.gameId}`
+      },
+      {
+        playersUpdated: Array(this.props.players.length).fill(false)
       }
     )
   }
@@ -68,7 +81,9 @@ class GameTable extends React.Component {
         player
       )
       .then(() => {
-        this.playerUpdated(num)
+        if (num !== 0) {
+          this.playerUpdated(player)
+        }
       })
   }
 
@@ -149,10 +164,12 @@ class GameTable extends React.Component {
 
         <div className="player-hand-navbar">
           <PlayerHand
-            {...this.props}
-            me={this.props.me}
+            //{...this.props}
+            email={this.props.email}
+            gameId={this.props.gameId}
             preparePlay={this.preparePlay}
             resetPlay={this.resetPlay}
+            resetUpdate={this.resetUpdate}
             readyToPlay={this.props.readyToPlay}
             playersUpdated={this.props.playersUpdated}
             numPlayers={this.props.players.length}
@@ -196,6 +213,9 @@ export default compose(
       {
         collection: 'games',
         doc: props.gameId
+      },
+      {
+        collection: `games/${props.gameId}/players`
       }
     ]
   })
