@@ -269,7 +269,7 @@ const ageOneDeck = [
   },
   {
     name: 'Clay Pool',
-    resources: ['clay'],
+    resources: ['brick'],
     type: 'basicResource',
     numPlayers: 3,
     imageURL: '/img/age1/clay-pool-3.jpg',
@@ -277,7 +277,7 @@ const ageOneDeck = [
   },
   {
     name: 'Clay Pool',
-    resources: ['clay'],
+    resources: ['brick'],
     type: 'basicResource',
     numPlayers: 5,
     imageURL: '/img/age1/clay-pool-5.jpg',
@@ -355,7 +355,7 @@ const ageOneDeck = [
   {
     name: 'Clay Pit',
     costs: [1],
-    resources: ['clay/metal'],
+    resources: ['brick/metal'],
     type: 'basicResource',
     numPlayers: 3,
     imageURL: '/img/age1/clay-pit-3.jpg',

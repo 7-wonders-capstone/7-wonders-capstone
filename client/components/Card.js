@@ -3,14 +3,13 @@ import {connect} from 'react-redux'
 import {selectCard} from '../store/selectedCard'
 import {Button} from 'semantic-ui-react'
 import playCard from '../../cardGenerator/checkCardPlay'
+import TradeModal from './TradeModal'
 // import {playWonderCard} from '../../cardGenerator/checkWonderCardPlay'
 
 class Card extends React.Component {
   render() {
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
-
-    console.log(this.props.card)
 
     return (
       <div className={style}>
@@ -21,6 +20,10 @@ class Card extends React.Component {
         />
         {selected && (
           <div className="card-buttons">
+            {this.props.selectedCard.costs &&
+              typeof this.props.selectedCard.costs[0] !== 'number' && (
+                <TradeModal {...this.props} />
+              )}
             <Button
               content="Play"
               size="small"
