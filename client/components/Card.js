@@ -11,8 +11,6 @@ class Card extends React.Component {
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
 
-    console.log('Card props: ', this.props)
-
     return (
       <div className={style}>
         <img
