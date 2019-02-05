@@ -163,3 +163,10 @@ span.coin {
 .other-container {
   margin: 25px 150px;
 }
+
+/*//// Trade Items ////////*/
+
+.trade-item-selected {
+  border: 1px maroon solid;
+  border-radius: 2px;
+}

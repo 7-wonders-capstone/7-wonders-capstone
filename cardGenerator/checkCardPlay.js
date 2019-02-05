@@ -1,4 +1,4 @@
-const playCard = (player, card, players) => {
+const playCard = (player, card) => {
   if (!card.costs) {
     return true
   } else if (
@@ -16,7 +16,7 @@ const playCard = (player, card, players) => {
         canPlay = false
       } else if (
         typeof cost === 'string' &&
-        !player.availableResources.includes(cost)
+        !player.availableResources.some(resource => resource.includes(cost))
       ) {
         canPlay = false
       }
@@ -24,10 +24,6 @@ const playCard = (player, card, players) => {
     return canPlay
   }
 }
-
-// } else if (checkTrading()) {
-//   return true // return a boolean.
-//   // TODO: need another function exchangeCoins() for Cody.
 
 const board = {
   name: 'Babylon',
