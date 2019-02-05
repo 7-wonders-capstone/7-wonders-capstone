@@ -1,3 +1,5 @@
+/*eslint-disable complexity */
+
 function militaryComparison(player, playerList, age) {
   const leftNeighbor = playerList.find(
     neighbor => neighbor.number === player.leftPlayerNumber
@@ -37,3 +39,5 @@ function militaryComparison(player, playerList, age) {
   }
   return player
 }
+
+module.exports = militaryComparison
