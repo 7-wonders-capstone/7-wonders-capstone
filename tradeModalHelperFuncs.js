@@ -21,7 +21,7 @@ const findSnapshot = resourceName => {
 
 export const neighborsAvailableResources = player => {
   // Creates an array of player's basic, advanced, and board's base resources.
-  return [
+  const neighborsResources = [
     ...player.playedCards
       .filter(
         card =>
@@ -33,6 +33,8 @@ export const neighborsAvailableResources = player => {
   ].map(resource => {
     return {name: resource, snapshotURL: findSnapshot(resource)}
   })
+
+  return neighborsResources
 }
 
 export const resourcesNeeded = (player, selectedCard) => {
