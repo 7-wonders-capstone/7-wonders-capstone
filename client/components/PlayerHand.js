@@ -20,7 +20,6 @@ class PlayerHand extends React.Component {
     }
   }
   async componentDidUpdate() {
-    //console.log(this.props.me)
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
@@ -123,7 +122,6 @@ class PlayerHand extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
     return (
       <div className="player-hand">
         {this.props.me &&
