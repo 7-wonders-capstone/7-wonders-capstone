@@ -24,8 +24,8 @@ class QuitMessage extends Component {
         <div>
           <Message>
             <Message.Header style={{marginBottom: '25px'}}>
-              We appologize, but a user has quit the game. Please click here to
-              return to the lobby.
+              A user has quit the game. Please click here to return to the
+              lobby.
             </Message.Header>
             <Button onClick={this.handleClick}>LOBBY</Button>
           </Message>
