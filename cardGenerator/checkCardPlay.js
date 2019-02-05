@@ -1,4 +1,4 @@
-const playCard = (player, card, players) => {
+const playCard = (player, card) => {
   if (!card.costs) {
     return true
   } else if (
@@ -24,10 +24,6 @@ const playCard = (player, card, players) => {
     return canPlay
   }
 }
-
-// } else if (checkTrading()) {
-//   return true // return a boolean.
-//   // TODO: need another function exchangeCoins() for Cody.
 
 const board = {
   name: 'Babylon',

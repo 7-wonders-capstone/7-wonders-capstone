@@ -5,6 +5,7 @@ import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 const playerUpdater = require('../../playerUpdater')
 const handSwap = require('../../handSwap')
+import playCard from '../../cardGenerator/checkCardPlay'
 
 class PlayerHand extends React.Component {
   async componentDidUpdate() {
@@ -40,8 +41,8 @@ class PlayerHand extends React.Component {
         })
     }
   }
-
   render() {
+    console.log(this.props)
     return (
       <div className="player-hand">
         {this.props.me &&
@@ -50,6 +51,7 @@ class PlayerHand extends React.Component {
             return (
               <div key={card.imageURL}>
                 <Card
+                  canPlay={playCard(this.props.me, this.props.selectedCard)}
                   card={card}
                   preparePlay={this.props.preparePlay}
                   resetPlay={this.props.resetPlay}
