@@ -6,7 +6,7 @@ import Coins from './Coins'
 
 class PlayerArea extends Component {
   render() {
-    const playerEmail = this.props.player.email // this does not change. this.props.player is a constant from GameTable
+    const playerEmail = this.props.player.email
     const livePlayerObj = this.props.players.find(
       player => player.email === playerEmail
     )
@@ -17,13 +17,12 @@ class PlayerArea extends Component {
           <Grid.Row stretched>
             <Segment>
               <Container>
-                <Coins coins={this.props.player.coins} />
-                {/* <PlayedCards playedCards={this.props.player.playedCards} /> */}
+                <Coins coins={livePlayerObj.coins} />
                 <PlayedCards playedCards={livePlayerObj.playedCards} />
 
                 <GameBoard
                   board={this.props.player.board}
-                  coins={this.props.player.coins}
+                  // coins={this.props.player.coins}
                 />
               </Container>
             </Segment>
