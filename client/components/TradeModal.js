@@ -20,7 +20,6 @@ class TradeModal extends Component {
         <Button onClick={this.closeConfigShow(true, true)}>
           Buy Resources
         </Button>
-        {/* <Button onClick={this.closeConfigShow(true, false)}>No Close on Dimmer Click</Button> */}
 
         <Modal
           open={open}
