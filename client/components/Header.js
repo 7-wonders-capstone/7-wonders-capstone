@@ -49,7 +49,6 @@ class NavBar extends React.Component {
               >
                 <LogInModal />
               </Modal>
-              {/* <Link to="/login">Login</Link> */}
               <Link to="/signup">Sign Up</Link>
             </div>
           ) : (
