@@ -13,11 +13,16 @@ export const neighborsAvailableResources = player => {
   ]
 
   // Creates an object of players avaialable resources and their quantity.
-  return arrOfBasicAndAdvancedResources.reduce((obj, resource) => {
-    if (!obj[resource]) obj[resource] = 1
-    else obj[resource] = obj[resource] + 1
-    return obj
-  }, {})
+  const objOfBasicAndAdvancedResources = arrOfBasicAndAdvancedResources.reduce(
+    (obj, resource) => {
+      if (!obj[resource]) obj[resource] = 1
+      else obj[resource] = obj[resource] + 1
+      return obj
+    },
+    {}
+  )
+
+  return objOfBasicAndAdvancedResources
 }
 
 const checkTrading = (player, selectedCard, players) => {
@@ -57,13 +62,40 @@ const checkTrading = (player, selectedCard, players) => {
 
   // Array of resources needed that neighbors have.
   const resourcesNeededThatNeighborsHave = resourcesNeeded.filter(resource => {
-    if (leftNeighborAvailableResources[resource] > 0) {
-      leftNeighborAvailableResources[resource]--
-      return resource
-    } else if (rightNeighborAvailableResources[resource] > 0) {
-      rightNeighborAvailableResources[resource]--
-      return resource
+    let isAvailable = false
+
+    if (
+      Object.entries(leftNeighborAvailableResources).some(entry =>
+        entry[0].includes(resource)
+      )
+    ) {
+      Object.entries(leftNeighborAvailableResources).forEach(entry => {
+        if (entry[0].includes(resource) && entry[1] > 1) {
+          isAvailable = true
+          leftNeighborAvailableResources[entry[0]]--
+        } else if (entry[0].includes(resource) && entry[1] === 1) {
+          isAvailable = true
+          delete leftNeighborAvailableResources[entry[0]]
+        }
+      })
     }
+    if (
+      Object.entries(rightNeighborAvailableResources).some(entry =>
+        entry[0].includes(resource)
+      )
+    ) {
+      Object.entries(rightNeighborAvailableResources).forEach(entry => {
+        if (entry[0].includes(resource) && entry[1] > 1) {
+          isAvailable = true
+          rightNeighborAvailableResources[entry[0]]--
+        } else if (entry[0].includes(resource) && entry[1] === 1) {
+          isAvailable = true
+          delete rightNeighborAvailableResources[entry[0]]
+        }
+      })
+    }
+
+    return isAvailable
   })
 
   // Returns true if neighbors have resources needed and player has enough coins.

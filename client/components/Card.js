@@ -10,7 +10,6 @@ class Card extends React.Component {
     const canPlay = this.props.canPlay
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
-    console.log('Players neighbors shiz', this.props.players)
     return (
       <div className={style}>
         <img
@@ -26,9 +25,8 @@ class Card extends React.Component {
                 this.props.selectedCard,
                 this.props.players
               ) &&
-              typeof this.props.selectedCard.costs[0] !== 'number' && (
-                <TradeModal {...this.props} />
-              )}
+              typeof this.props.selectedCard.costs[0] !== 'number' &&
+              !canPlay && <TradeModal {...this.props} />}
             {canPlay && (
               <Button
                 content="Play"
