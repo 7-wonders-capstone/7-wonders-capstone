@@ -12,7 +12,6 @@ const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
 
 import playCard from '../../cardGenerator/checkCardPlay'
 
-
 class PlayerHand extends React.Component {
   constructor() {
     super()
@@ -35,6 +34,7 @@ class PlayerHand extends React.Component {
     const ready = this.props.playersUpdated.length === this.props.numPlayers
 
     if (
+      this.props.me.hand &&
       this.props.me.hand.length <= 1 &&
       this.props.me.number === 1 &&
       this.props.age !== 3 &&
