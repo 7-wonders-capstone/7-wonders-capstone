@@ -16,7 +16,7 @@ const playCard = (player, card) => {
         canPlay = false
       } else if (
         typeof cost === 'string' &&
-        !player.availableResources.includes(cost)
+        !player.availableResources.some(resource => resource.includes(cost))
       ) {
         canPlay = false
       }
