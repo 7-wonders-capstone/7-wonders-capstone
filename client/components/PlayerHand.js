@@ -67,7 +67,7 @@ class PlayerHand extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
     me: state.firestore.ordered.playerForPlayerHand

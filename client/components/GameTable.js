@@ -104,38 +104,59 @@ class GameTable extends React.Component {
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
               <div className="other-container">
-                <PlayerArea player={this.playersRotatedAroundMe[5]} />
+                <PlayerArea
+                  player={this.playersRotatedAroundMe[5]}
+                  players={this.props.players}
+                />
               </div>
             )}
             {this.playersRotatedAroundMe.length > 6 && (
               <div className="other-container">
-                <PlayerArea player={this.playersRotatedAroundMe[6]} />
+                <PlayerArea
+                  player={this.playersRotatedAroundMe[6]}
+                  players={this.props.players}
+                />
               </div>
             )}
           </div>
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 3 && (
               <div className="other-container">
-                <PlayerArea player={this.playersRotatedAroundMe[3]} />
+                <PlayerArea
+                  player={this.playersRotatedAroundMe[3]}
+                  players={this.props.players}
+                />
               </div>
             )}
             {this.playersRotatedAroundMe.length > 4 && (
               <div className="other-container">
-                <PlayerArea player={this.playersRotatedAroundMe[4]} />
+                <PlayerArea
+                  player={this.playersRotatedAroundMe[4]}
+                  players={this.props.players}
+                />
               </div>
             )}
           </div>
           <div className="neighbors-row">
             <div className="neighbor-container">
-              <PlayerArea player={this.playersRotatedAroundMe[2]} />
+              <PlayerArea
+                player={this.playersRotatedAroundMe[2]}
+                players={this.props.players}
+              />
             </div>
             <div className="neighbor-container">
-              <PlayerArea player={this.playersRotatedAroundMe[1]} />
+              <PlayerArea
+                player={this.playersRotatedAroundMe[1]}
+                players={this.props.players}
+              />
             </div>
           </div>
           <div className="my-row">
             <div className="my-container">
-              <PlayerArea player={this.playersRotatedAroundMe[0]} />
+              <PlayerArea
+                player={this.playersRotatedAroundMe[0]}
+                players={this.props.players}
+              />
             </div>
           </div>
         </div>
