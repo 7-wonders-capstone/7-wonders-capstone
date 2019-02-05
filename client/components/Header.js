@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import QuitGame from './QuitGame'
+import {Button, Modal} from 'semantic-ui-react'
+import LogInModal from './LogInModal'
 
-class Header extends React.Component {
+class NavBar extends React.Component {
   // logOut = () => {
   //   const {gameId} = this.props
   //   const email = this.props.auth.email
@@ -37,7 +39,17 @@ class Header extends React.Component {
         <nav>
           {this.props.auth.isEmpty ? (
             <div>
-              <Link to="/login">Login</Link>
+              <Modal
+                trigger={
+                  <Button inverted color="teal">
+                    Log In
+                  </Button>
+                }
+                centered={false}
+              >
+                <LogInModal />
+              </Modal>
+              {/* <Link to="/login">Login</Link> */}
               <Link to="/signup">Sign Up</Link>
             </div>
           ) : (
@@ -82,4 +94,4 @@ export default compose(
       }
     ]
   })
-)(Header)
+)(NavBar)
