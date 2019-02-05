@@ -17,7 +17,7 @@ class TradeModal extends Component {
 
     return (
       <div>
-        <Button onClick={this.closeConfigShow(false, true)}>
+        <Button onClick={this.closeConfigShow(true, true)}>
           Buy Resources
         </Button>
         {/* <Button onClick={this.closeConfigShow(true, false)}>No Close on Dimmer Click</Button> */}
@@ -31,10 +31,8 @@ class TradeModal extends Component {
           <Modal.Content image>
             <Image wrapped size="medium" src={selectedCard.imageURL} />
             <Modal.Description>
-              <Header>Resources Available</Header>
-              <p>Testing.</p>
-              <p>Is it okay to use this photo?</p>
-              <TradeItems />
+              <Header>Neigbors' Resources Available</Header>
+              <TradeItems {...this.props} />
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>

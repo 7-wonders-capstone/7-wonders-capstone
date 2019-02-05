@@ -1,5 +1,5 @@
 // Helper function for checkTrading function below
-const neighborsAvailableResources = player => {
+export const neighborsAvailableResources = player => {
   // Creates an array of player's basic, advanced, and board's base resources.
   const arrOfBasicAndAdvancedResources = [
     ...player.playedCards

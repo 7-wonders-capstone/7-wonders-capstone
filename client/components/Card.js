@@ -22,7 +22,10 @@ class Card extends React.Component {
         />
         {selected && (
           <div className="card-buttons">
-            <TradeModal selectedCard={this.props.selectedCard} />
+            {this.props.selectedCard.costs &&
+              typeof this.props.selectedCard.costs[0] !== 'number' && (
+                <TradeModal {...this.props} />
+              )}
             <Button
               content="Play"
               size="small"
