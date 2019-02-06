@@ -12,7 +12,7 @@ class SignUpModal extends Component {
         <Modal.Content>
           <Grid>
             <Grid.Column width={5}>
-              <Image wrapped size="large" src="img/modalPic.png" />
+              <Image wrapped size="large" src="img/modalPic.png" rounded />
             </Grid.Column>
             <Grid.Column width={9}>
               <SignUp />
