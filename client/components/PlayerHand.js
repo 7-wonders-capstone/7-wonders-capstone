@@ -11,6 +11,7 @@ const calculateScience = require('../../calculateScience')
 const militaryComparison = require('../../militaryComparison')
 const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
 const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
+const determineReward = require('../../determineReward')
 
 import playCard from '../../cardGenerator/checkCardPlay'
 import {selectAction} from '../store/selectedAction'
@@ -161,6 +162,21 @@ class PlayerHand extends React.Component {
         .then(() => {
           updatedMilitary.forEach(player => {
             player.victoryPoints += calculateScience(player)
+          })
+        })
+        .then(() => {
+          updatedMilitary.forEach(player => {
+            player.endEffects.forEach(effect => {
+              player.victoryPoints +=
+                determineReward(
+                  this.props.players,
+                  effect.from,
+                  effect.direction,
+                  player.number,
+                  player.leftPlayerNumber,
+                  player.rightPlayerNumber
+                ) * effect.amount
+            })
           })
         })
         .then(() => {
