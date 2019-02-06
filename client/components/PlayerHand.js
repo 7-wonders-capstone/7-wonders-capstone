@@ -3,8 +3,10 @@ import Card from './Card'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import GameOverModal from './gameOverModal'
 const playerUpdater = require('../../playerUpdater')
 const handSwap = require('../../handSwap')
+const calculateScience = require('../../calculateScience')
 
 const militaryComparison = require('../../militaryComparison')
 const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
@@ -106,6 +108,58 @@ class PlayerHand extends React.Component {
       this.setState({
         updating: false
       })
+    } else if (
+      this.props.me.hand &&
+      this.props.me.hand.length <= 1 &&
+      this.props.me.number === 1 &&
+      this.props.age === 3 &&
+      !this.state.updating
+    ) {
+      console.log('game over')
+      this.setState({
+        updating: true
+      })
+      let playersToUpdate = []
+      let updatedMilitary = []
+      await this.props.firestore
+        .collection(`/games/${this.props.gameId}/players`)
+        .get()
+        .then(querySnapshot =>
+          querySnapshot.forEach(player => {
+            playersToUpdate.push(player.data())
+          })
+        )
+        .then(() => {
+          playersToUpdate.forEach(player =>
+            updatedMilitary.push(
+              militaryComparison(player, this.props.players, this.props.age)
+            )
+          )
+        })
+        .then(() => {
+          updatedMilitary.forEach(player => {
+            player.victoryPoints += calculateScience(player)
+          })
+        })
+        .then(() => {
+          updatedMilitary.forEach(async player => {
+            await this.props.updatePlayerInStore(player, 0)
+          })
+        })
+        .then(async () => {
+          await this.props.firestore.update(
+            {
+              collection: 'games',
+              doc: `${this.props.gameId}`
+            },
+            {
+              gameEnded: true
+            }
+          )
+        })
+      this.setState({
+        updating: false
+      })
     } else if (ready && this.props.me.number === 1) {
       this.props.resetUpdate()
       let playersToSwap = []
@@ -149,6 +203,11 @@ class PlayerHand extends React.Component {
               </div>
             )
           })}
+        <GameOverModal
+          open={this.props.gameEnded}
+          players={this.props.players}
+          gameId={this.props.gameId}
+        />
       </div>
     )
   }
