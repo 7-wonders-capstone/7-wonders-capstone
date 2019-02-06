@@ -2,6 +2,7 @@ import React from 'react'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {createPlayers} from '../../playerGenerator'
+import {Button} from 'semantic-ui-react'
 
 class StartGameButton extends React.Component {
   startGame = players => {
@@ -62,13 +63,18 @@ class StartGameButton extends React.Component {
     const numOfPlayers = this.props.players.length
     return (
       <div>
-        <button
+        <Button
+          disabled={numOfPlayers < 3 || numOfPlayers > 7}
+          onClick={() => this.startGame(players)}
+          content="Start Game"
+        />
+        {/* <button
           type="button"
           onClick={() => this.startGame(players)}
           disabled={numOfPlayers < 3 || numOfPlayers > 7}
         >
           Start Game
-        </button>
+        </button> */}
       </div>
     )
   }

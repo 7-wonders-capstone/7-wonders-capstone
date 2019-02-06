@@ -14,7 +14,9 @@ class GameRoomSnapshot extends React.Component {
     return (
       <div className="gameroom-snapshot">
         <Card>
-          <Card.Header>Room #{game.id}</Card.Header>
+          <Card.Header textAlign="center" className="snapshot-header">
+            Room #{game.id}
+          </Card.Header>
           <Card.Content>
             <WaitingPlayers {...this.props} />
             <div>
