@@ -5,6 +5,7 @@ import {Button} from 'semantic-ui-react'
 import TradeModal from './TradeModal'
 import checkTrading from '../../cardGenerator/checkTrading'
 import {selectAction} from '../store/selectedAction'
+import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
 
 class Card extends React.Component {
   render() {
