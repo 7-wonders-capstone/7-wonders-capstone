@@ -27,15 +27,37 @@ class PlayerHand extends React.Component {
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
-      let updatedPlayer = playerUpdater(
-        playerCopy,
-        this.props.players,
-        this.props.selectedCard,
-        0, // trade value, not yet used, but exists as parameter on playerUpdater
-        this.props.selectedAction
-      )
-      await this.props.updatePlayerInStore(updatedPlayer, 1)
-      this.props.selectAction('')
+
+      this.props.firestore
+        .collection('games')
+        .doc(this.props.gameId)
+        .get()
+        .then(result => {
+          const playerKey = playerCopy.email.slice(0, -4) + 'TradeCost'
+          const tradeCost = result.data()[playerKey]
+
+          let updatedPlayer = playerUpdater(
+            playerCopy,
+            this.props.players,
+            this.props.selectedCard,
+            tradeCost,
+            this.props.selectedAction
+          )
+          this.props.updatePlayerInStore(updatedPlayer, 1)
+          this.props.selectAction('')
+        })
+        .then(() => {
+          this.props.players.forEach(player => {
+            const playerKey = player.email.slice(0, -4) + 'TradeCost'
+            this.props.firestore.update(
+              {
+                collection: 'games',
+                doc: `${this.props.gameId}`
+              },
+              {[playerKey]: 0}
+            )
+          })
+        })
     }
     const ready = this.props.playersUpdated.length === this.props.numPlayers
 
@@ -181,7 +203,6 @@ class PlayerHand extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
     return (
       <div className="player-hand">
         {this.props.me &&
@@ -199,6 +220,7 @@ class PlayerHand extends React.Component {
                   me={this.props.me}
                   players={this.props.players}
                   updatePlayerInStore={this.props.updatePlayerInStore}
+                  gameId={this.props.gameId}
                 />
               </div>
             )

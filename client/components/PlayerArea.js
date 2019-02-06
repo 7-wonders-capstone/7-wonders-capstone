@@ -10,7 +10,7 @@ class PlayerArea extends Component {
     const livePlayerObj = this.props.players.find(
       player => player.email === playerEmail
     )
-    console.log(livePlayerObj)
+
     return (
       <div>
         <Grid columns={7} divided>

@@ -1,3 +1,5 @@
+/*eslint-disable complexity */
+
 const findSnapshot = resourceName => {
   switch (resourceName) {
     case 'brick':
@@ -14,6 +16,18 @@ const findSnapshot = resourceName => {
       return '/img/snapshot/glassworks.jpg'
     case 'silk':
       return '/img/snapshot/loom.jpg'
+    case 'brick/metal':
+      return '/img/snapshot/clay_pit.jpg'
+    case 'stone/wood':
+      return '/img/snapshot/timber_yard.jpg'
+    case 'stone/brick':
+      return '/img/snapshot/excavation.jpg'
+    case 'wood/metal':
+      return '/img/snapshot/forest_cave.jpg'
+    case 'wood/brick':
+      return '/img/snapshot/tree_farm.jpg'
+    case 'stone/metal':
+      return '/img/snapshot/mine.jpg'
     default:
       console.log('image not found')
   }

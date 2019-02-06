@@ -44,6 +44,17 @@ class StartGameButton extends React.Component {
         }
       )
     })
+
+    players.forEach(player => {
+      const playerTradeCost = player.email.slice(0, -4) + 'TradeCost'
+      this.props.firestore.update(
+        {
+          collection: 'games',
+          doc: `${gameId}`
+        },
+        {[playerTradeCost]: 0}
+      )
+    })
   }
 
   render() {
