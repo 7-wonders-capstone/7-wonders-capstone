@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Grid, Image, Segment, Card} from 'semantic-ui-react'
+import {Grid, Segment, Header} from 'semantic-ui-react'
 import PlayedCardIcons from './PlayedCardIcons'
 
 class PlayedCards extends Component {
@@ -8,34 +8,46 @@ class PlayedCards extends Component {
       <Segment>
         <Grid relaxed columns={7}>
           <Grid.Column>
-            <div>
+            <Header as="h6">
               Basic Resources
               <PlayedCardIcons iconType="basicResource" {...this.props} />
-            </div>
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Advanced Resources
-            <PlayedCardIcons iconType="advancedResource" {...this.props} />
+            <Header as="h6">
+              Advanced Resources
+              <PlayedCardIcons iconType="advancedResource" {...this.props} />
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Science
-            <PlayedCardIcons iconType="science" {...this.props} />
+            <Header as="h6">
+              Science
+              <PlayedCardIcons iconType="science" {...this.props} />
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Civilian
-            <PlayedCardIcons iconType="civilian" {...this.props} />
+            <Header as="h6">
+              Civilian
+              <PlayedCardIcons iconType="civilian" {...this.props} />
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Economic
-            <PlayedCardIcons iconType="economic" {...this.props} />
+            <Header as="h6">
+              Economic
+              <PlayedCardIcons iconType="economic" {...this.props} />
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Military
-            <PlayedCardIcons iconType="military" {...this.props} />
+            <Header as="h6">
+              Military
+              <PlayedCardIcons iconType="military" {...this.props} />
+            </Header>
           </Grid.Column>
           <Grid.Column>
-            Guild
-            <PlayedCardIcons iconType="guild" {...this.props} />
+            <Header as="h6">
+              Guild
+              <PlayedCardIcons iconType="guild" {...this.props} />
+            </Header>
           </Grid.Column>
         </Grid>
       </Segment>

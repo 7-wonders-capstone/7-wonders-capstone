@@ -10,20 +10,21 @@ class PlayerArea extends Component {
     const livePlayerObj = this.props.players.find(
       player => player.email === playerEmail
     )
-
+    console.log(livePlayerObj)
     return (
       <div>
         <Grid columns={7} divided>
           <Grid.Row stretched>
             <Segment>
               <Container>
-                <Coins coins={livePlayerObj.coins} />
+                <Coins
+                  coins={livePlayerObj.coins}
+                  points={livePlayerObj.victoryPoints}
+                  email={playerEmail}
+                />
                 <PlayedCards playedCards={livePlayerObj.playedCards} />
 
-                <GameBoard
-                  board={this.props.player.board}
-                  // coins={this.props.player.coins}
-                />
+                <GameBoard board={this.props.player.board} />
               </Container>
             </Segment>
           </Grid.Row>
