@@ -135,6 +135,7 @@ class PlayerHand extends React.Component {
               <div key={card.imageURL}>
                 <Card
                   canPlay={playCard(this.props.me, this.props.selectedCard)}
+                  //check validation of what has been currently built in canPlayWonder - if stage 1, check if stage 2.
                   card={card}
                   preparePlay={this.props.preparePlay}
                   resetPlay={this.props.resetPlay}
