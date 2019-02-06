@@ -1,6 +1,7 @@
 import React from 'react'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import {Button} from 'semantic-ui-react'
 
 class LeaveGameButton extends React.Component {
   leaveGame = () => {
@@ -25,9 +26,10 @@ class LeaveGameButton extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={this.leaveGame}>
+        <Button onClick={this.leaveGame} content="Leave Game" />
+        {/* <button type="button" onClick={this.leaveGame}>
           Leave Game
-        </button>
+        </button> */}
       </div>
     )
   }

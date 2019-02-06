@@ -4,7 +4,7 @@ class WaitingPlayers extends React.Component {
   render() {
     const {players} = this.props
     return (
-      <div>
+      <div className="waiting-players">
         Current players joined:
         <div>
           <ul>

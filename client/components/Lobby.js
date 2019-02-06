@@ -38,6 +38,7 @@ class Lobby extends React.Component {
           color="blue"
           style={{margin: '20px'}}
           onClick={this.createGameRoom}
+          size="huge"
         >
           Create Game Room
         </Button>
