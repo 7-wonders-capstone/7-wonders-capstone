@@ -19,6 +19,7 @@ class PlayerHand extends React.Component {
       updating: false
     }
   }
+  // eslint-disable-next-line complexity
   async componentDidUpdate() {
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
@@ -26,7 +27,9 @@ class PlayerHand extends React.Component {
       let updatedPlayer = playerUpdater(
         playerCopy,
         this.props.players,
-        this.props.selectedCard
+        this.props.selectedCard,
+        0, // trade value, not yet used, but exists as parameter on playerUpdater
+        this.props.selectedAction
       )
       await this.props.updatePlayerInStore(updatedPlayer, 1)
     }
@@ -148,9 +151,10 @@ class PlayerHand extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
+    selectedAction: state.selectedAction,
     me: state.firestore.ordered.playerForPlayerHand
       ? state.firestore.ordered.playerForPlayerHand[0]
       : {}
