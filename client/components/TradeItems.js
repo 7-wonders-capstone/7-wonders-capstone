@@ -7,10 +7,8 @@ import {
 import TradeItem from './TradeItem'
 
 const TradeItems = props => {
-  const {me, players, card} = props
+  const {me, card, leftPlayer, rightPlayer} = props
   const neededResourcesFromNeighbors = resourcesNeeded(me, card)
-  const [leftPlayer] = players.filter(p => me.leftPlayerNumber === p.number)
-  const [rightPlayer] = players.filter(p => me.rightPlayerNumber === p.number)
   const neededLeftPlayerResources = neighborsAvailableResources(
     leftPlayer
   ).filter(resource => {
@@ -32,7 +30,16 @@ const TradeItems = props => {
         <List selection verticalAlign="middle">
           <Header>Left Neighbor</Header>
           {neededLeftPlayerResources.map((resource, idx) => {
-            return <TradeItem key={idx} resource={resource} />
+            return (
+              <TradeItem
+                key={idx}
+                resource={resource}
+                direction="left"
+                leftPlayer={leftPlayer}
+                trade={props.trade}
+                unTrade={props.unTrade}
+              />
+            )
           })}
         </List>
       ) : null}
@@ -41,7 +48,16 @@ const TradeItems = props => {
         <List selection verticalAlign="middle">
           <Header>Right Neighbor</Header>
           {neededRightPlayerResources.map((resource, idx) => {
-            return <TradeItem key={idx} resource={resource} />
+            return (
+              <TradeItem
+                key={idx}
+                resource={resource}
+                direction="right"
+                rightPlayer={rightPlayer}
+                trade={props.trade}
+                unTrade={props.unTrade}
+              />
+            )
           })}
         </List>
       ) : null}
