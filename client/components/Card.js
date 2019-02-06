@@ -32,6 +32,7 @@ class Card extends React.Component {
             {canPlay && (
               <Button
                 content="Play"
+                disabled={this.props.selectedAction !== ''}
                 size="small"
                 onClick={() => {
                   this.props.preparePlay()
@@ -41,13 +42,18 @@ class Card extends React.Component {
             )}
             <Button
               content="Discard"
+              disabled={this.props.selectedAction !== ''}
               size="small"
               onClick={() => {
                 this.props.preparePlay()
                 this.props.selectAction('discard')
               }}
             />
-            <Button content="Build Wonder" size="small" />
+            <Button
+              content="Build Wonder"
+              size="small"
+              disabled={this.props.selectedAction !== ''}
+            />
           </div>
         )}
       </div>
@@ -57,7 +63,8 @@ class Card extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    selectedCard: state.selectedCard
+    selectedCard: state.selectedCard,
+    selectedAction: state.selectedAction
   }
 }
 

@@ -11,6 +11,7 @@ const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
 const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
 
 import playCard from '../../cardGenerator/checkCardPlay'
+import {selectAction} from '../store/selectedAction'
 
 class PlayerHand extends React.Component {
   constructor() {
@@ -32,6 +33,7 @@ class PlayerHand extends React.Component {
         this.props.selectedAction
       )
       await this.props.updatePlayerInStore(updatedPlayer, 1)
+      this.props.selectAction('')
     }
     const ready = this.props.playersUpdated.length === this.props.numPlayers
 
@@ -161,8 +163,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    selectAction: action => dispatch(selectAction(action))
+  }
+}
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(props => {
     return [
       {
