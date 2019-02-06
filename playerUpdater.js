@@ -2,12 +2,24 @@
 
 const determineReward = require('./determineReward')
 
-const playerUpdater = (player, playerList, playedCard, tradeCost = 0) => {
-  player.playedCards.push(playedCard)
+const playerUpdater = (
+  player,
+  playerList,
+  playedCard,
+  tradeCost = 0,
+  action
+) => {
   player.hand = player.hand.filter(
     card =>
       card.name !== playedCard.name || card.numPlayers !== playedCard.numPlayers
   )
+
+  if (action === 'discard') {
+    player.coins += 3
+    return player
+  }
+
+  player.playedCards.push(playedCard)
   player.coins -= tradeCost
   if (playedCard.costs) {
     playedCard.costs.forEach(cost => {

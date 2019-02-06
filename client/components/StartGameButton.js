@@ -22,14 +22,6 @@ class StartGameButton extends React.Component {
       )
     })
 
-    // this.props.firestore.update(
-    //   {
-    //     collection: 'games',
-    //     doc: `${gameId}`
-    //   },
-    //   {playersUpdated: Array(this.props.players.length).fill(false)}
-    // )
-
     // Change gameStarted field for the game to true.
     this.props.firestore.update(
       {

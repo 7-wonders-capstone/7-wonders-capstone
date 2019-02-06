@@ -6,7 +6,7 @@ class GameBoard extends Component {
     return (
       <div>
         <Image src={this.props.board.imageURL} fluid rounded />
-        <Step.Group>
+        {/* <Step.Group>
           <Step completed>
             <Step.Content>
               <Step.Title> Stage 1 </Step.Title>
@@ -25,7 +25,7 @@ class GameBoard extends Component {
               <Step.Description>Enter info</Step.Description>
             </Step.Content>
           </Step>
-        </Step.Group>
+        </Step.Group> */}
       </div>
     )
   }
