@@ -4,6 +4,7 @@ import {selectCard} from '../store/selectedCard'
 import {Button} from 'semantic-ui-react'
 import TradeModal from './TradeModal'
 import checkTrading from '../../cardGenerator/checkTrading'
+import {selectAction} from '../store/selectedAction'
 
 class Card extends React.Component {
   render() {
@@ -32,13 +33,19 @@ class Card extends React.Component {
               <Button
                 content="Play"
                 size="small"
-                onClick={this.props.preparePlay}
+                onClick={() => {
+                  this.props.preparePlay()
+                  this.props.selectAction('play')
+                }}
               />
             )}
             <Button
               content="Discard"
               size="small"
-              onClick={this.props.preparePlay}
+              onClick={() => {
+                this.props.preparePlay()
+                this.props.selectAction('discard')
+              }}
             />
             <Button content="Build Wonder" size="small" />
           </div>
@@ -56,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectCard: card => dispatch(selectCard(card))
+    selectCard: card => dispatch(selectCard(card)),
+    selectAction: action => dispatch(selectAction(action))
   }
 }
 
