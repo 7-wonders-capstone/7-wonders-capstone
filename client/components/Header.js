@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import firebase from 'firebase'
-import {Link} from 'react-router-dom'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import QuitGame from './QuitGame'
 import {Button, Modal} from 'semantic-ui-react'
 import LogInModal from './LogInModal'
+import SignUpModal from './SignUpModal'
 
 class NavBar extends React.Component {
   // logOut = () => {
@@ -49,7 +49,15 @@ class NavBar extends React.Component {
               >
                 <LogInModal />
               </Modal>
-              <Link to="/signup">Sign Up</Link>
+              <Modal
+                trigger={
+                  <Button inverted color="teal">
+                    Sign Up
+                  </Button>
+                }
+              >
+                <SignUpModal />
+              </Modal>
             </div>
           ) : (
             <div>

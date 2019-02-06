@@ -5,17 +5,22 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {gotMe} from '../store/me'
 import {compose} from 'redux'
+import {Form, Button, Modal, Icon, Header} from 'semantic-ui-react'
 
 class SignUp extends React.Component {
   constructor() {
     super()
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      open: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  open = () => this.setState({open: true})
+  close = () => this.setState({open: false})
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value})
@@ -59,11 +64,11 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const {email, password} = this.state
+    const {email, password, open} = this.state
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <input
             name="email"
             value={email}
@@ -71,15 +76,32 @@ class SignUp extends React.Component {
             type="text"
             placeholder="Email Address"
           />
-          <input
+          <Form.Input
             name="password"
             value={password}
             onChange={this.handleChange}
             type="password"
             placeholder="Password"
           />
-          <button type="submit">Sign Up</button>
-        </form>
+          <Modal
+            open={open}
+            onOpen={this.open}
+            onClose={this.close}
+            size="small"
+            trigger={
+              <Button color="teal" type="submit">
+                Sign Up <Icon name="right chevron" />
+              </Button>
+            }
+          >
+            <Modal.Header>Account created</Modal.Header>
+            <Modal.Content>
+              <Header>
+                <p>Let's Play!</p>
+              </Header>
+            </Modal.Content>
+          </Modal>
+        </Form>
       </div>
     )
   }

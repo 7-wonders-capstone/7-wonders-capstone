@@ -3,6 +3,7 @@ import * as firebase from 'firebase'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {gotMe} from '../store/me'
+import {Button, Form, Icon} from 'semantic-ui-react'
 
 class SignIn extends React.Component {
   constructor() {
@@ -42,7 +43,7 @@ class SignIn extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <input
             name="email"
             value={email}
@@ -50,15 +51,17 @@ class SignIn extends React.Component {
             type="text"
             placeholder="Email Address"
           />
-          <input
+          <Form.Input
             name="password"
             value={password}
             onChange={this.handleChange}
             type="password"
             placeholder="Password"
           />
-          <button type="submit">Sign In</button>
-        </form>
+          <Button color="teal" type="submit">
+            Sign In<Icon name="right chevron" />
+          </Button>
+        </Form>
       </div>
     )
   }
