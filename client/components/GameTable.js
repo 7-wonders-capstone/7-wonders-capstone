@@ -99,9 +99,9 @@ class GameTable extends React.Component {
       <div>
         <Image src="/img/tabletop.png" fluid />
 
-        <Menu vertical>
+        {/* <Menu vertical>
           <Chat />
-        </Menu>
+        </Menu> */}
         <div className="game-table">
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
