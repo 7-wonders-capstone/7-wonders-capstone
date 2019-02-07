@@ -141,6 +141,12 @@ span.coin {
   line-height: 1.5em;
 }
 
+.snapshot-delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .waiting-players {
   font-size: 1.2em;
 }
