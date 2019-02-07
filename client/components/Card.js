@@ -1,3 +1,4 @@
+/*eslint-disable complexity */
 import React from 'react'
 import {connect} from 'react-redux'
 import {selectCard} from '../store/selectedCard'
@@ -9,6 +10,7 @@ import {selectAction} from '../store/selectedAction'
 class Card extends React.Component {
   render() {
     const canPlay = this.props.canPlay
+    const canPlayWonder = this.props.canPlayWonder
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
 
@@ -49,11 +51,13 @@ class Card extends React.Component {
                 this.props.selectAction('discard')
               }}
             />
-            <Button
-              content="Build Wonder"
-              size="small"
-              disabled={this.props.selectedAction !== ''}
-            />
+            {canPlayWonder && (
+              <Button
+                content="Build Wonder"
+                size="small"
+                disabled={this.props.selectedAction !== ''}
+              />
+            )}
           </div>
         )}
       </div>

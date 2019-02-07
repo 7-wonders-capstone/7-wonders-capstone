@@ -35,7 +35,8 @@ function playerGenerator(board, number, total) {
     endEffects: [],
     militaryResults: [],
     leftPlayerNumber: leftPlayer,
-    rightPlayerNumber: rightPlayer
+    rightPlayerNumber: rightPlayer,
+    latestWonder: 0
   }
 }
 
