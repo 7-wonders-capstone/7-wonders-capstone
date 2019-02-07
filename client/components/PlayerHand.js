@@ -11,6 +11,7 @@ const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
 const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
 
 import playCard from '../../cardGenerator/checkCardPlay'
+import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
 
 class PlayerHand extends React.Component {
   constructor() {
@@ -135,7 +136,7 @@ class PlayerHand extends React.Component {
               <div key={card.imageURL}>
                 <Card
                   canPlay={playCard(this.props.me, this.props.selectedCard)}
-                  //check validation of what has been currently built in canPlayWonder - if stage 1, check if stage 2.
+                  canPlayWonder={checkWonderCard(this.props.me)}
                   card={card}
                   preparePlay={this.props.preparePlay}
                   resetPlay={this.props.resetPlay}
