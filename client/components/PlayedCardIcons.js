@@ -10,7 +10,7 @@ class PlayedCardIcons extends Component {
           ? playedCards.filter(card => card.type === iconType).map(card => {
               return (
                 <div key={`${card.name}${card.numPlayers}`}>
-                  <Image src={card.snapshotURL} />
+                  <Image className="played-card-icon" src={card.snapshotURL} />
                 </div>
               )
             })

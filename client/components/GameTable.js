@@ -97,7 +97,8 @@ class GameTable extends React.Component {
   render() {
     return (
       <div>
-        <Image src="/img/tabletop.png" fluid />
+        <Image src="/img/tabletop-2.jpg" fluid />
+        {/* <Image src="/img/tabletop.png" fluid /> */}
 
         {/* <Menu vertical>
           <Chat />
@@ -148,19 +149,25 @@ class GameTable extends React.Component {
             </div>
             <div className="neighbor-container">
               <PlayerArea
+                player={this.playersRotatedAroundMe[0]}
+                players={this.props.players}
+              />
+            </div>
+            <div className="neighbor-container">
+              <PlayerArea
                 player={this.playersRotatedAroundMe[1]}
                 players={this.props.players}
               />
             </div>
           </div>
-          <div className="my-row">
+          {/* <div className="my-row">
             <div className="my-container">
               <PlayerArea
                 player={this.playersRotatedAroundMe[0]}
                 players={this.props.players}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="player-hand-navbar">

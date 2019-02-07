@@ -2,18 +2,38 @@ import React from 'react'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import {Card} from 'semantic-ui-react'
+import {Card, Button, Icon} from 'semantic-ui-react'
 import WaitingPlayers from './WaitingPlayers'
 import LeaveGameButton from './LeaveGameButton'
 import JoinGameButton from './JoinGameButton'
 import StartGameButton from './StartGameButton'
 
 class GameRoomSnapshot extends React.Component {
+  deleteGameRoomSnapshot = () => {
+    this.props.firestore.delete({
+      collection: 'games',
+      doc: this.props.game.id
+    })
+  }
+
   render() {
     const {game, players} = this.props
+
     return (
       <div className="gameroom-snapshot">
         <Card>
+          {players.length === 0 ? (
+            <span className="snapshot-delete-btn">
+              <Button
+                icon
+                color="google plus"
+                size="mini"
+                onClick={this.deleteGameRoomSnapshot}
+              >
+                <Icon name="close" />
+              </Button>
+            </span>
+          ) : null}
           <Card.Header textAlign="center" className="snapshot-header">
             Room #{game.id}
           </Card.Header>
