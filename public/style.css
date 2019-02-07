@@ -1,7 +1,7 @@
-html,
 body {
   font-family: sans-serif;
   height: 100%;
+  overflow-y: hidden;
 }
 
 a {
@@ -145,6 +145,10 @@ span.coin {
   font-size: 1.2em;
 }
 
+.played-card-icon {
+  /* width: 70px; */
+}
+
 .gameroom-list {
   display: flex;
   flex-wrap: wrap;
@@ -173,7 +177,7 @@ span.coin {
 }
 
 .neighbor-container {
-  margin: 25px 150px;
+  margin: 25px 50px;
 }
 
 .others-row {
@@ -191,3 +195,15 @@ span.coin {
   border: 1px maroon solid;
   border-radius: 2px;
 }
+
+/* .tabletop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(100% - 450px);
+  background: url(./img/tabletop-2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
