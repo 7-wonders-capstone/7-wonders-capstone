@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 a {
@@ -22,7 +24,6 @@ form div {
 
 .player-hand {
   display: flex;
-  /* justify-content: flex-end; */
   background-color: mediumpurple;
   justify-content: center;
   max-height: 250px;
@@ -106,13 +107,6 @@ form div {
 
 .app-container {
   text-align: center;
-  /* width: 100%; */
-  /* margin: auto; */
-  /* padding-bottom: 300px; */
-  /* position: fixed; */
-  /* overflow-x: scroll; */
-  /* top: 0px; */
-  /* bottom: 300px; */
 }
 
 span.coin {
@@ -120,8 +114,33 @@ span.coin {
 }
 /*////  LOBBY ////////*/
 
+.lobby {
+  background-color: cornsilk;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .gameroom-snapshot {
   margin: 20px;
+}
+
+.snapshot-header {
+  font-size: 1.4em;
+  background-color: rgb(59, 139, 236);
+  color: white;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+.snapshot-delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.waiting-players {
+  font-size: 1.2em;
 }
 
 .gameroom-list {
@@ -152,7 +171,7 @@ span.coin {
 }
 
 .neighbor-container {
-  margin: 25px 150px;
+  margin: 25px 50px;
 }
 
 .others-row {
@@ -169,4 +188,8 @@ span.coin {
 .trade-item-selected {
   border: 1px maroon solid;
   border-radius: 2px;
+}
+
+.played-card-icon {
+  max-height: 30px;
 }

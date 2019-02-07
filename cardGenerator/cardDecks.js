@@ -113,7 +113,7 @@ const ageOneDeck = [
       direction: 'right'
     },
     imageURL: '/img/age1/east-trading-post-3.jpg',
-    snapshotURL: '/img/snapshot/east-trading-post.jpg'
+    snapshotURL: '/img/snapshot/east_trading_post.jpg'
   },
   {
     name: 'Stockade',

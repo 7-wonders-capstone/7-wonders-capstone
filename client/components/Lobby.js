@@ -20,7 +20,8 @@ class Lobby extends React.Component {
           gameStarted: false,
           readyToPlay: 0,
           age: 1,
-          playersUpdated: []
+          playersUpdated: [],
+          gameEnded: false
         }
       )
       .catch(error => console.error(error))
@@ -37,6 +38,7 @@ class Lobby extends React.Component {
           color="blue"
           style={{margin: '20px'}}
           onClick={this.createGameRoom}
+          size="huge"
         >
           Create Game Room
         </Button>

@@ -3,15 +3,19 @@ import Card from './Card'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import GameOverModal from './gameOverModal'
 const playerUpdater = require('../../playerUpdater')
 const handSwap = require('../../handSwap')
+const calculateScience = require('../../calculateScience')
 
 const militaryComparison = require('../../militaryComparison')
 const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
 const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
+const determineReward = require('../../determineReward')
 
 import playCard from '../../cardGenerator/checkCardPlay'
 import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
+import {selectAction} from '../store/selectedAction'
 
 class PlayerHand extends React.Component {
   constructor() {
@@ -25,14 +29,37 @@ class PlayerHand extends React.Component {
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
-      let updatedPlayer = playerUpdater(
-        playerCopy,
-        this.props.players,
-        this.props.selectedCard,
-        0, // trade value, not yet used, but exists as parameter on playerUpdater
-        this.props.selectedAction
-      )
-      await this.props.updatePlayerInStore(updatedPlayer, 1)
+
+      this.props.firestore
+        .collection('games')
+        .doc(this.props.gameId)
+        .get()
+        .then(result => {
+          const playerKey = playerCopy.email.slice(0, -4) + 'TradeCost'
+          const tradeCost = result.data()[playerKey]
+
+          let updatedPlayer = playerUpdater(
+            playerCopy,
+            this.props.players,
+            this.props.selectedCard,
+            tradeCost,
+            this.props.selectedAction
+          )
+          this.props.updatePlayerInStore(updatedPlayer, 1)
+          this.props.selectAction('')
+        })
+        .then(() => {
+          this.props.players.forEach(player => {
+            const playerKey = player.email.slice(0, -4) + 'TradeCost'
+            this.props.firestore.update(
+              {
+                collection: 'games',
+                doc: `${this.props.gameId}`
+              },
+              {[playerKey]: 0}
+            )
+          })
+        })
     }
     const ready = this.props.playersUpdated.length === this.props.numPlayers
 
@@ -46,7 +73,6 @@ class PlayerHand extends React.Component {
       this.setState({
         updating: true
       })
-      console.log('age switch')
       let playersToUpdate = []
       let updatedMilitary = []
       let updatedHands = []
@@ -105,6 +131,72 @@ class PlayerHand extends React.Component {
       this.setState({
         updating: false
       })
+    } else if (
+      this.props.me.hand &&
+      this.props.me.hand.length <= 1 &&
+      this.props.me.number === 1 &&
+      this.props.age === 3 &&
+      !this.state.updating
+    ) {
+      this.setState({
+        updating: true
+      })
+      let playersToUpdate = []
+      let updatedMilitary = []
+      await this.props.firestore
+        .collection(`/games/${this.props.gameId}/players`)
+        .get()
+        .then(querySnapshot =>
+          querySnapshot.forEach(player => {
+            playersToUpdate.push(player.data())
+          })
+        )
+        .then(() => {
+          playersToUpdate.forEach(player =>
+            updatedMilitary.push(
+              militaryComparison(player, this.props.players, this.props.age)
+            )
+          )
+        })
+        .then(() => {
+          updatedMilitary.forEach(player => {
+            player.victoryPoints += calculateScience(player)
+          })
+        })
+        .then(() => {
+          updatedMilitary.forEach(player => {
+            player.endEffects.forEach(effect => {
+              player.victoryPoints +=
+                determineReward(
+                  this.props.players,
+                  effect.from,
+                  effect.direction,
+                  player.number,
+                  player.leftPlayerNumber,
+                  player.rightPlayerNumber
+                ) * effect.amount
+            })
+          })
+        })
+        .then(() => {
+          updatedMilitary.forEach(async player => {
+            await this.props.updatePlayerInStore(player, 0)
+          })
+        })
+        .then(async () => {
+          await this.props.firestore.update(
+            {
+              collection: 'games',
+              doc: `${this.props.gameId}`
+            },
+            {
+              gameEnded: true
+            }
+          )
+        })
+      this.setState({
+        updating: false
+      })
     } else if (ready && this.props.me.number === 1) {
       this.props.resetUpdate()
       let playersToSwap = []
@@ -126,7 +218,6 @@ class PlayerHand extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
     return (
       <div className="player-hand">
         {this.props.me &&
@@ -145,10 +236,16 @@ class PlayerHand extends React.Component {
                   me={this.props.me}
                   players={this.props.players}
                   updatePlayerInStore={this.props.updatePlayerInStore}
+                  gameId={this.props.gameId}
                 />
               </div>
             )
           })}
+        <GameOverModal
+          open={this.props.gameEnded}
+          players={this.props.players}
+          gameId={this.props.gameId}
+        />
       </div>
     )
   }
@@ -164,8 +261,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    selectAction: action => dispatch(selectAction(action))
+  }
+}
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(props => {
     return [
       {

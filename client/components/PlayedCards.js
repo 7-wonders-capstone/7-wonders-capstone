@@ -7,43 +7,43 @@ class PlayedCards extends Component {
     return (
       <Segment>
         <Grid relaxed columns={7}>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Basic Resources
               <PlayedCardIcons iconType="basicResource" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Advanced Resources
               <PlayedCardIcons iconType="advancedResource" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Science
               <PlayedCardIcons iconType="science" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Civilian
               <PlayedCardIcons iconType="civilian" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '85px', padding: '14px 15px'}}>
             <Header as="h6">
               Economic
               <PlayedCardIcons iconType="economic" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Military
               <PlayedCardIcons iconType="military" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
             <Header as="h6">
               Guild
               <PlayedCardIcons iconType="guild" {...this.props} />

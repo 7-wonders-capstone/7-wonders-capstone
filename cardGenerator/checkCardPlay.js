@@ -74,7 +74,4 @@ const testcard = {
   upGradesFrom: ['no']
 }
 
-console.log(playCard(testplayer, testcard))
-console.log(testplayer)
-
 export default playCard

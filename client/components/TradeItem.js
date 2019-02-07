@@ -10,18 +10,26 @@ class TradeItem extends Component {
   }
 
   toggleItem = () => {
-    const selected = !this.state.selected
-    this.setState({selected})
+    this.setState({selected: !this.state.selected})
   }
 
   render() {
-    const {resource} = this.props
+    const {resource, trade, unTrade, direction} = this.props
+
     return (
       <List.Item
         className={this.state.selected ? 'trade-item-selected' : ''}
-        onClick={this.toggleItem}
+        onClick={() => {
+          this.toggleItem()
+          if (this.state.selected) unTrade(direction)
+          else trade(direction)
+        }}
       >
-        <Image avatar size="mini" src={resource.snapshotURL} />
+        <Image
+          avatar
+          size={resource.name.includes('/') ? 'tiny' : 'mini'}
+          src={resource.snapshotURL}
+        />
         <List.Content>
           <List.Header>{resource.name}</List.Header>
         </List.Content>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import {Button} from 'semantic-ui-react'
 
 class JoinGameButton extends React.Component {
   joinGame = () => {
@@ -28,9 +29,10 @@ class JoinGameButton extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={this.joinGame}>
+        {/* <button type="button" onClick={this.joinGame}>
           Join Game
-        </button>
+        </button> */}
+        <Button onClick={this.joinGame} content="Join Game" />
       </div>
     )
   }
