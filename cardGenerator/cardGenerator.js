@@ -34,10 +34,4 @@ const dealHand = filteredDeck => {
   return cards
 }
 
-//console.log(dealHand(filterAgeDecks(ageThreeDeck, 3)))
-/* console.log(ageOneDeck.length)
-console.log(ageTwoDeck.length)
-console.log(ageThreeDeck.length)
-console.log(guildDeck.length) */
-
 module.exports = {dealHand, filterAgeDecks}

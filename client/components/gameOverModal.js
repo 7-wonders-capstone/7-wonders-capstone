@@ -11,8 +11,6 @@ export default class GameOverModal extends Component {
             <Header>Game Over!</Header>
             <ul>
               {this.props.players.map(player => {
-                console.log(player.email)
-                console.log(player.victoryPoints)
                 return (
                   <li key={player.email}>
                     {player.email}: {player.victoryPoints}

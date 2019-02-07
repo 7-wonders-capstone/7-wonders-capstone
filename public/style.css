@@ -24,7 +24,6 @@ form div {
 
 .player-hand {
   display: flex;
-  /* justify-content: flex-end; */
   background-color: mediumpurple;
   justify-content: center;
   max-height: 250px;
@@ -108,13 +107,6 @@ form div {
 
 .app-container {
   text-align: center;
-  /* width: 100%; */
-  /* margin: auto; */
-  /* padding-bottom: 300px; */
-  /* position: fixed; */
-  /* overflow-x: scroll; */
-  /* top: 0px; */
-  /* bottom: 300px; */
 }
 
 span.coin {
@@ -149,10 +141,6 @@ span.coin {
 
 .waiting-players {
   font-size: 1.2em;
-}
-
-.played-card-icon {
-  /* width: 70px; */
 }
 
 .gameroom-list {
@@ -202,14 +190,6 @@ span.coin {
   border-radius: 2px;
 }
 
-/* .tabletop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: calc(100% - 450px);
-  background: url(./img/tabletop-2.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
+.played-card-icon {
+  max-height: 30px;
+}
