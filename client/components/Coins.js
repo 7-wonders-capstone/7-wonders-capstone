@@ -11,10 +11,18 @@ class Coins extends Component {
               <Header as="h4" textAlign="left">
                 <Image
                   size="small"
-                  src="/img/snapshot/2victory.jpg"
+                  src="/img/snapshot/victory_blank.png"
                   verticalAlign="middle"
+                  style={{margin: '0px 10px 0px 0px'}}
                 />
                 {this.props.points}
+                <Image
+                  size="small"
+                  src="/img/snapshot/military_blank.png"
+                  verticalAlign="middle"
+                  style={{margin: '0px 10px 0px 20px'}}
+                />
+                {/* ADD MILITARY POINTS HERE */}
               </Header>
             </Grid.Column>
             <Grid.Column>
@@ -22,7 +30,11 @@ class Coins extends Component {
             </Grid.Column>
             <Grid.Column>
               <Header as="h4" textAlign="right">
-                <Image src="/img/1coin.png" />
+                <Image
+                  src="/img/1coin.png"
+                  size="small"
+                  verticalAlign="middle"
+                />
                 {this.props.coins}
               </Header>
             </Grid.Column>

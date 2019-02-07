@@ -1,7 +1,7 @@
-html,
 body {
   font-family: sans-serif;
   height: 100%;
+  overflow-y: hidden;
 }
 
 a {
@@ -24,7 +24,6 @@ form div {
 
 .player-hand {
   display: flex;
-  /* justify-content: flex-end; */
   background-color: mediumpurple;
   justify-content: center;
   max-height: 250px;
@@ -108,13 +107,6 @@ form div {
 
 .app-container {
   text-align: center;
-  /* width: 100%; */
-  /* margin: auto; */
-  /* padding-bottom: 300px; */
-  /* position: fixed; */
-  /* overflow-x: scroll; */
-  /* top: 0px; */
-  /* bottom: 300px; */
 }
 
 span.coin {
@@ -179,7 +171,7 @@ span.coin {
 }
 
 .neighbor-container {
-  margin: 25px 150px;
+  margin: 25px 50px;
 }
 
 .others-row {
@@ -196,4 +188,8 @@ span.coin {
 .trade-item-selected {
   border: 1px maroon solid;
   border-radius: 2px;
+}
+
+.played-card-icon {
+  max-height: 30px;
 }

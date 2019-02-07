@@ -10,7 +10,6 @@ import StartGameButton from './StartGameButton'
 
 class GameRoomSnapshot extends React.Component {
   deleteGameRoomSnapshot = () => {
-    console.log(this.props.game.id)
     this.props.firestore.delete({
       collection: 'games',
       doc: this.props.game.id

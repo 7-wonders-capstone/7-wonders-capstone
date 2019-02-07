@@ -72,7 +72,6 @@ class PlayerHand extends React.Component {
       this.setState({
         updating: true
       })
-      console.log('age switch')
       let playersToUpdate = []
       let updatedMilitary = []
       let updatedHands = []
@@ -138,7 +137,6 @@ class PlayerHand extends React.Component {
       this.props.age === 3 &&
       !this.state.updating
     ) {
-      console.log('game over')
       this.setState({
         updating: true
       })
