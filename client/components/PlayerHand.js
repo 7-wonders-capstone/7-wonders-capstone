@@ -14,6 +14,7 @@ const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
 const determineReward = require('../../determineReward')
 
 import playCard from '../../cardGenerator/checkCardPlay'
+import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
 import {selectAction} from '../store/selectedAction'
 
 class PlayerHand extends React.Component {
@@ -226,6 +227,7 @@ class PlayerHand extends React.Component {
               <div key={card.imageURL}>
                 <Card
                   canPlay={playCard(this.props.me, this.props.selectedCard)}
+                  canPlayWonder={checkWonderCard(this.props.me)}
                   card={card}
                   preparePlay={this.props.preparePlay}
                   resetPlay={this.props.resetPlay}

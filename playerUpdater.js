@@ -84,6 +84,7 @@ const playerUpdater = (
       }
       break
     case 'wonder':
+      player.latestWonder = player.latestWonder + 1
       if (playedCard.resources) {
         playedCard.resources.forEach(resource =>
           player.availableResources.push(resource)
