@@ -18,7 +18,7 @@ class Lobby extends React.Component {
         },
         {
           gameStarted: false,
-          readyToPlay: 0,
+          readyToPlay: [],
           age: 1,
           playersUpdated: [],
           gameEnded: false
