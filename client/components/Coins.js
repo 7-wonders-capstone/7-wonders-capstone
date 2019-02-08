@@ -26,7 +26,10 @@ class Coins extends Component {
               </Header>
             </Grid.Column>
             <Grid.Column>
-              <Header textAlign="left">{this.props.email}</Header>
+              <Header textAlign="center">
+                {this.props.email.split('@')[0]}
+              </Header>
+              {/* <Header textAlign="left">{this.props.email}</Header> */}
             </Grid.Column>
             <Grid.Column>
               <Header as="h4" textAlign="right">
