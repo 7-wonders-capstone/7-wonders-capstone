@@ -24,7 +24,10 @@ class PlayerArea extends Component {
                 />
                 <PlayedCards playedCards={livePlayerObj.playedCards} />
 
-                <GameBoard me={this.props.me} board={this.props.player.board} />
+                <GameBoard
+                  player={livePlayerObj}
+                  board={this.props.player.board}
+                />
               </Container>
             </Segment>
           </Grid.Row>
