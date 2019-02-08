@@ -28,7 +28,10 @@ class Lobby extends React.Component {
   }
 
   render() {
-    if (this.props.user.usersGameStarted) {
+    if (
+      this.props.user.email === this.props.email &&
+      this.props.user.usersGameStarted
+    ) {
       return <Redirect push to={`/games/${this.props.user.inGameRoom}`} />
     }
 

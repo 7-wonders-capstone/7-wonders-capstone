@@ -27,7 +27,7 @@ class LeaveGameButton extends React.Component {
     return (
       <div>
         <Button
-          style={{'margin-bottom': '5px'}}
+          style={{marginBottom: '5px'}}
           onClick={this.leaveGame}
           content="Leave Game"
         />
