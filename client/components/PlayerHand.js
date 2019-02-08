@@ -43,7 +43,7 @@ class PlayerHand extends React.Component {
           let updatedPlayer = playerUpdater(
             playerCopy,
             this.props.players,
-            this.props.playCard,
+            this.props.playedCard,
             tradeCost,
             this.props.selectedAction
           )
@@ -257,7 +257,7 @@ const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
     selectedAction: state.selectedAction,
-    playCard: state.playCard,
+    playedCard: state.playedCard,
     me: state.firestore.ordered.playerForPlayerHand
       ? state.firestore.ordered.playerForPlayerHand[0]
       : {}

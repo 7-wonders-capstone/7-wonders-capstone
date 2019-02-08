@@ -8,7 +8,7 @@ import {firebaseConfig} from '../../secrets'
 import user from './user'
 import selectedCard from './selectedCard'
 import selectedAction from './selectedAction'
-import playCard from './playCard'
+import playedCard from './playCard'
 import me from './me'
 // import boardPositions from './boardPositions'
 
@@ -39,7 +39,7 @@ const reducer = combineReducers({
   firestore: firestoreReducer,
   selectedCard,
   selectedAction,
-  playCard,
+  playedCard,
   me
 })
 
