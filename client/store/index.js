@@ -12,7 +12,7 @@ import me from './me'
 // import boardPositions from './boardPositions'
 
 firebase.initializeApp(firebaseConfig)
-firebase.firestore().settings({timestampsInSnapshots: true})
+// firebase.firestore().settings({timestampsInSnapshots: true})
 
 const enhancers = [
   reduxFirestore(firebase),
