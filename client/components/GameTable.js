@@ -147,7 +147,7 @@ class GameTable extends React.Component {
                 players={this.props.players}
               />
             </div>
-            <div className="neighbor-container">
+            <div className="my-container">
               <PlayerArea
                 player={this.playersRotatedAroundMe[0]}
                 players={this.props.players}
