@@ -1632,7 +1632,7 @@ const guildDeck = [
       direction: 'both'
     },
     imageURL: '/img/age3/craftsmens-guild.jpg',
-    snapshotURL: '/img/snapshot/craftsmens_guild.jpg'
+    snapshotURL: '/img/snapshot/craftmens_guild.jpg'
   },
   {
     name: 'Spies Guild',
