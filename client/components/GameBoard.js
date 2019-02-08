@@ -12,12 +12,12 @@ class GameBoard extends Component {
               <Step.Title>Stage 1</Step.Title>
             </Step.Content>
           </Step>
-          <Step active>
+          <Step completed>
             <Step.Content>
               <Step.Title> Stage 2 </Step.Title>
             </Step.Content>
           </Step>
-          <Step disabled>
+          <Step completed>
             <Step.Content>
               <Step.Title> Stage 3 </Step.Title>
             </Step.Content>
