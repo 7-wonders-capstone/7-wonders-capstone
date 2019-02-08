@@ -3,7 +3,7 @@ import {Image, Step} from 'semantic-ui-react'
 
 class GameBoard extends Component {
   render() {
-    console.log(this.props.me.latestWonder)
+    // console.log(this.props.me.latestWonder)
     return (
       <div>
         <Image src={this.props.board.imageURL} fluid rounded />
