@@ -34,6 +34,7 @@ class Lobby extends React.Component {
 
     return (
       <div className="lobby">
+        <h1 id="lobby-header">Welcome to the Lobby!</h1>
         <Button
           color="blue"
           style={{margin: '20px'}}
