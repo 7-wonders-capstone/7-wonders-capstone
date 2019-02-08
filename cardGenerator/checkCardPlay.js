@@ -10,7 +10,6 @@ const playCard = (player, card) => {
     return true
   } else {
     let canPlay = true
-    //TODO refactor using some array method
     card.costs.forEach(cost => {
       if (typeof cost === 'number' && player.coins < cost) {
         canPlay = false
@@ -53,7 +52,7 @@ const testplayer = {
   number: 1,
   board: board,
   coins: 3,
-  availableResources: [board.baseResource],
+  availableResources: ['brick'],
   hand: ['Apothecary'],
   playedCards: [],
   victoryPoints: 0,
@@ -74,4 +73,44 @@ const testcard = {
   upGradesFrom: ['no']
 }
 
-export default playCard
+console.log(playCard(testplayer, testcard))
+// export default playCard
+
+// const playCard = (player, card) => {
+//   let canPlay = true
+//   let copyOfAvailableResources = [...player.availableResources].sort(
+//     (a, b) => (a.length > b.length ? 1 : -1)
+//   )
+
+//   if (!card.costs) {
+//     return true
+//   } else if (
+//     card.upgradesFrom &&
+//     player.hand.some(handCard => {
+//       return handCard.name === card.upgradesFrom[0]
+//     })
+//   ) {
+//     return true
+//   } else if (
+//     card.costs.forEach(cost => {
+//       if (typeof cost === 'number' && player.coins < cost) {
+//         canPlay = false
+//       }
+//     })
+//   ) {
+//     return canPlay
+//   } else {
+//     for (let i = 0; i < card.costs.length; ++i) {
+//       for (let j = 0; j < copyOfAvailableResources.length; ++j) {
+//         if (copyOfAvailableResources[j].includes(card.costs[i])) {
+//           copyOfAvailableResources.splice(j, 1)
+//           console.log(copyOfAvailableResources)
+//           break
+//         }
+//         canPlay = false
+//         break
+//       }
+//     }
+//     return canPlay
+//   }
+// }
