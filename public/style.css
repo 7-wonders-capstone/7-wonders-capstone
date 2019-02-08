@@ -165,6 +165,10 @@ span.coin {
   justify-content: center;
 }
 
+.my-container {
+  margin-top: 150px;
+}
+
 .neighbors-row {
   display: flex;
   justify-content: center;
