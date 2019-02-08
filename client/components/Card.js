@@ -24,7 +24,7 @@ class Card extends React.Component {
         this.props.selectCard(this.props.me.board.levelthreee)
       }
 
-      this.props.preparePlay()
+      this.props.preparePlay(this.props.me.email)
       this.props.selectAction('play')
     }
 
@@ -51,7 +51,7 @@ class Card extends React.Component {
                 disabled={this.props.selectedAction !== ''}
                 size="small"
                 onClick={() => {
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
                   this.props.playCard(this.props.selectedCard)
                 }}
@@ -62,7 +62,7 @@ class Card extends React.Component {
               disabled={this.props.selectedAction !== ''}
               size="small"
               onClick={() => {
-                this.props.preparePlay()
+                this.props.preparePlay(this.props.me.email)
                 this.props.selectAction('discard')
               }}
             />

@@ -14,14 +14,14 @@ class GameTable extends React.Component {
     this.orderPlayers(props)
   }
 
-  preparePlay = () => {
+  preparePlay = email => {
     this.props.firestore.update(
       {
         collection: 'games',
         doc: `${this.props.gameId}`
       },
       {
-        readyToPlay: this.props.readyToPlay + 1
+        readyToPlay: this.props.firestore.FieldValue.arrayUnion(email)
       }
     )
   }
@@ -45,7 +45,7 @@ class GameTable extends React.Component {
         doc: `${this.props.gameId}`
       },
       {
-        readyToPlay: 0
+        readyToPlay: []
       }
     )
   }
@@ -199,7 +199,7 @@ const mapStateToProps = (state, props) => {
   return {
     readyToPlay: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].readyToPlay
-      : 0,
+      : [],
     age: state.firestore.data.games
       ? state.firestore.data.games[props.gameId].age
       : 1,
