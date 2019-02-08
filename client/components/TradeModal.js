@@ -129,7 +129,7 @@ class TradeModal extends Component {
               <Button
                 onClick={() => {
                   this.close()
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
                 }}
                 positive

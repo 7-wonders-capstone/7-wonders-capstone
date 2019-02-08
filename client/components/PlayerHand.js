@@ -27,7 +27,7 @@ class PlayerHand extends React.Component {
   }
   // eslint-disable-next-line complexity
   async componentDidUpdate() {
-    if (this.props.readyToPlay === this.props.numPlayers) {
+    if (this.props.readyToPlay.length === this.props.numPlayers) {
       await this.props.resetPlay()
 
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))

@@ -38,7 +38,9 @@ class Card extends React.Component {
         wonderCard.sacrificeNumber = this.props.card.numPlayers
         this.props.playCard(wonderCard)
       }
-      this.props.preparePlay()
+
+      this.props.preparePlay(this.props.me.email)
+
       this.props.selectAction('play')
     }
 
@@ -65,7 +67,7 @@ class Card extends React.Component {
                 disabled={this.props.selectedAction !== ''}
                 size="small"
                 onClick={() => {
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
                   this.props.playCard(this.props.selectedCard)
                 }}
@@ -76,7 +78,7 @@ class Card extends React.Component {
               disabled={this.props.selectedAction !== ''}
               size="small"
               onClick={() => {
-                this.props.preparePlay()
+                this.props.preparePlay(this.props.me.email)
                 this.props.selectAction('discard')
               }}
             />
