@@ -15,6 +15,19 @@ class Card extends React.Component {
     const selected = this.props.card.name === this.props.selectedCard.name
     const style = selected ? 'card-selected' : 'card'
 
+    const playWonder = () => {
+      if (this.props.me.latestWonder === 0) {
+        this.props.selectCard(this.props.me.board.levelone)
+      } else if (this.props.me.latestWonder === 1) {
+        this.props.selectCard(this.props.me.board.leveltwo)
+      } else if (this.props.me.latestWonder === 2) {
+        this.props.selectCard(this.props.me.board.levelthreee)
+      }
+
+      this.props.preparePlay()
+      this.props.selectAction('play')
+    }
+
     return (
       <div className={style}>
         <img
@@ -58,18 +71,7 @@ class Card extends React.Component {
                 content="Build Wonder"
                 size="small"
                 disabled={this.props.selectedAction !== ''}
-                onClick={() => {
-                  if (this.props.me.latestWonder === 0) {
-                    this.props.selectCard(this.props.me.board.levelone)
-                  } else if (this.props.me.latestWonder === 1) {
-                    this.props.selectCard(this.props.me.board.leveltwo)
-                  } else if (this.props.me.latestWonder === 2) {
-                    this.props.selectCard(this.props.me.board.levelthreee)
-                  }
-
-                  this.props.preparePlay()
-                  this.props.selectAction('play')
-                }}
+                onClick={playWonder}
               />
             )}
           </div>
