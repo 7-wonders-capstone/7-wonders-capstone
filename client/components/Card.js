@@ -85,7 +85,7 @@ const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
     selectedAction: state.selectedAction,
-    playCard: state.playCard
+    playedCard: state.playedCard
   }
 }
 

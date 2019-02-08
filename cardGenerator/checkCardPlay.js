@@ -74,7 +74,7 @@ const testcard = {
 }
 
 console.log(playCard(testplayer, testcard))
-// export default playCard
+export default playCard
 
 // const playCard = (player, card) => {
 //   let canPlay = true
