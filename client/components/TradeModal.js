@@ -6,7 +6,7 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {selectAction} from '../store/selectedAction'
-import playCard from '../store/playCard'
+import {playCard} from '../store/playCard'
 
 class TradeModal extends Component {
   constructor() {
