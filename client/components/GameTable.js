@@ -98,6 +98,7 @@ class GameTable extends React.Component {
       <div>
         <Image src="/img/tabletop-2.jpg" fluid />
         <div className="game-table">
+          <h3>AGE: {this.props.age}</h3>
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
               <div className="other-container">
