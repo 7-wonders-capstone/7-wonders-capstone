@@ -1236,7 +1236,7 @@ const ageThreeDeck = [
       direction: 'own'
     },
     imageURL: '/img/age3/arena-3.jpg',
-    snapshotURL: '/img/snapshot/military_triple.jpg'
+    snapshotURL: '/img/snapshot/arena.jpg'
   },
   {
     name: 'Arena',
