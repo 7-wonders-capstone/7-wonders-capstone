@@ -80,6 +80,7 @@ class Card extends React.Component {
               onClick={() => {
                 this.props.preparePlay(this.props.me.email)
                 this.props.selectAction('discard')
+                this.props.playCard(this.props.selectedCard)
               }}
             />
             {canPlayWonder && (
