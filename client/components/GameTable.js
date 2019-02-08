@@ -123,7 +123,6 @@ class GameTable extends React.Component {
             {this.playersRotatedAroundMe.length > 3 && (
               <div className="other-container">
                 <PlayerArea
-                  me={this.props.me}
                   player={this.playersRotatedAroundMe[3]}
                   players={this.props.players}
                 />
