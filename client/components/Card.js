@@ -17,14 +17,30 @@ class Card extends React.Component {
 
     const playWonder = () => {
       if (this.props.me.latestWonder === 0) {
-        this.props.selectCard(this.props.me.board.levelone)
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.levelone)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
       } else if (this.props.me.latestWonder === 1) {
-        this.props.selectCard(this.props.me.board.leveltwo)
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.leveltwo)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
       } else if (this.props.me.latestWonder === 2) {
-        this.props.selectCard(this.props.me.board.levelthreee)
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.levelthree)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
       }
 
-      this.props.preparePlay()
+      this.props.preparePlay(this.props.me.email)
+
       this.props.selectAction('play')
     }
 
@@ -51,7 +67,7 @@ class Card extends React.Component {
                 disabled={this.props.selectedAction !== ''}
                 size="small"
                 onClick={() => {
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
                   this.props.playCard(this.props.selectedCard)
                 }}
@@ -62,7 +78,7 @@ class Card extends React.Component {
               disabled={this.props.selectedAction !== ''}
               size="small"
               onClick={() => {
-                this.props.preparePlay()
+                this.props.preparePlay(this.props.me.email)
                 this.props.selectAction('discard')
               }}
             />
