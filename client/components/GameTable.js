@@ -6,8 +6,7 @@ import PlayerArea from './PlayerArea'
 
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
-import {Menu, Image, Container} from 'semantic-ui-react'
-import Chat from './Chat'
+import {Image} from 'semantic-ui-react'
 
 class GameTable extends React.Component {
   constructor(props) {
@@ -98,16 +97,13 @@ class GameTable extends React.Component {
     return (
       <div>
         <Image src="/img/tabletop-2.jpg" fluid />
-        {/* <Image src="/img/tabletop.png" fluid /> */}
-
-        {/* <Menu vertical>
-          <Chat />
-        </Menu> */}
         <div className="game-table">
+          <h3>AGE: {this.props.age}</h3>
           <div className="others-row">
             {this.playersRotatedAroundMe.length > 5 && (
               <div className="other-container">
                 <PlayerArea
+                  me={this.props.me}
                   player={this.playersRotatedAroundMe[5]}
                   players={this.props.players}
                 />
@@ -116,6 +112,7 @@ class GameTable extends React.Component {
             {this.playersRotatedAroundMe.length > 6 && (
               <div className="other-container">
                 <PlayerArea
+                  me={this.props.me}
                   player={this.playersRotatedAroundMe[6]}
                   players={this.props.players}
                 />
@@ -126,6 +123,7 @@ class GameTable extends React.Component {
             {this.playersRotatedAroundMe.length > 3 && (
               <div className="other-container">
                 <PlayerArea
+                  me={this.props.me}
                   player={this.playersRotatedAroundMe[3]}
                   players={this.props.players}
                 />
@@ -134,6 +132,7 @@ class GameTable extends React.Component {
             {this.playersRotatedAroundMe.length > 4 && (
               <div className="other-container">
                 <PlayerArea
+                  me={this.props.me}
                   player={this.playersRotatedAroundMe[4]}
                   players={this.props.players}
                 />
@@ -143,18 +142,21 @@ class GameTable extends React.Component {
           <div className="neighbors-row">
             <div className="neighbor-container">
               <PlayerArea
+                me={this.props.me}
                 player={this.playersRotatedAroundMe[2]}
                 players={this.props.players}
               />
             </div>
             <div className="my-container">
               <PlayerArea
+                me={this.props.me}
                 player={this.playersRotatedAroundMe[0]}
                 players={this.props.players}
               />
             </div>
             <div className="neighbor-container">
               <PlayerArea
+                me={this.props.me}
                 player={this.playersRotatedAroundMe[1]}
                 players={this.props.players}
               />

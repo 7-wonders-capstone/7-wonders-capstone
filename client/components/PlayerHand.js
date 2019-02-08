@@ -16,6 +16,7 @@ const determineReward = require('../../determineReward')
 import playCard from '../../cardGenerator/checkCardPlay'
 import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
 import {selectAction} from '../store/selectedAction'
+import {clearCard} from '../store/playCard'
 
 class PlayerHand extends React.Component {
   constructor() {
@@ -28,6 +29,7 @@ class PlayerHand extends React.Component {
   async componentDidUpdate() {
     if (this.props.readyToPlay === this.props.numPlayers) {
       await this.props.resetPlay()
+
       let playerCopy = JSON.parse(JSON.stringify(this.props.me))
 
       this.props.firestore
@@ -41,7 +43,7 @@ class PlayerHand extends React.Component {
           let updatedPlayer = playerUpdater(
             playerCopy,
             this.props.players,
-            this.props.selectedCard,
+            this.props.playCard,
             tradeCost,
             this.props.selectedAction
           )
@@ -255,6 +257,7 @@ const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
     selectedAction: state.selectedAction,
+    playCard: state.playCard,
     me: state.firestore.ordered.playerForPlayerHand
       ? state.firestore.ordered.playerForPlayerHand[0]
       : {}
@@ -263,7 +266,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectAction: action => dispatch(selectAction(action))
+    selectAction: action => dispatch(selectAction(action)),
+    clearCard: () => dispatch(clearCard())
   }
 }
 
