@@ -21,10 +21,14 @@ class PlayerArea extends Component {
                   coins={livePlayerObj.coins}
                   points={livePlayerObj.victoryPoints}
                   email={playerEmail}
+                  militaryResults={livePlayerObj.militaryResults}
                 />
                 <PlayedCards playedCards={livePlayerObj.playedCards} />
 
-                <GameBoard board={this.props.player.board} />
+                <GameBoard
+                  player={livePlayerObj}
+                  board={this.props.player.board}
+                />
               </Container>
             </Segment>
           </Grid.Row>

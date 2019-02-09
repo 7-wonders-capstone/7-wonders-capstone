@@ -32,7 +32,11 @@ class JoinGameButton extends React.Component {
         {/* <button type="button" onClick={this.joinGame}>
           Join Game
         </button> */}
-        <Button onClick={this.joinGame} content="Join Game" />
+        <Button
+          style={{marginTop: '10px'}}
+          onClick={this.joinGame}
+          content="Join Game"
+        />
       </div>
     )
   }

@@ -8,11 +8,12 @@ import {firebaseConfig} from '../../secrets'
 import user from './user'
 import selectedCard from './selectedCard'
 import selectedAction from './selectedAction'
+import playedCard from './playCard'
 import me from './me'
 // import boardPositions from './boardPositions'
 
 firebase.initializeApp(firebaseConfig)
-firebase.firestore().settings({timestampsInSnapshots: true})
+// firebase.firestore().settings({timestampsInSnapshots: true})
 
 const enhancers = [
   reduxFirestore(firebase),
@@ -38,6 +39,7 @@ const reducer = combineReducers({
   firestore: firestoreReducer,
   selectedCard,
   selectedAction,
+  playedCard,
   me
 })
 

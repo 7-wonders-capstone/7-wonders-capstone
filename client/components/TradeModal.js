@@ -6,6 +6,7 @@ import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {selectAction} from '../store/selectedAction'
+import {playCard} from '../store/playCard'
 
 class TradeModal extends Component {
   constructor() {
@@ -129,8 +130,9 @@ class TradeModal extends Component {
               <Button
                 onClick={() => {
                   this.close()
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
+                  this.props.playCard(selectedCard)
                 }}
                 positive
               >
@@ -166,7 +168,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectAction: action => dispatch(selectAction(action))
+    selectAction: action => dispatch(selectAction(action)),
+    playCard: card => dispatch(playCard(card))
   }
 }
 

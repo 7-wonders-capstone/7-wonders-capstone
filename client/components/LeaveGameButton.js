@@ -26,7 +26,11 @@ class LeaveGameButton extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.leaveGame} content="Leave Game" />
+        <Button
+          style={{marginBottom: '5px'}}
+          onClick={this.leaveGame}
+          content="Leave Game"
+        />
         {/* <button type="button" onClick={this.leaveGame}>
           Leave Game
         </button> */}

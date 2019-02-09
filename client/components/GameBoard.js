@@ -6,22 +6,48 @@ class GameBoard extends Component {
     return (
       <div>
         <Image src={this.props.board.imageURL} fluid rounded />
-        <Step.Group>
-          <Step completed>
-            <Step.Content>
-              <Step.Title>Stage 1</Step.Title>
-            </Step.Content>
-          </Step>
-          <Step active>
-            <Step.Content>
-              <Step.Title> Stage 2 </Step.Title>
-            </Step.Content>
-          </Step>
-          <Step disabled>
-            <Step.Content>
-              <Step.Title> Stage 3 </Step.Title>
-            </Step.Content>
-          </Step>
+        <Step.Group ordered>
+          {this.props.player && this.props.player.latestWonder === 1 ? (
+            <Step completed>
+              <Step.Content>
+                <Step.Title>Stage 1</Step.Title>
+              </Step.Content>
+            </Step>
+          ) : (
+            <Step active>
+              <Step.Content>
+                <Step.Title>Stage 1</Step.Title>
+              </Step.Content>
+            </Step>
+          )}
+
+          {this.props.player && this.props.player.latestWonder === 2 ? (
+            <Step completed>
+              <Step.Content>
+                <Step.Title> Stage 2 </Step.Title>
+              </Step.Content>
+            </Step>
+          ) : (
+            <Step active>
+              <Step.Content>
+                <Step.Title> Stage 2 </Step.Title>
+              </Step.Content>
+            </Step>
+          )}
+
+          {this.props.player && this.props.player.latestWonder === 3 ? (
+            <Step completed>
+              <Step.Content>
+                <Step.Title> Stage 3 </Step.Title>
+              </Step.Content>
+            </Step>
+          ) : (
+            <Step active>
+              <Step.Content>
+                <Step.Title> Stage 3 </Step.Title>
+              </Step.Content>
+            </Step>
+          )}
         </Step.Group>
       </div>
     )

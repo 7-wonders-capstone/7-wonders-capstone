@@ -6,14 +6,46 @@ import {Button} from 'semantic-ui-react'
 import TradeModal from './TradeModal'
 import checkTrading from '../../cardGenerator/checkTrading'
 import {selectAction} from '../store/selectedAction'
+import {playCard} from '../store/playCard'
 
 class Card extends React.Component {
   render() {
     const canPlay = this.props.canPlay
     const canPlayWonder = this.props.canPlayWonder
-    const selected = this.props.card.name === this.props.selectedCard.name
+    const selected =
+      this.props.card.name === this.props.selectedCard.name &&
+      this.props.card.numPlayers === this.props.selectedCard.numPlayers
     const style = selected ? 'card-selected' : 'card'
     console.log('Card props: ', this.props)
+
+    const playWonder = () => {
+      if (this.props.me.latestWonder === 0) {
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.levelone)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
+      } else if (this.props.me.latestWonder === 1) {
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.leveltwo)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
+      } else if (this.props.me.latestWonder === 2) {
+        let wonderCard = JSON.parse(
+          JSON.stringify(this.props.me.board.levelthree)
+        )
+        wonderCard.sacrificeName = this.props.card.name
+        wonderCard.sacrificeNumber = this.props.card.numPlayers
+        this.props.playCard(wonderCard)
+      }
+
+      this.props.preparePlay(this.props.me.email)
+
+      this.props.selectAction('play')
+    }
 
     return (
       <div className={style}>
@@ -38,8 +70,9 @@ class Card extends React.Component {
                 disabled={this.props.selectedAction !== ''}
                 size="small"
                 onClick={() => {
-                  this.props.preparePlay()
+                  this.props.preparePlay(this.props.me.email)
                   this.props.selectAction('play')
+                  this.props.playCard(this.props.selectedCard)
                 }}
               />
             )}
@@ -48,8 +81,9 @@ class Card extends React.Component {
               disabled={this.props.selectedAction !== ''}
               size="small"
               onClick={() => {
-                this.props.preparePlay()
+                this.props.preparePlay(this.props.me.email)
                 this.props.selectAction('discard')
+                this.props.playCard(this.props.selectedCard)
               }}
             />
             {canPlayWonder && (
@@ -57,6 +91,7 @@ class Card extends React.Component {
                 content="Build Wonder"
                 size="small"
                 disabled={this.props.selectedAction !== ''}
+                onClick={playWonder}
               />
             )}
           </div>
@@ -69,14 +104,16 @@ class Card extends React.Component {
 const mapStateToProps = state => {
   return {
     selectedCard: state.selectedCard,
-    selectedAction: state.selectedAction
+    selectedAction: state.selectedAction,
+    playedCard: state.playedCard
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     selectCard: card => dispatch(selectCard(card)),
-    selectAction: action => dispatch(selectAction(action))
+    selectAction: action => dispatch(selectAction(action)),
+    playCard: card => dispatch(playCard(card))
   }
 }
 

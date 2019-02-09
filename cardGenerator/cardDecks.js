@@ -1236,7 +1236,7 @@ const ageThreeDeck = [
       direction: 'own'
     },
     imageURL: '/img/age3/arena-3.jpg',
-    snapshotURL: '/img/snapshot/military_triple.jpg'
+    snapshotURL: '/img/snapshot/arena.jpg'
   },
   {
     name: 'Arena',
@@ -1632,7 +1632,7 @@ const guildDeck = [
       direction: 'both'
     },
     imageURL: '/img/age3/craftsmens-guild.jpg',
-    snapshotURL: '/img/snapshot/craftsmens_guild.jpg'
+    snapshotURL: '/img/snapshot/craftmens_guild.jpg'
   },
   {
     name: 'Spies Guild',
