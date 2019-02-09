@@ -115,6 +115,16 @@ class PlayerHand extends React.Component {
           })
         })
         .then(() => {
+          updatedHands.sort((a, b) => {
+            if (a.number < b.number) {
+              return -1
+            } else if (a.number > b.number) {
+              return 1
+            }
+            return 0
+          })
+        })
+        .then(() => {
           updatedHands.forEach(async player => {
             await this.props.updatePlayerInStore(player, 0)
           })
