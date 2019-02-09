@@ -7,36 +7,40 @@ class Coins extends Component {
       <div>
         <Grid columns={3}>
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column style={{width: '160px'}}>
               <Header as="h4" textAlign="left">
                 <Image
                   size="small"
                   src="/img/snapshot/victory_blank.png"
                   verticalAlign="middle"
-                  style={{margin: '0px 10px 0px 0px'}}
+                  style={{margin: '0px 5px 0px 0px', height: '35px'}}
                 />
                 {this.props.points}
                 <Image
                   size="small"
                   src="/img/snapshot/military_blank.png"
                   verticalAlign="middle"
-                  style={{margin: '0px 10px 0px 20px'}}
+                  style={{margin: '0px 10px 0px 10px', height: '35px'}}
                 />
-                {/* ADD MILITARY POINTS HERE */}
+                {this.props.militaryResults.reduce(
+                  (sum, elem) => sum + elem,
+                  0
+                )}
               </Header>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column style={{width: '215px'}}>
               <Header textAlign="center">
                 {this.props.email.split('@')[0]}
               </Header>
               {/* <Header textAlign="left">{this.props.email}</Header> */}
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column style={{width: '100px'}}>
               <Header as="h4" textAlign="right">
                 <Image
                   src="/img/1coin.png"
                   size="small"
                   verticalAlign="middle"
+                  style={{margin: '0px 10px 0px 20px', height: '35px'}}
                 />
                 {this.props.coins}
               </Header>

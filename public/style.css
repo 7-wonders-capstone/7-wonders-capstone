@@ -214,6 +214,42 @@ span.coin {
   border-radius: 2px;
 }
 
-.played-card-icon {
-  max-height: 30px;
+.played-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.played-card-icon-basicResource {
+  height: 35px;
+  min-width: 35px;
+}
+
+.played-card-icon-advancedResource {
+  height: 35px;
+  min-width: 35px;
+}
+
+.played-card-icon-science {
+  height: 35px;
+  min-width: 35.5px;
+}
+
+.played-card-icon-civilian {
+  height: 35px;
+  min-width: 40px;
+}
+
+.played-card-icon-economic {
+  height: 35px;
+  min-width: 40px;
+}
+
+.played-card-icon-military {
+  height: 35px;
+  min-width: 33px;
+}
+
+.played-card-icon-guild {
+  height: 35px;
+  min-width: 55px;
 }
