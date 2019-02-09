@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Image} from 'semantic-ui-react'
+import {Image, Popup} from 'semantic-ui-react'
 
 class PlayedCardIcons extends Component {
   render() {
@@ -14,9 +14,16 @@ class PlayedCardIcons extends Component {
                   key={`${card.name}${card.numPlayers}`}
                   className="played-card-container"
                 >
-                  <Image
-                    className={`played-card-icon-${iconType}`}
-                    src={card.snapshotURL}
+                  <Popup
+                    trigger={
+                      <Image
+                        className={`played-card-icon-${iconType}`}
+                        src={card.snapshotURL}
+                      />
+                    }
+                    content={<Image src={card.imageURL} />}
+                    position="bottom left"
+                    hideOnScroll="true"
                   />
                 </div>
               )
