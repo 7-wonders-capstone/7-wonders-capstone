@@ -13,16 +13,19 @@ class Coins extends Component {
                   size="small"
                   src="/img/snapshot/victory_blank.png"
                   verticalAlign="middle"
-                  style={{margin: '0px 10px 0px 0px'}}
+                  style={{margin: '0px 10px 0px 0px', height: '35px'}}
                 />
                 {this.props.points}
                 <Image
                   size="small"
                   src="/img/snapshot/military_blank.png"
                   verticalAlign="middle"
-                  style={{margin: '0px 10px 0px 20px'}}
+                  style={{margin: '0px 10px 0px 20px', height: '35px'}}
                 />
-                {/* ADD MILITARY POINTS HERE */}
+                {this.props.militaryResults.reduce(
+                  (sum, elem) => sum + elem,
+                  0
+                )}
               </Header>
             </Grid.Column>
             <Grid.Column>
@@ -37,6 +40,7 @@ class Coins extends Component {
                   src="/img/1coin.png"
                   size="small"
                   verticalAlign="middle"
+                  style={{margin: '0px 10px 0px 20px', height: '35px'}}
                 />
                 {this.props.coins}
               </Header>
