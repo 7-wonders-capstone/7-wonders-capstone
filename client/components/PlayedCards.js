@@ -6,46 +6,73 @@ class PlayedCards extends Component {
   render() {
     return (
       <Segment>
-        <Grid relaxed columns={7}>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+        <Grid relaxed centered columns={7}>
+          <Grid.Column
+            style={{
+              textAlign: 'center',
+              width: '64px',
+              padding: '14px 0px 0px 0px'
+            }}
+          >
             <Header as="h6">
-              Basic Resources
+              Basic<br />Resources
               <PlayedCardIcons iconType="basicResource" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{textAlign: 'center', width: '55px', padding: '14px 0px'}}
+          >
             <Header as="h6">
               Advanced Resources
               <PlayedCardIcons iconType="advancedResource" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{textAlign: 'center', width: '52px', padding: '14px 0px'}}
+          >
             <Header as="h6">
-              Science
+              Science<br />
+              <br />
               <PlayedCardIcons iconType="science" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{textAlign: 'center', width: '52px', padding: '14px 0px'}}
+          >
             <Header as="h6">
-              Civilian
+              Civilian<br />
+              <br />
               <PlayedCardIcons iconType="civilian" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '85px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{textAlign: 'center', width: '80px', padding: '14px 0px'}}
+          >
             <Header as="h6">
-              Economic
+              Economic<br />
+              <br />
               <PlayedCardIcons iconType="economic" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{textAlign: 'center', width: '70px', padding: '14px 0px'}}
+          >
             <Header as="h6">
-              Military
+              Military<br />
+              <br />
               <PlayedCardIcons iconType="military" {...this.props} />
             </Header>
           </Grid.Column>
-          <Grid.Column style={{width: '60px', padding: '14px 15px'}}>
+          <Grid.Column
+            style={{
+              textAlign: 'center',
+              width: '70px',
+              padding: '14px 0px 0px 0px'
+            }}
+          >
             <Header as="h6">
-              Guild
+              Guild<br />
+              <br />
               <PlayedCardIcons iconType="guild" {...this.props} />
             </Header>
           </Grid.Column>

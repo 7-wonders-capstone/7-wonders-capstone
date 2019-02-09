@@ -4,13 +4,20 @@ import {Image} from 'semantic-ui-react'
 class PlayedCardIcons extends Component {
   render() {
     const {playedCards, iconType} = this.props
+
     return (
       <div>
         {playedCards.length
           ? playedCards.filter(card => card.type === iconType).map(card => {
               return (
-                <div key={`${card.name}${card.numPlayers}`}>
-                  <Image className="played-card-icon" src={card.snapshotURL} />
+                <div
+                  key={`${card.name}${card.numPlayers}`}
+                  className="played-card-container"
+                >
+                  <Image
+                    className={`played-card-icon-${iconType}`}
+                    src={card.snapshotURL}
+                  />
                 </div>
               )
             })

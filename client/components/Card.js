@@ -12,7 +12,9 @@ class Card extends React.Component {
   render() {
     const canPlay = this.props.canPlay
     const canPlayWonder = this.props.canPlayWonder
-    const selected = this.props.card.name === this.props.selectedCard.name
+    const selected =
+      this.props.card.name === this.props.selectedCard.name &&
+      this.props.card.numPlayers === this.props.selectedCard.numPlayers
     const style = selected ? 'card-selected' : 'card'
 
     const playWonder = () => {

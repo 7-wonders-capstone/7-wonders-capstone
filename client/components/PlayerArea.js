@@ -21,6 +21,7 @@ class PlayerArea extends Component {
                   coins={livePlayerObj.coins}
                   points={livePlayerObj.victoryPoints}
                   email={playerEmail}
+                  militaryResults={livePlayerObj.militaryResults}
                 />
                 <PlayedCards playedCards={livePlayerObj.playedCards} />
 
