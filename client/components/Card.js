@@ -16,6 +16,7 @@ class Card extends React.Component {
       this.props.card.name === this.props.selectedCard.name &&
       this.props.card.numPlayers === this.props.selectedCard.numPlayers
     const style = selected ? 'card-selected' : 'card'
+    console.log('Card props: ', this.props)
 
     const playWonder = () => {
       if (this.props.me.latestWonder === 0) {
