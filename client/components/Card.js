@@ -7,6 +7,9 @@ import TradeModal from './TradeModal'
 import checkTrading from '../../cardGenerator/checkTrading'
 import {selectAction} from '../store/selectedAction'
 import {playCard} from '../store/playCard'
+import checkWonderLevelOneTrading from '../../cardGenerator/checkWonderLevelOneTrading'
+import checkWonderLevelTwoTrading from '../../cardGenerator/checkWonderLevelTwoTrading'
+import checkWonderLevelThreeTrading from '../../cardGenerator/checkWonderLevelThreeTrading'
 
 class Card extends React.Component {
   render() {

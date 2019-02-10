@@ -1,7 +1,7 @@
 /*eslint-disable complexity */
 /*eslint-disable max-statements */
 
-const playCard = (player, card) => {
+const checkCardPlay = (player, card) => {
   if (!card.costs) {
     return true
   } else if (
@@ -35,4 +35,4 @@ const playCard = (player, card) => {
   }
 }
 
-module.exports = {playCard}
+module.exports = checkCardPlay
