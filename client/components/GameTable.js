@@ -7,6 +7,7 @@ import PlayerArea from './PlayerArea'
 import PlayerHand from './PlayerHand'
 import {setPositions} from '../store/boardPositions'
 import {Image} from 'semantic-ui-react'
+import CardListPortal from './CardListPortal'
 
 class GameTable extends React.Component {
   constructor(props) {
@@ -172,6 +173,7 @@ class GameTable extends React.Component {
         </div>
 
         <div className="player-hand-navbar">
+          <CardListPortal />
           <PlayerHand
             //{...this.props}
             email={this.props.email}
