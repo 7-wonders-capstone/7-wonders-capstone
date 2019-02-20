@@ -1,7 +1,5 @@
 import React from 'react'
-
-import GameTable from './components/GameTable'
-import NavBar from './components/Header'
+import NavBar from './components/NavBar/Header'
 import GameRoutes from './GameRoutes'
 
 const App = () => {
@@ -9,7 +7,6 @@ const App = () => {
     <div className="app-container">
       <NavBar />
       <GameRoutes />
-      {/* <GameTable /> */}
     </div>
   )
 }
