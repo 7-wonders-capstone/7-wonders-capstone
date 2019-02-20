@@ -5,15 +5,11 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import {firebaseConfig} from '../../secrets'
-import user from './user'
 import selectedCard from './selectedCard'
 import selectedAction from './selectedAction'
 import playedCard from './playCard'
-import me from './me'
-// import boardPositions from './boardPositions'
 
 firebase.initializeApp(firebaseConfig)
-// firebase.firestore().settings({timestampsInSnapshots: true})
 
 const enhancers = [
   reduxFirestore(firebase),
@@ -34,16 +30,13 @@ if (
 const composedEnhancers = compose(...enhancers)
 
 const reducer = combineReducers({
-  user,
   firebase: firebaseReducer,
   firestore: firestoreReducer,
   selectedCard,
   selectedAction,
-  playedCard,
-  me
+  playedCard
 })
 
 const store = createStore(reducer, composedEnhancers)
 
 export default store
-export * from './user'

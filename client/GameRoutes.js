@@ -1,11 +1,11 @@
 import React from 'react'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
-import GameRoom from './components/GameRoom'
-import Lobby from './components/Lobby'
-import Welcome from './components/Welcome'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import GameRoom from './components/Lobby/GameRoom'
+import Lobby from './components/Lobby/Lobby'
+import Welcome from './components/WelcomePage/Welcome'
+import SignIn from './components/WelcomePage/SignIn'
+import SignUp from './components/WelcomePage/SignUp'
 
 class GameRoutes extends React.Component {
   render() {
