@@ -4,17 +4,17 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import GameOverModal from './gameOverModal'
-const playerUpdater = require('../../playerUpdater')
-const handSwap = require('../../handSwap')
-const calculateScience = require('../../calculateScience')
+const playerUpdater = require('../../gameLogic/playerUpdater')
+const handSwap = require('../../gameLogic/handSwap')
+const calculateScience = require('../../gameLogic/calculateScience')
 
-const militaryComparison = require('../../militaryComparison')
-const {dealHand, filterAgeDecks} = require('../../cardGenerator/cardGenerator')
-const {ageTwoDeck, ageThreeDeck} = require('../../cardGenerator/cardDecks')
-const determineReward = require('../../determineReward')
+const militaryComparison = require('../../gameLogic/militaryComparison')
+const {dealHand, filterAgeDecks} = require('../../gameLogic/cardGenerator')
+const {ageTwoDeck, ageThreeDeck} = require('../../gameLogic/cardDecks')
+const determineReward = require('../../gameLogic/determineReward')
 
-import playCard from '../../cardGenerator/checkCardPlay'
-import {checkWonderCard} from '../../cardGenerator/checkWonderCardPlay'
+import playCard from '../../gameLogic/checkCardPlay'
+import {checkWonderCard} from '../../gameLogic/checkWonderCardPlay'
 import {selectAction} from '../store/selectedAction'
 import {clearCard} from '../store/playCard'
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Modal, Image, Header} from 'semantic-ui-react'
 import TradeItems from './TradeItems'
-import {resourcesNeeded} from '../../tradeModalHelperFuncs'
+import {resourcesNeeded} from '../../gameLogic/tradeModalHelperFuncs'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'

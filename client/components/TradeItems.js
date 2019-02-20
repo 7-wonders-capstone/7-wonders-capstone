@@ -3,7 +3,7 @@ import {List, Header} from 'semantic-ui-react'
 import {
   neighborsAvailableResources,
   resourcesNeeded
-} from '../../tradeModalHelperFuncs'
+} from '../../gameLogic/tradeModalHelperFuncs'
 import TradeItem from './TradeItem'
 
 const TradeItems = props => {

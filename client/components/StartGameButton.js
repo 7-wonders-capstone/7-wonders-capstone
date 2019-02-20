@@ -1,7 +1,7 @@
 import React from 'react'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import {createPlayers} from '../../playerGenerator'
+import {createPlayers} from '../../gameLogic/playerGenerator'
 import {Button} from 'semantic-ui-react'
 
 class StartGameButton extends React.Component {

@@ -4,12 +4,12 @@ import {connect} from 'react-redux'
 import {selectCard} from '../store/selectedCard'
 import {Button} from 'semantic-ui-react'
 import TradeModal from './TradeModal'
-import checkTrading from '../../cardGenerator/checkTrading'
+import checkTrading from '../../gameLogic/checkTrading'
 import {selectAction} from '../store/selectedAction'
 import {playCard} from '../store/playCard'
-import checkWonderLevelOneTrading from '../../cardGenerator/checkWonderLevelOneTrading'
-import checkWonderLevelTwoTrading from '../../cardGenerator/checkWonderLevelTwoTrading'
-import checkWonderLevelThreeTrading from '../../cardGenerator/checkWonderLevelThreeTrading'
+import checkWonderLevelOneTrading from '../../gameLogic/checkWonderLevelOneTrading'
+import checkWonderLevelTwoTrading from '../../gameLogic/checkWonderLevelTwoTrading'
+import checkWonderLevelThreeTrading from '../../gameLogic/checkWonderLevelThreeTrading'
 
 class Card extends React.Component {
   render() {

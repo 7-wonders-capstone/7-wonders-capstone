@@ -1,11 +1,6 @@
 const gameBoards = require('./gameBoards')
-const {
-  ageOneDeck,
-  ageTwoDeck,
-  ageThreeDeck,
-  guildDeck
-} = require('./cardGenerator/cardDecks')
-const {dealHand, filterAgeDecks} = require('./cardGenerator/cardGenerator')
+const {ageOneDeck, ageTwoDeck, ageThreeDeck, guildDeck} = require('./cardDecks')
+const {dealHand, filterAgeDecks} = require('./cardGenerator')
 
 function playerGenerator(board, number, total) {
   let leftPlayer
