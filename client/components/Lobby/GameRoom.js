@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import GameTable from './GameTable'
-import QuitMessage from './QuitMessage'
+import GameTable from '../GameTable/GameTable'
+import QuitMessage from '../NavBar/QuitMessage'
 
 class GameRoom extends React.Component {
   render() {

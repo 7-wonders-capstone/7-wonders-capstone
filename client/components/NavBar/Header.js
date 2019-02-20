@@ -5,31 +5,10 @@ import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import QuitGame from './QuitGame'
 import {Button, Modal} from 'semantic-ui-react'
-import LogInModal from './LogInModal'
-import SignUpModal from './SignUpModal'
+import LogInModal from '../WelcomePage/LogInModal'
+import SignUpModal from '../WelcomePage/SignUpModal'
 
 class NavBar extends React.Component {
-  // logOut = () => {
-  //   const {gameId} = this.props
-  //   const email = this.props.auth.email
-
-  //   this.props.firestore.delete({
-  //     collection: 'games',
-  //     doc: gameId,
-  //     subcollections: [{collection: `players`, doc: email}]
-  //   })
-
-  //   this.props.firestore.update(
-  //     {
-  //       collection: 'users',
-  //       doc: email
-  //     },
-  //     {inGameRoom: ''}
-  //   )
-
-  //   firebase.auth().signOut()
-  // }
-
   render() {
     const {user} = this.props
 
@@ -70,9 +49,6 @@ class NavBar extends React.Component {
                   </a>
                 </div>
               )}
-              {/* <a href="/" onClick={this.logOut}>
-                Log Out
-              </a> */}
             </div>
           )}
         </nav>

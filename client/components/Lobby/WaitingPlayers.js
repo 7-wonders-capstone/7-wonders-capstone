@@ -8,17 +8,14 @@ class WaitingPlayers extends React.Component {
       <div className="waiting-players">
         Current players joined:
         <div className="waiting-players-container">
-          {/* <ul> */}
           {players.map(player => {
             return (
               <div key={player.id} className="waiting-player-item">
                 <Icon name="user" size="huge" color="blue" />
                 <p>{player.email.split('@')[0]}</p>
               </div>
-              // <li key={player.id}>{player.email}</li>
             )
           })}
-          {/* </ul> */}
         </div>
       </div>
     )

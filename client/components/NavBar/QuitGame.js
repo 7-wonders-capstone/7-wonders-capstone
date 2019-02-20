@@ -29,11 +29,7 @@ class QuitGame extends Component {
     const {players} = this.props
 
     return (
-      <div
-        // style={{backgroundColor: 'white'}}
-        className="exit-game-btn"
-        onClick={() => this.quitGame(players)}
-      >
+      <div className="exit-game-btn" onClick={() => this.quitGame(players)}>
         Quit Game
       </div>
     )

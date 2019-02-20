@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Image, Modal, Header, Grid} from 'semantic-ui-react'
-import QuitGame from './QuitGame'
+import {Modal, Header} from 'semantic-ui-react'
+import QuitGame from '../NavBar/QuitGame'
 
 export default class GameOverModal extends Component {
   render() {

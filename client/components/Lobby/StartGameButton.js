@@ -1,7 +1,7 @@
 import React from 'react'
 import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import {createPlayers} from '../../gameLogic/playerGenerator'
+import {createPlayers} from '../../../gameLogic/playerGenerator'
 import {Button} from 'semantic-ui-react'
 
 class StartGameButton extends React.Component {
@@ -68,13 +68,6 @@ class StartGameButton extends React.Component {
           onClick={() => this.startGame(players)}
           content="Start Game"
         />
-        {/* <button
-          type="button"
-          onClick={() => this.startGame(players)}
-          disabled={numOfPlayers < 3 || numOfPlayers > 7}
-        >
-          Start Game
-        </button> */}
       </div>
     )
   }

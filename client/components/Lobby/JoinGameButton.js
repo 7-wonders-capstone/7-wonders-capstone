@@ -29,9 +29,6 @@ class JoinGameButton extends React.Component {
   render() {
     return (
       <div>
-        {/* <button type="button" onClick={this.joinGame}>
-          Join Game
-        </button> */}
         <Button
           style={{marginTop: '10px'}}
           onClick={this.joinGame}

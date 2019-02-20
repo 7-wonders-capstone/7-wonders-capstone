@@ -2,12 +2,10 @@ import React from 'react'
 import {firestoreConnect} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-import PlayerArea from './PlayerArea'
-
-import PlayerHand from './PlayerHand'
-import {setPositions} from '../store/boardPositions'
+import PlayerArea from './PlayerArea/PlayerArea'
+import PlayerHand from './PlayerHand/PlayerHand'
 import {Image} from 'semantic-ui-react'
-import CardListPortal from './CardListPortal'
+import CardListPortal from './PlayerHand/CardListPortal'
 
 class GameTable extends React.Component {
   constructor(props) {
@@ -162,20 +160,11 @@ class GameTable extends React.Component {
               />
             </div>
           </div>
-          {/* <div className="my-row">
-            <div className="my-container">
-              <PlayerArea
-                player={this.playersRotatedAroundMe[0]}
-                players={this.props.players}
-              />
-            </div>
-          </div> */}
         </div>
 
         <div className="player-hand-navbar">
           <CardListPortal />
           <PlayerHand
-            //{...this.props}
             email={this.props.email}
             gameId={this.props.gameId}
             preparePlay={this.preparePlay}
@@ -219,14 +208,8 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setPositions: map => dispatch(setPositions(map))
-  }
-}
-
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   firestoreConnect(props => {
     return [
       {

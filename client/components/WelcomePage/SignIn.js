@@ -1,8 +1,6 @@
 import React from 'react'
 import * as firebase from 'firebase'
 import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {gotMe} from '../store/me'
 import {Button, Form, Icon} from 'semantic-ui-react'
 
 class SignIn extends React.Component {
@@ -67,10 +65,4 @@ class SignIn extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    gotMe: me => dispatch(gotMe(me))
-  }
-}
-
-export default withRouter(connect(null, mapDispatchToProps)(SignIn))
+export default withRouter(SignIn)

@@ -2,9 +2,6 @@ import React from 'react'
 import * as firebase from 'firebase'
 import {firestoreConnect} from 'react-redux-firebase'
 import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {gotMe} from '../store/me'
-import {compose} from 'redux'
 import {Form, Button, Modal, Icon, Header} from 'semantic-ui-react'
 
 class SignUp extends React.Component {
@@ -107,12 +104,4 @@ class SignUp extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    gotMe: me => dispatch(gotMe(me))
-  }
-}
-
-export default withRouter(
-  compose(firestoreConnect(), connect(null, mapDispatchToProps))(SignUp)
-)
+export default withRouter(firestoreConnect()(SignUp))

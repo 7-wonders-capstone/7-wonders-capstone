@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Container, Grid, Segment} from 'semantic-ui-react'
 import GameBoard from './GameBoard'
 import PlayedCards from './PlayedCards'
-import Coins from './Coins'
+import BoardHeader from './BoardHeader'
 
 class PlayerArea extends Component {
   render() {
@@ -17,7 +17,7 @@ class PlayerArea extends Component {
           <Grid.Row stretched>
             <Segment>
               <Container>
-                <Coins
+                <BoardHeader
                   coins={livePlayerObj.coins}
                   points={livePlayerObj.victoryPoints}
                   email={playerEmail}

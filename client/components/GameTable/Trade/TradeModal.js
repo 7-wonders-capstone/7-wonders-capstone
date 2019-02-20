@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {Button, Modal, Image, Header} from 'semantic-ui-react'
 import TradeItems from './TradeItems'
-import {resourcesNeeded} from '../../gameLogic/tradeModalHelperFuncs'
+import {resourcesNeeded} from '../../../../gameLogic/tradeModalHelperFuncs'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
-import {selectAction} from '../store/selectedAction'
-import {playCard} from '../store/playCard'
+import {selectAction} from '../../../store/selectedAction'
+import {playCard} from '../../../store/playCard'
 
 class TradeModal extends Component {
   constructor() {
@@ -145,7 +145,6 @@ class TradeModal extends Component {
                   this.updateFirestoreTradeCost(playerAndNeighbors, gameId)
                 }}
                 positive
-                //TODO: Only make clickable if player has chosen correct cards, instead of correct number of cards.
                 disabled={
                   this.state.resourcesSelected !== arrOfNeededResources.length
                 }

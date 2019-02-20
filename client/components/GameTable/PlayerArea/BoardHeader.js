@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Header, Image, Grid} from 'semantic-ui-react'
 
-class Coins extends Component {
+class BoardHeader extends Component {
   render() {
     return (
       <div>
@@ -32,7 +32,6 @@ class Coins extends Component {
               <Header textAlign="center">
                 {this.props.email.split('@')[0]}
               </Header>
-              {/* <Header textAlign="left">{this.props.email}</Header> */}
             </Grid.Column>
             <Grid.Column style={{width: '100px'}}>
               <Header as="h4" textAlign="right">
@@ -52,4 +51,4 @@ class Coins extends Component {
   }
 }
 
-export default Coins
+export default BoardHeader
